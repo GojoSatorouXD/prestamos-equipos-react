@@ -1,0 +1,26 @@
+/* Cuadrícula que pone tantas columnas como quepan (mínimo 220px cada una) */
+.lista-equipos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.lista-vacia {
+  padding: 40px 16px;
+  text-align: center;
+  background-color: var(--color-superficie);
+  border: 1px dashed var(--color-borde);
+  border-radius: var(--radio);
+  color: var(--color-texto-suave);
+}
+
+.lista-vacia p {
+  margin: 0;
+}
+
+.lista-vacia-titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 4px !important;
+}

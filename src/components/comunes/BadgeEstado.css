@@ -1,0 +1,23 @@
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-disponible {
+  color: var(--color-disponible);
+  background-color: var(--color-disponible-fondo);
+}
+
+.badge-prestado {
+  color: var(--color-prestado);
+  background-color: var(--color-prestado-fondo);
+}
+
+.badge-mantenimiento {
+  color: var(--color-mantenimiento);
+  background-color: var(--color-mantenimiento-fondo);
+}

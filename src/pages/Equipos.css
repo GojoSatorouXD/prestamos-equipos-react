@@ -1,0 +1,13 @@
+.equipos-rango {
+  margin: 0 0 16px;
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+}
+
+.equipos-error {
+  padding: 16px;
+  border-radius: var(--radio);
+  color: var(--color-prestado);
+  background-color: var(--color-prestado-fondo);
+  font-weight: 600;
+}
