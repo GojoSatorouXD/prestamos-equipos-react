@@ -80,9 +80,9 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [x] Título de la página
 - [x] Lista en tarjetas con paginación de 10 por página; al inicio se cargan los 10 primeros
 - [ ] Botón "Ver detalle" en cada tarjeta que abre un sidebar con los 8 atributos
-- [ ] Filtros arriba (siguen siendo 2): (1) selector de categoría (incluye Accesorios), (2) selector o radio de estado
-- [ ] Extra opcional: contador "X disponibles / Y prestados"
-- [ ] Botones "Filtrar" y "Limpiar filtros". Los filtros se aplican solo al presionar "Filtrar" (no en vivo); "Limpiar" restablece la lista completa y vuelve a la página 1
+- [x] Filtros arriba: buscador de texto (nombre, marca, serial y especificaciones, sin distinguir mayúsculas ni tildes) + selector de categoría (el obligatorio del PDF, incluye Accesorios) + selector de estado; se combinan
+- [x] Contador de disponibles / prestados / en mantenimiento sobre el inventario total
+- [x] Botones "Filtrar" y "Limpiar filtros". Los filtros se aplican solo al presionar "Filtrar" o Enter en el buscador (no en vivo); "Limpiar" deja todo en blanco; ambos vuelven a la página 1
 - [x] Estado de "Cargando…" y mensaje cuando no hay resultados
 
 ### 3. Stack tecnológico y estudios (`/stack`)
@@ -119,8 +119,8 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 1. ✅ Router, layout, 5 vistas base, variables CSS
 2. ✅ Datos, PrestamosContext, funciones utilitarias
 3. ✅ Vista Equipos: tarjetas, paginación, cargando, sin resultados
-4. Datos v2: 60 equipos con serial, categoría Accesorios + SVG, ubicaciones de TI
-5. Filtros (categoría + estado), Filtrar / Limpiar, contador
+4. ✅ Datos v2: 60 equipos con serial, categoría Accesorios + SVG, ubicaciones de TI
+5. ✅ Buscador + filtros (categoría + estado), Filtrar / Limpiar, contador
 6. Sidebar de detalle (8 atributos)
 7. Vista Inicio
 8. Vista Stack
