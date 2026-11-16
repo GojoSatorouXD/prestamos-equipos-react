@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Periféricos">
+  <!-- Ilustración genérica de la categoría "Periféricos" (reemplazable por fotos reales) -->
+  <rect width="400" height="260" fill="#f3e8ff"/>
+  <rect x="60" y="110" width="200" height="80" rx="10" fill="#6b21a8"/>
+  <g fill="#d8b4fe">
+    <rect x="74" y="122" width="22" height="16" rx="3"/><rect x="102" y="122" width="22" height="16" rx="3"/>
+    <rect x="130" y="122" width="22" height="16" rx="3"/><rect x="158" y="122" width="22" height="16" rx="3"/>
+    <rect x="186" y="122" width="22" height="16" rx="3"/><rect x="214" y="122" width="32" height="16" rx="3"/>
+    <rect x="74" y="144" width="32" height="16" rx="3"/><rect x="112" y="144" width="22" height="16" rx="3"/>
+    <rect x="140" y="144" width="22" height="16" rx="3"/><rect x="168" y="144" width="22" height="16" rx="3"/>
+    <rect x="196" y="144" width="50" height="16" rx="3"/>
+    <rect x="102" y="166" width="116" height="14" rx="3"/>
+  </g>
+  <rect x="285" y="105" width="56" height="86" rx="28" fill="#7e22ce"/>
+  <line x1="313" y1="105" x2="313" y2="140" stroke="#d8b4fe" stroke-width="4"/>
+  <path d="M313 105 C313 80 300 70 290 60" stroke="#6b21a8" stroke-width="4" fill="none"/>
+</svg>

@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom'
 import { enlaces } from '../../data/navegacion'
 import { perfil } from '../../data/perfil'
+import { usePrestamos } from '../../context/PrestamosContext'
 import './Footer.css'
 
 /**
  * Pie de página reutilizable con información de resumen:
- * qué es el sitio, enlaces a las vistas y redes sociales.
- * (En el paso 2 se agrega el resumen de equipos por estado.)
+ * qué es el sitio, estado del inventario, enlaces a las vistas y redes.
  */
 function Footer() {
+  // Datos globales leídos con useContext (a través del hook usePrestamos)
+  const { equipos, conteo, cargando, error } = usePrestamos()
+
   // Año actual calculado con un objeto Date
   const anio = new Date().getFullYear()
+
+  // Texto del resumen del inventario según el estado de la carga
+  let resumenInventario = `Inventario: ${equipos.length} equipos · ${conteo['Disponible']} disponibles · ${conteo['Prestado']} prestados`
+  if (cargando) resumenInventario = 'Cargando inventario…'
+  if (error) resumenInventario = 'Inventario no disponible en este momento'
 
   return (
     <footer className="footer">
@@ -18,6 +26,7 @@ function Footer() {
         <div>
           <h2 className="footer-titulo">PrestaTech</h2>
           <p>{perfil.resumen}</p>
+          <p className="footer-inventario">{resumenInventario}</p>
         </div>
 
         <div>

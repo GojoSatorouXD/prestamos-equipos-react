@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Audio y video">
+  <!-- Ilustración genérica de la categoría "Audio y video" (reemplazable por fotos reales) -->
+  <rect width="400" height="260" fill="#fee2e2"/>
+  <path d="M130 120 a70 70 0 0 1 140 0" stroke="#991b1b" stroke-width="14" fill="none"/>
+  <rect x="110" y="115" width="44" height="70" rx="14" fill="#b91c1c"/>
+  <rect x="246" y="115" width="44" height="70" rx="14" fill="#b91c1c"/>
+  <rect x="122" y="128" width="20" height="44" rx="8" fill="#fca5a5"/>
+  <rect x="258" y="128" width="20" height="44" rx="8" fill="#fca5a5"/>
+</svg>
