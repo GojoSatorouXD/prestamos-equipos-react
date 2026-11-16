@@ -22,20 +22,62 @@ export const ESTADOS = ['Disponible', 'Prestado', 'En mantenimiento']
 // Cantidad de tarjetas por página que pide el proyecto
 export const EQUIPOS_POR_PAGINA = 10
 
+// Filtros vacíos = mostrar todos los equipos
+export const FILTROS_INICIALES = { texto: '', categoria: '', estado: '' }
+
 /**
- * Filtra los equipos por categoría y estado.
+ * Prepara un texto para compararlo sin importar mayúsculas ni tildes.
+ *   "Portátil LENOVO" -> "portatil lenovo"
+ *
+ * Pasos:
+ *  1. toLowerCase(): todo a minúsculas.
+ *  2. normalize('NFD'): separa cada letra de su tilde ("á" pasa a ser "a" + "´").
+ *  3. replace(...): borra esas tildes sueltas (rango Unicode ̀-ͯ).
+ */
+export function normalizarTexto(texto) {
+  return texto
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+}
+
+/**
+ * Indica si un equipo contiene el texto buscado en su nombre,
+ * marca, serial o especificaciones.
+ */
+export function coincideConBusqueda(equipo, texto) {
+  const busqueda = normalizarTexto(texto.trim())
+  if (busqueda === '') return true // sin texto: todos coinciden
+
+  // Se juntan los 4 campos en un solo texto y se busca ahí
+  const contenido = normalizarTexto(
+    [equipo.nombre, equipo.marca, equipo.serial, equipo.especificaciones].join(' '),
+  )
+  return contenido.includes(busqueda)
+}
+
+/**
+ * Filtra los equipos por texto, categoría y estado (los tres a la vez).
  * Un filtro vacío ('') significa "todos", es decir, no filtra.
  *
  * @param {Array} equipos - lista completa de equipos
- * @param {{categoria: string, estado: string}} filtros
- * @returns {Array} nueva lista solo con los equipos que cumplen ambos filtros
+ * @param {{texto: string, categoria: string, estado: string}} filtros
+ * @returns {Array} nueva lista solo con los equipos que cumplen los tres filtros
  */
 export function filtrarEquipos(equipos, filtros) {
   return equipos.filter((equipo) => {
+    const cumpleTexto = coincideConBusqueda(equipo, filtros.texto)
     const cumpleCategoria = filtros.categoria === '' || equipo.categoria === filtros.categoria
     const cumpleEstado = filtros.estado === '' || equipo.estado === filtros.estado
-    return cumpleCategoria && cumpleEstado
+    return cumpleTexto && cumpleCategoria && cumpleEstado
   })
+}
+
+/**
+ * Indica si hay algún filtro aplicado (para mostrar "de 60 en total").
+ */
+export function hayFiltrosActivos(filtros) {
+  return filtros.texto.trim() !== '' || filtros.categoria !== '' || filtros.estado !== ''
 }
 
 /**

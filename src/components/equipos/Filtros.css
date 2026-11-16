@@ -1,0 +1,68 @@
+/* En pantallas anchas: buscador más ancho + 2 selectores + botones en una fila */
+.filtros {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  align-items: end;
+  gap: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.filtros-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.filtros-campo label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.filtros-campo input,
+.filtros-campo select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font: inherit;
+}
+
+.filtros-botones {
+  display: flex;
+  gap: 8px;
+}
+
+.filtros-botones .boton {
+  white-space: nowrap;
+}
+
+/* Tablet: buscador en su propia fila, selectores en 2 columnas */
+@media (max-width: 900px) {
+  .filtros {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filtros-campo-texto,
+  .filtros-botones {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Celular: todo en una sola columna y botones a lo ancho */
+@media (max-width: 520px) {
+  .filtros {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .filtros-botones .boton {
+    flex: 1;
+  }
+}

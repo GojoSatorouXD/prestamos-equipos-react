@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react'
 import { PrestamosContext } from './PrestamosContext'
 import { obtenerEquipos } from '../services/equiposService'
-import { filtrarEquipos, contarPorEstado } from '../utils/equipos'
-
-// Filtros vacíos = mostrar todos los equipos
-const FILTROS_INICIALES = { categoria: '', estado: '' }
+import { filtrarEquipos, contarPorEstado, FILTROS_INICIALES } from '../utils/equipos'
 
 /**
  * Proveedor del estado global. Envuelve toda la aplicación (main.jsx),
@@ -68,7 +65,7 @@ function PrestamosProvider({ children }) {
   const seleccionarEquipo = (equipo) => setEquipoSeleccionado(equipo)
   const cerrarDetalle = () => setEquipoSeleccionado(null)
 
-  // Recibe un objeto { categoria, estado } (se usa una copia)
+  // Recibe un objeto { texto, categoria, estado } (se guarda una copia)
   const aplicarFiltros = (nuevosFiltros) => setFiltros({ ...nuevosFiltros })
   const limpiarFiltros = () => setFiltros(FILTROS_INICIALES)
 
@@ -79,6 +76,7 @@ function PrestamosProvider({ children }) {
   // porque siempre se pueden obtener de "equipos" y "filtros").
   // ---------------------------------------------------------
   const equiposFiltrados = filtrarEquipos(equipos, filtros)
+  // El conteo usa el inventario TOTAL, no la lista filtrada
   const conteo = contarPorEstado(equipos)
 
   // Objeto con todo lo que comparte el contexto
