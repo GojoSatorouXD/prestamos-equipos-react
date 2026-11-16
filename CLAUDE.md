@@ -2,75 +2,98 @@
 
 Autor: Juan David Paz Trochez
 Línea de desarrollo elegida: **3.4 Equipos de computación y accesorios**
-Enfoque: **sistema de préstamo de equipos de cómputo** para instituciones educativas (portátiles, proyectores, tablets, periféricos).
-El sitio es el portafolio de Juan como desarrollador y soporte IT y presenta esta solución. En la vista de "proyectos", cada elemento es un equipo disponible para préstamo.
-Solo es un front-end: no hay backend ni login, y los préstamos no se guardan en una base de datos.
+
+## Contexto
+Somos el **equipo de soporte TI de una empresa (colegio u oficina)** y prestamos equipos a nuestros colaboradores.
+El proyecto **digitaliza la hoja de papel de préstamos**, donde se anotaba: serial, nombre y modelo del equipo, fecha y hora del préstamo y nombre completo de quien lo recibe.
+Juan David Paz Trochez es el **técnico de TI que registra los préstamos**. Nombre del sitio: **PrestaTech**. El sitio también es su portafolio (vistas de Inicio, Stack y Contacto).
+En la vista de "proyectos" del PDF, cada elemento es un equipo del inventario de TI.
+
+Solo es un front-end: **sin login ni backend**. Los estados de los equipos y el historial se guardan en `localStorage` del navegador. Login y backend quedan como **trabajo futuro** en el README.
 
 Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF manda.
 
 ## Stack
 - Vite + React (JavaScript, sin TypeScript)
-- react-router-dom para las 5 vistas
-- CSS propio (o Tailwind si se decide), diseño responsive
-- Datos en `public/data/equipos.json`, cargados con fetch
-- EmailJS (o mailto) para el formulario
-- Despliegue en Vercel o Netlify
+- react-router-dom: 5 vistas obligatorias + 1 vista extra ("Préstamos")
+- CSS propio con variables (tema claro/oscuro), diseño responsive
+- Datos en `public/data/equipos.json` y `public/data/colaboradores.json`, cargados con fetch
+- localStorage para estados de equipos e historial de préstamos
+- EmailJS para el formulario de contacto (claves en `.env`, plantilla en `.env.example`)
+- SheetJS instalado desde su CDN oficial (`npm i https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`), **no** el paquete `xlsx` del registro de npm, para exportar el historial a Excel
+- Despliegue en Vercel (con `vercel.json` para las rutas del router)
 
 ## Reglas de trabajo
 - Código claro y comentado en español: Juan debe poder explicar cada parte en la sustentación.
-- Una vista o funcionalidad por paso, con un commit al terminar cada una (el avance vale 10 puntos).
-- No inventar experiencia laboral ni testimonios que parezcan reales. Si un dato es de ejemplo, marcarlo como tal.
+- Una vista o funcionalidad por paso, con un commit al terminar cada una (el avance vale 10 puntos). Sin líneas `Co-Authored-By` en los commits.
+- Primero todo lo obligatorio del PDF; después lo extra (préstamos, historial, Excel).
+- No inventar experiencia laboral ni testimonios que parezcan reales. Si un dato es de ejemplo, marcarlo como tal (colaboradores, testimonios, inventario).
 - Antes de pasar a la siguiente vista, verificar contra el checklist.
 
 ## Lo que se evalúa (debe verse en el código)
-- [ ] Funciones propias en JS (filtrar, paginar, validar, contar equipos por estado)
-- [ ] Arreglos y objetos (equipos, testimonios, experiencias, stack)
+- [ ] Funciones propias en JS (filtrar, paginar, validar, contar por estado, calcular duración)
+- [ ] Arreglos y objetos (equipos, colaboradores, historial, testimonios, experiencias, stack)
 - [ ] Gestión de eventos (onClick, onChange, onSubmit)
-- [ ] Promesas: carga de productos con fetch/async-await y envío del formulario
+- [ ] Promesas: carga de datos con fetch/async-await y envío del formulario
 - [ ] Componentes y props
 - [ ] Ciclo de vida (useEffect para la carga inicial y limpieza)
 - [ ] useState
 - [ ] useEffect para cargar información
-- [ ] useContext: `PrestamosContext` con equipos, equipo seleccionado, filtros y tema
+- [ ] useContext: `PrestamosContext` con equipos, equipo seleccionado, filtros, tema, colaboradores e historial
 
-## Modelo de equipo (8 atributos + id)
-`id, nombre, imagen, categoria, marca, estado, especificaciones, ubicacion, tiempoMaximo`
+## Modelo de equipo (exactamente 8 atributos + id)
+`id, nombre, imagen, categoria, marca, estado, especificaciones, ubicacion, serial`
 - Tarjeta (5 obligatorios): imagen, nombre, categoría, marca, estado (badge de color)
 - Sidebar "Ver detalle": los 8 atributos
-- Categorías: Portátiles, Proyectores, Tablets, Periféricos, Audio y video, Redes
-- Estados: Disponible, Prestado, En mantenimiento
-- ubicacion: sede o sala (ej. "Sede Norte – Sala 204"); tiempoMaximo: ej. "4 horas", "3 días"
-- Mínimo 25 equipos, para que la paginación tenga 3 páginas
+- 60 equipos: Portátiles 12, Tablets 6, Proyectores 5, Periféricos 12, Audio y video 8, Redes 5, Accesorios 12
+- Accesorios: cargadores, adaptadores HDMI/USB-C, extensiones, punteros láser, memorias USB, discos externos
+- Estados: Disponible, Prestado, En mantenimiento. En el JSON **ningún equipo arranca como Prestado**: la mayoría Disponible y unos pocos En mantenimiento. Los préstamos solo se registran en vivo desde la app.
+- serial: `TI-<prefijo>-<4 dígitos>` (ej. `TI-PT-0012`). Prefijos: PT, TB, PY, PF, AV, RD, AC
+- ubicacion: bodega u oficina de TI (ej. "Bodega TI – Estante A2")
+- imagen: una ilustración SVG por categoría en `public/img/categorias/` (reemplazable por fotos cambiando la ruta en el JSON)
+
+## Modelo de colaborador (`public/data/colaboradores.json`, datos de ejemplo)
+`id, nombreCompleto, documento, correo, cargo, area`
+- 11 colaboradores: Diego Alejandro Cano Muñoz, Andrés Felipe Colonia Ocampo, Juan José Cruz Serna, Carlos Esneider Espitia Paz, Kenneth Ibarra Velasco, Mauricio López Tamayo, Natalia Martínez Arévalo, Lizeth Tatiana Moreno Rosero, Carolina Muñoz Quintero, José Luis Oviedo Camacho, Deyby Alejandro Rodríguez Castillo
+- Correo con dominio reservado `.example` (ej. `diego.cano@colegio-ejemplo.example`); documento, cargo y área inventados y variados (docentes, coordinación, administrativo, RR. HH., contabilidad)
+
+## Préstamo y devolución (desde el sidebar, debajo de los 8 atributos)
+- **Registrar préstamo** (solo si está Disponible): elegir colaborador, fecha y hora automáticas, "Condición de entrega" obligatoria → estado pasa a **Prestado**
+- **Registrar devolución** (solo si está Prestado): fecha y hora automáticas, "Condición de devolución" obligatoria y casilla "¿Llegó en las mismas condiciones?" → Sí: **Disponible**; No: **En mantenimiento**
+- **Marcar como reparado** (solo si está En mantenimiento) → vuelve a **Disponible**
+- El historial **empieza vacío** (no hay préstamos de ejemplo)
+- Todo desde `PrestamosContext`, persistido en localStorage (estados de equipos + historial)
+- Es un formulario aparte del de Contacto
 
 ## Vistas y checklist
 
 ### 1. Presentación y biografía (`/`)
-- [ ] Header (logo o nombre opcional) + navbar hacia todas las vistas
+- [x] Header (logo o nombre opcional) + navbar hacia todas las vistas
 - [ ] Banner de presentación con título de la página
-- [ ] Imagen representativa del perfil + descripción
+- [ ] Imagen representativa del perfil + descripción (Juan, técnico de TI)
 - [ ] 2 botones CTA: "Ver equipos" y "Contacto"
 - [ ] Biografía con mínimo 3 elementos
 - [ ] Mínimo 2 redes sociales (GitHub GojoSatorouXD, LinkedIn, etc.)
-- [ ] Footer con información de resumen (componente reutilizable)
+- [x] Footer con información de resumen (componente reutilizable)
 
 ### 2. Equipos (`/equipos`)
-- [ ] Título de la página
-- [ ] Lista en tarjetas con paginación de 10 por página; al inicio se cargan los 10 primeros
+- [x] Título de la página
+- [x] Lista en tarjetas con paginación de 10 por página; al inicio se cargan los 10 primeros
 - [ ] Botón "Ver detalle" en cada tarjeta que abre un sidebar con los 8 atributos
-- [ ] Filtros arriba: (1) selector de categoría, (2) selector o radio de estado
+- [ ] Filtros arriba (siguen siendo 2): (1) selector de categoría (incluye Accesorios), (2) selector o radio de estado
 - [ ] Extra opcional: contador "X disponibles / Y prestados"
 - [ ] Botones "Filtrar" y "Limpiar filtros". Los filtros se aplican solo al presionar "Filtrar" (no en vivo); "Limpiar" restablece la lista completa y vuelve a la página 1
-- [ ] Estado de "Cargando…" y mensaje cuando no hay resultados
+- [x] Estado de "Cargando…" y mensaje cuando no hay resultados
 
 ### 3. Stack tecnológico y estudios (`/stack`)
 - [ ] Título de la página
-- [ ] Sección "Stack implementado en este proyecto": React, Vite, react-router-dom, Context API, EmailJS/CSS
+- [ ] Sección "Stack implementado en este proyecto": React, Vite, react-router-dom, Context API, localStorage, EmailJS, SheetJS, CSS
 - [ ] Sección "Stack del autor": mínimo 3 tarjetas con imagen y descripción (React, Node.js, MongoDB, Linux, Git…)
 - [ ] Mínimo 2 herramientas de IA usadas (Claude Code, etc.)
-- [ ] Timeline con mínimo 3 experiencias laborales: Auxiliar de Soporte IT en el Colegio Colombo Británico + las que Juan confirme (no inventar empleos; si faltan, usar proyectos académicos con rol y decirlo así)
+- [ ] Timeline con 3 experiencias: Auxiliar de Soporte IT en el Colegio Colombo Británico + "Desarrollador – Sistema de préstamos de equipos TI (UNIAJC)" + "Desarrollador – APA Interactivo, proyecto de grado (UNIAJC)" (los dos últimos marcados como proyectos académicos)
 - [ ] Estudios: Tecnología en Sistemas de Información, UNIAJC
 
-### 4. Contacto / nuevo proyecto (`/contacto`)
+### 4. Contacto / nuevo proyecto (`/contacto`) — como lo pide el PDF
 - [ ] Título de la página
 - [ ] Campos: nombre, apellidos, correo, teléfono, descripción (textarea)
 - [ ] Nombre y apellidos: solo letras (incluye tildes, ñ y espacios), máximo 20 caracteres
@@ -78,16 +101,40 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [ ] Teléfono: solo números
 - [ ] Todos los campos obligatorios, con mensajes de error visibles
 - [ ] Botón "Enviar email" y mensaje de agradecimiento al enviar
-- [ ] Mínimo 5 testimonios (marcados como de ejemplo si no son reales)
+- [ ] Mínimo 5 testimonios (marcados como de ejemplo)
 
 ### 5. Propuesta de valor (`/propuesta`)
 - [ ] Título de la página
-- [ ] Sección principal: el problema (préstamos en papel o Excel, equipos perdidos, sin trazabilidad) y la solución (inventario visible, estados claros, historial)
-- [ ] Sección secundaria: beneficios para la institución y lo que aporta Juan (soporte IT + desarrollo)
+- [ ] Sección principal: **antes** (hoja de papel: sin trazabilidad, letra ilegible, equipos sin ubicar, sin condición registrada) vs **después** (registro digital, estados claros, historial, exportación a Excel)
+- [ ] Sección secundaria: beneficios para la empresa y lo que aporta Juan (soporte TI + desarrollo)
 - [ ] Footer
 
+### 6. Préstamos (`/prestamos`) — vista extra
+- [ ] Título de la página y enlace en el navbar
+- [ ] Tabla del historial: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, estado (Activo / Devuelto)
+- [ ] Botón "Exportar a Excel" que descarga un .xlsx con todas esas columnas
+- [ ] Botón "Restablecer datos de ejemplo" (borra localStorage) con mensaje de confirmación antes de borrar
+
+## Orden de trabajo (un commit por paso)
+1. ✅ Router, layout, 5 vistas base, variables CSS
+2. ✅ Datos, PrestamosContext, funciones utilitarias
+3. ✅ Vista Equipos: tarjetas, paginación, cargando, sin resultados
+4. Datos v2: 60 equipos con serial, categoría Accesorios + SVG, ubicaciones de TI
+5. Filtros (categoría + estado), Filtrar / Limpiar, contador
+6. Sidebar de detalle (8 atributos)
+7. Vista Inicio
+8. Vista Stack
+9. Vista Contacto (validaciones + EmailJS + testimonios)
+10. Vista Propuesta de valor (antes / después)
+11. Colaboradores + historial en el contexto con localStorage
+12. Formularios de préstamo y devolución + "Marcar como reparado" en el sidebar
+13. Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"
+14. Exportar a Excel con SheetJS
+15. Botón de tema, revisión responsive y checklist completo
+16. README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue
+
 ## Entregables
-- [ ] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo)
+- [ ] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)
 - [ ] Diapositivas: agenda, introducción, maquetación, línea de diseño, una por vista, demo, conclusiones
 - [ ] Enviar diapositivas por correo institucional
 - [ ] Código y presentación entregados el domingo antes de la sustentación
