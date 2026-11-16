@@ -1,0 +1,161 @@
+/* =========================================================
+   Estilos globales y variables de tema
+   ---------------------------------------------------------
+   Todos los colores se definen como variables CSS.
+   El tema claro es el valor por defecto (:root) y el tema
+   oscuro se activa con el atributo data-theme="oscuro" en
+   la etiqueta <html> (lo cambiará el PrestamosContext).
+   ========================================================= */
+
+:root {
+  /* Colores base */
+  --color-fondo: #f5f7fb;
+  --color-superficie: #ffffff;
+  --color-texto: #1f2937;
+  --color-texto-suave: #5b6474;
+  --color-borde: #e2e6ee;
+
+  /* Color principal (azul institucional) */
+  --color-primario: #1d4ed8;
+  --color-primario-hover: #1e40af;
+  --color-primario-suave: #e0e9ff;
+  --color-sobre-primario: #ffffff;
+
+  /* Colores de los estados de un equipo (badges) */
+  --color-disponible: #15803d;
+  --color-disponible-fondo: #dcfce7;
+  --color-prestado: #b91c1c;
+  --color-prestado-fondo: #fee2e2;
+  --color-mantenimiento: #a16207;
+  --color-mantenimiento-fondo: #fef3c7;
+
+  /* Colores para mensajes de error del formulario */
+  --color-error: #b91c1c;
+
+  /* Tipografía */
+  --fuente: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Medidas reutilizables */
+  --radio: 12px;
+  --sombra: 0 4px 14px rgba(15, 23, 42, 0.08);
+  --ancho-maximo: 1150px;
+  --alto-header: 64px;
+}
+
+/* Tema oscuro: solo se redefinen los colores */
+:root[data-theme='oscuro'] {
+  --color-fondo: #0f172a;
+  --color-superficie: #1e293b;
+  --color-texto: #e5e7eb;
+  --color-texto-suave: #a3adbf;
+  --color-borde: #334155;
+
+  --color-primario: #60a5fa;
+  --color-primario-hover: #93c5fd;
+  --color-primario-suave: #1e3a5f;
+  --color-sobre-primario: #0f172a;
+
+  --color-disponible: #4ade80;
+  --color-disponible-fondo: #14532d;
+  --color-prestado: #fca5a5;
+  --color-prestado-fondo: #7f1d1d;
+  --color-mantenimiento: #fcd34d;
+  --color-mantenimiento-fondo: #713f12;
+
+  --color-error: #fca5a5;
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Reset básico ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primario);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+/* ---------- Estructura general (Layout) ---------- */
+
+/* El footer queda abajo aunque la página tenga poco contenido */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-principal {
+  flex: 1;
+}
+
+/* ---------- Clases de utilidad reutilizables ---------- */
+
+/* Contenedor centrado con margen lateral de 16px en móvil */
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Botones */
+.boton {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--color-primario);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.boton-primario {
+  background-color: var(--color-primario);
+  color: var(--color-sobre-primario);
+}
+
+.boton-primario:hover {
+  background-color: var(--color-primario-hover);
+  border-color: var(--color-primario-hover);
+}
+
+.boton-secundario {
+  background-color: transparent;
+  color: var(--color-primario);
+}
+
+.boton-secundario:hover {
+  background-color: var(--color-primario-suave);
+}
+
+/* Foco visible para navegación con teclado */
+:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
+}
