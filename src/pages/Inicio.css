@@ -1,0 +1,25 @@
+/* Biografía (más ancha) y redes en dos columnas; en celular, una sola */
+.inicio-secciones {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  padding-top: 48px;
+}
+
+.inicio-subtitulo {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.inicio-texto {
+  margin: 0 0 16px;
+  color: var(--color-texto-suave);
+}
+
+@media (max-width: 760px) {
+  .inicio-secciones {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 32px;
+  }
+}

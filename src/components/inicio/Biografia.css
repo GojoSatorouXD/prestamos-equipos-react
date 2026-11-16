@@ -1,0 +1,62 @@
+/* Línea vertical a la izquierda con un punto por cada elemento */
+.biografia {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 28px;
+  border-left: 3px solid var(--color-primario-suave);
+}
+
+.biografia-item {
+  position: relative;
+  padding: 0 0 28px;
+}
+
+.biografia-item:last-child {
+  padding-bottom: 0;
+}
+
+/* El punto de la línea de tiempo */
+.biografia-item::before {
+  content: '';
+  position: absolute;
+  left: -37px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-primario);
+  border: 3px solid var(--color-fondo);
+}
+
+.biografia-periodo {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.biografia-titulo {
+  margin: 2px 0;
+  font-size: 1.1rem;
+}
+
+.biografia-lugar {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
+
+.biografia-descripcion {
+  margin: 6px 0 0;
+  max-width: 65ch;
+}
+
+.biografia-destacado {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  background-color: var(--color-primario-suave);
+}

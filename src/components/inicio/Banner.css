@@ -1,0 +1,77 @@
+.banner {
+  padding: 56px 0;
+  background: linear-gradient(135deg, var(--color-primario-suave), var(--color-fondo));
+  border-bottom: 1px solid var(--color-borde);
+}
+
+/* Texto a la izquierda y foto a la derecha */
+.banner-contenido {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 48px;
+}
+
+.banner-etiqueta {
+  margin: 0 0 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primario);
+}
+
+.banner-titulo {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  margin-bottom: 20px;
+}
+
+.banner-nombre {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.banner-nombre span {
+  font-weight: 400;
+  color: var(--color-texto-suave);
+}
+
+.banner-descripcion {
+  max-width: 60ch;
+  margin: 0 0 24px;
+  color: var(--color-texto-suave);
+}
+
+.banner-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.banner-foto {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--color-superficie);
+  box-shadow: var(--sombra);
+}
+
+/* Celular y tablet: la foto pasa arriba del texto */
+@media (max-width: 760px) {
+  .banner {
+    padding: 32px 0;
+  }
+
+  .banner-contenido {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .banner-foto {
+    order: -1;
+    width: 160px;
+    height: 160px;
+  }
+}

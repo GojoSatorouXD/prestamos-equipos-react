@@ -69,11 +69,11 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 
 ### 1. Presentación y biografía (`/`)
 - [x] Header (logo o nombre opcional) + navbar hacia todas las vistas
-- [ ] Banner de presentación con título de la página
-- [ ] Imagen representativa del perfil + descripción (Juan, técnico de TI)
-- [ ] 2 botones CTA: "Ver equipos" y "Contacto"
-- [ ] Biografía con mínimo 3 elementos
-- [ ] Mínimo 2 redes sociales (GitHub GojoSatorouXD, LinkedIn, etc.)
+- [x] Banner de presentación con título de la página
+- [x] Imagen representativa del perfil + descripción (Juan, técnico de TI). Foto real pendiente: `public/img/perfil.jpg` (si no existe, se ve el placeholder)
+- [x] 2 botones CTA: "Ver equipos" y "Contacto"
+- [x] Biografía con 3 elementos: bachiller técnico (2022), Auxiliar de Soporte IT en el Colegio Colombo Británico (abr 2024 – abr 2025), Tecnología en Sistemas de Información UNIAJC (2023 – 2026)
+- [x] 2 redes: GitHub (GojoSatorouXD) y correo. Sin LinkedIn, sin teléfono ni referencias
 - [x] Footer con información de resumen (componente reutilizable)
 
 ### 2. Equipos (`/equipos`)
@@ -122,7 +122,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 4. ✅ Datos v2: 60 equipos con serial, categoría Accesorios + SVG, ubicaciones de TI
 5. ✅ Buscador + filtros (categoría + estado), Filtrar / Limpiar, contador
 6. ✅ Sidebar de detalle (8 atributos)
-7. Vista Inicio
+7. ✅ Vista Inicio
 8. Vista Stack
 9. Vista Contacto (validaciones + EmailJS + testimonios)
 10. Vista Propuesta de valor (antes / después)

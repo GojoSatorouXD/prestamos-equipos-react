@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { enlaces } from '../../data/navegacion'
 import { perfil } from '../../data/perfil'
 import { usePrestamos } from '../../context/PrestamosContext'
+import RedesSociales from '../comunes/RedesSociales'
 import './Footer.css'
 
 /**
@@ -42,15 +43,8 @@ function Footer() {
 
         <div>
           <h2 className="footer-titulo">Redes</h2>
-          <ul className="footer-lista">
-            {perfil.redes.map((red) => (
-              <li key={red.nombre}>
-                <a href={red.url} target="_blank" rel="noreferrer">
-                  {red.nombre}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Mismo componente que en Inicio: se reutiliza con props */}
+          <RedesSociales redes={perfil.redes} />
         </div>
       </div>
 
