@@ -1,0 +1,122 @@
+/* Capa que cubre toda la pantalla, por encima del header */
+.sidebar-capa {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+/* Fondo semitransparente detrás del panel */
+.sidebar-fondo {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.55);
+  animation: aparecer 0.2s ease-out;
+}
+
+/* Panel pegado a la derecha; en celular ocupa todo el ancho */
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(440px, 100%);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-superficie);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.2);
+  animation: deslizar 0.25s ease-out;
+}
+
+.sidebar-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.sidebar-encabezado h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.sidebar-cerrar {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background: none;
+  color: var(--color-texto);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sidebar-cerrar:hover {
+  background-color: var(--color-primario-suave);
+}
+
+/* Solo el cuerpo tiene scroll; el encabezado queda fijo arriba */
+.sidebar-cuerpo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.sidebar-imagen {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 260;
+  border-radius: var(--radio);
+  margin-bottom: 16px;
+}
+
+.sidebar-atributos {
+  margin: 0;
+}
+
+.sidebar-atributo {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.sidebar-atributo dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-texto-suave);
+}
+
+.sidebar-atributo dd {
+  margin: 2px 0 0;
+}
+
+.sidebar-acciones {
+  margin-top: 20px;
+}
+
+@keyframes deslizar {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Si el usuario pidió menos movimiento en su sistema, sin animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .sidebar-fondo {
+    animation: none;
+  }
+}

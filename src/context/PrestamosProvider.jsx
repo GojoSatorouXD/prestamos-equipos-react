@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { PrestamosContext } from './PrestamosContext'
 import { obtenerEquipos } from '../services/equiposService'
 import { filtrarEquipos, contarPorEstado, FILTROS_INICIALES } from '../utils/equipos'
@@ -63,7 +63,10 @@ function PrestamosProvider({ children }) {
   // Acciones que pueden usar los componentes
   // ---------------------------------------------------------
   const seleccionarEquipo = (equipo) => setEquipoSeleccionado(equipo)
-  const cerrarDetalle = () => setEquipoSeleccionado(null)
+  // useCallback mantiene la MISMA función entre renders. Es necesario porque
+  // la vista Equipos la usa dentro de un useEffect (si cambiara en cada
+  // render, el efecto se volvería a ejecutar y cerraría el sidebar).
+  const cerrarDetalle = useCallback(() => setEquipoSeleccionado(null), [])
 
   // Recibe un objeto { texto, categoria, estado } (se guarda una copia)
   const aplicarFiltros = (nuevosFiltros) => setFiltros({ ...nuevosFiltros })

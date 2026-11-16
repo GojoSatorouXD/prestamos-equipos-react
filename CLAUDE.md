@@ -79,7 +79,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 ### 2. Equipos (`/equipos`)
 - [x] Título de la página
 - [x] Lista en tarjetas con paginación de 10 por página; al inicio se cargan los 10 primeros
-- [ ] Botón "Ver detalle" en cada tarjeta que abre un sidebar con los 8 atributos
+- [x] Botón "Ver detalle" en cada tarjeta que abre un sidebar con los 8 atributos (se cierra con ✕, Esc o clic en el fondo)
 - [x] Filtros arriba: buscador de texto (nombre, marca, serial y especificaciones, sin distinguir mayúsculas ni tildes) + selector de categoría (el obligatorio del PDF, incluye Accesorios) + selector de estado; se combinan
 - [x] Contador de disponibles / prestados / en mantenimiento sobre el inventario total
 - [x] Botones "Filtrar" y "Limpiar filtros". Los filtros se aplican solo al presionar "Filtrar" o Enter en el buscador (no en vivo); "Limpiar" deja todo en blanco; ambos vuelven a la página 1
@@ -121,7 +121,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 3. ✅ Vista Equipos: tarjetas, paginación, cargando, sin resultados
 4. ✅ Datos v2: 60 equipos con serial, categoría Accesorios + SVG, ubicaciones de TI
 5. ✅ Buscador + filtros (categoría + estado), Filtrar / Limpiar, contador
-6. Sidebar de detalle (8 atributos)
+6. ✅ Sidebar de detalle (8 atributos)
 7. Vista Inicio
 8. Vista Stack
 9. Vista Contacto (validaciones + EmailJS + testimonios)

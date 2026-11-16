@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TituloPagina from '../components/comunes/TituloPagina'
 import Cargando from '../components/comunes/Cargando'
 import ContadorEstados from '../components/equipos/ContadorEstados'
 import Filtros from '../components/equipos/Filtros'
 import ListaEquipos from '../components/equipos/ListaEquipos'
 import Paginacion from '../components/equipos/Paginacion'
+import SidebarDetalle from '../components/equipos/SidebarDetalle'
 import { usePrestamos } from '../context/PrestamosContext'
 import {
   paginar,
@@ -24,11 +25,27 @@ import './Equipos.css'
  * 3. Recorta la lista filtrada con paginar() para mostrar solo 10 tarjetas.
  */
 function Equipos() {
-  const { equipos, equiposFiltrados, filtros, conteo, cargando, error, aplicarFiltros, limpiarFiltros } =
-    usePrestamos()
+  const {
+    equipos,
+    equiposFiltrados,
+    filtros,
+    conteo,
+    cargando,
+    error,
+    aplicarFiltros,
+    limpiarFiltros,
+    equipoSeleccionado,
+    cerrarDetalle,
+  } = usePrestamos()
 
   // Estado local: solo esta vista necesita saber en qué página está
   const [paginaActual, setPaginaActual] = useState(1)
+
+  // Si el usuario sale de esta vista con el sidebar abierto, se cierra
+  // (limpieza al desmontar). Así no reaparece abierto al volver.
+  useEffect(() => {
+    return () => cerrarDetalle()
+  }, [cerrarDetalle])
 
   const totalPaginas = calcularTotalPaginas(equiposFiltrados.length)
   const equiposDeLaPagina = paginar(equiposFiltrados, paginaActual)
@@ -103,6 +120,9 @@ function Equipos() {
         subtitulo="Inventario de equipos de TI para préstamo a los colaboradores, con su estado actual."
       />
       {contenido}
+
+      {/* El sidebar solo existe mientras hay un equipo seleccionado */}
+      {equipoSeleccionado && <SidebarDetalle equipo={equipoSeleccionado} onCerrar={cerrarDetalle} />}
     </section>
   )
 }
