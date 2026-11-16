@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Ícono genérico: hoja de cálculo (SheetJS) -->
+  <rect x="18" y="14" width="92" height="100" rx="8" fill="#16a34a"/>
+  <rect x="28" y="28" width="72" height="72" rx="3" fill="#dcfce7"/>
+  <path d="M28 46h72M28 64h72M28 82h72M52 28v72M76 28v72" stroke="#16a34a" stroke-width="3"/>
+  <rect x="28" y="28" width="72" height="18" fill="#86efac"/>
+</svg>

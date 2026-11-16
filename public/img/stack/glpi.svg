@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Ícono genérico: gestión de tickets (GLPI) -->
+  <path d="M16 36h96v18a10 10 0 0 0 0 20v18H16V74a10 10 0 0 0 0-20z" fill="#f59e0b"/>
+  <path d="M84 36v56" stroke="#fff" stroke-width="4" stroke-dasharray="6 5"/>
+  <rect x="30" y="52" width="40" height="7" rx="3" fill="#fff"/><rect x="30" y="68" width="28" height="7" rx="3" fill="#fff"/>
+</svg>

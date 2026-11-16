@@ -86,12 +86,12 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [x] Estado de "Cargando…" y mensaje cuando no hay resultados
 
 ### 3. Stack tecnológico y estudios (`/stack`)
-- [ ] Título de la página
-- [ ] Sección "Stack implementado en este proyecto": React, Vite, react-router-dom, Context API, localStorage, EmailJS, SheetJS, CSS
-- [ ] Sección "Stack del autor": mínimo 3 tarjetas con imagen y descripción (React, Node.js, MongoDB, Linux, Git…)
-- [ ] Mínimo 2 herramientas de IA usadas (Claude Code, etc.)
-- [ ] Timeline con 3 experiencias: Auxiliar de Soporte IT en el Colegio Colombo Británico + "Desarrollador – Sistema de préstamos de equipos TI (UNIAJC)" + "Desarrollador – APA Interactivo, proyecto de grado (UNIAJC)" (los dos últimos marcados como proyectos académicos)
-- [ ] Estudios: Tecnología en Sistemas de Información, UNIAJC
+- [x] Título de la página
+- [x] Sección "Stack implementado en este proyecto": React, Vite, react-router-dom, Context API, localStorage, SheetJS, CSS con variables (agregar EmailJS cuando se implemente en el paso 9)
+- [x] Sección "Stack del autor" en 2 grupos: Desarrollo (React, Node.js/Express, MongoDB, SQLite, Git/GitHub, Linux, Docker) y Soporte TI (GLPI, AnyDesk/TeamViewer, Windows, Microsoft 365). Logos de Devicon (MIT) + íconos genéricos propios
+- [x] 2 herramientas de IA: Claude (chat) y Claude Code
+- [x] Timeline con 3 experiencias: Auxiliar de Soporte IT en el Colegio Colombo Británico + "Desarrollador – Sistema de préstamos de equipos TI (UNIAJC)" + "Desarrollador – APA Interactivo, proyecto de grado (UNIAJC)" (los dos últimos marcados como proyectos académicos)
+- [x] Estudios: Tecnología en Sistemas de Información, UNIAJC sede Norte (ago 2023 – dic 2026, en curso) y Bachiller Técnico en Mantenimiento de Hardware (2022)
 
 ### 4. Contacto / nuevo proyecto (`/contacto`) — como lo pide el PDF
 - [ ] Título de la página
@@ -101,7 +101,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [ ] Teléfono: solo números
 - [ ] Todos los campos obligatorios, con mensajes de error visibles
 - [ ] Botón "Enviar email" y mensaje de agradecimiento al enviar
-- [ ] Mínimo 5 testimonios (marcados como de ejemplo)
+- [ ] 5 testimonios inventados sobre los beneficios de PrestaTech (inventario, adiós al papel, quién tiene cada equipo, historial, Excel), cargos variados, con etiqueta "Ejemplo" visible
 
 ### 5. Propuesta de valor (`/propuesta`)
 - [ ] Título de la página
@@ -123,7 +123,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 5. ✅ Buscador + filtros (categoría + estado), Filtrar / Limpiar, contador
 6. ✅ Sidebar de detalle (8 atributos)
 7. ✅ Vista Inicio
-8. Vista Stack
+8. ✅ Vista Stack
 9. Vista Contacto (validaciones + EmailJS + testimonios)
 10. Vista Propuesta de valor (antes / después)
 11. Colaboradores + historial en el contexto con localStorage

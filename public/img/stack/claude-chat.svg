@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Ícono genérico: asistente de IA conversacional (Claude) -->
+  <path d="M14 22h100a8 8 0 0 1 8 8v52a8 8 0 0 1-8 8H50l-22 18V90H14a8 8 0 0 1-8-8V30a8 8 0 0 1 8-8z" fill="#d97757"/>
+  <circle cx="40" cy="56" r="7" fill="#fff"/><circle cx="64" cy="56" r="7" fill="#fff"/><circle cx="88" cy="56" r="7" fill="#fff"/>
+</svg>

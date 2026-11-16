@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Ícono genérico: soporte remoto (AnyDesk / TeamViewer) -->
+  <rect x="6" y="22" width="56" height="40" rx="5" fill="#ef4444"/><rect x="12" y="28" width="44" height="28" rx="2" fill="#fee2e2"/>
+  <rect x="26" y="62" width="16" height="8" fill="#b91c1c"/>
+  <rect x="66" y="58" width="56" height="40" rx="5" fill="#2563eb"/><rect x="72" y="64" width="44" height="28" rx="2" fill="#dbeafe"/>
+  <rect x="86" y="98" width="16" height="8" fill="#1d4ed8"/>
+  <path d="M44 84 C50 100 64 104 76 102" stroke="#64748b" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M70 96 l8 6 -8 6" stroke="#64748b" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
