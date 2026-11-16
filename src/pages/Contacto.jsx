@@ -7,7 +7,7 @@ import TituloPagina from '../components/comunes/TituloPagina'
 function Contacto() {
   return (
     <section className="contenedor">
-      <TituloPagina titulo="Contacto" subtitulo="¿Tu institución necesita organizar sus préstamos? Escríbeme." />
+      <TituloPagina titulo="Contacto" subtitulo="¿Tu empresa necesita digitalizar el préstamo de sus equipos? Escríbeme." />
       <p>Vista en construcción.</p>
     </section>
   )

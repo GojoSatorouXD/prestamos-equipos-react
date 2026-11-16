@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Accesorios">
+  <!-- Ilustración genérica de la categoría "Accesorios" (reemplazable por fotos reales) -->
+  <rect width="400" height="260" fill="#ffedd5"/>
+  <!-- Cargador con cable -->
+  <rect x="70" y="80" width="80" height="100" rx="12" fill="#9a3412"/>
+  <rect x="98" y="62" width="8" height="20" rx="2" fill="#7c2d12"/>
+  <rect x="114" y="62" width="8" height="20" rx="2" fill="#7c2d12"/>
+  <path d="M110 180 C110 220 190 220 190 180 L190 150" stroke="#9a3412" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Memoria USB -->
+  <rect x="176" y="70" width="28" height="22" rx="3" fill="#a8a29e"/>
+  <rect x="168" y="90" width="44" height="64" rx="8" fill="#ea580c"/>
+  <!-- Adaptador HDMI -->
+  <rect x="240" y="95" width="90" height="50" rx="10" fill="#c2410c"/>
+  <path d="M330 108 h18 l6 8 v8 l-6 8 h-18z" fill="#7c2d12"/>
+  <rect x="226" y="110" width="16" height="20" rx="3" fill="#7c2d12"/>
+  <!-- Puntero láser -->
+  <rect x="240" y="175" width="100" height="18" rx="9" fill="#9a3412" transform="rotate(-12 290 184)"/>
+  <circle cx="246" cy="196" r="5" fill="#ef4444"/>
+</svg>

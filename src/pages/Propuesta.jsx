@@ -7,7 +7,7 @@ import TituloPagina from '../components/comunes/TituloPagina'
 function Propuesta() {
   return (
     <section className="contenedor">
-      <TituloPagina titulo="Propuesta de valor" subtitulo="Por qué un sistema de préstamos le sirve a una institución educativa." />
+      <TituloPagina titulo="Propuesta de valor" subtitulo="De la hoja de papel al registro digital de préstamos de equipos." />
       <p>Vista en construcción.</p>
     </section>
   )

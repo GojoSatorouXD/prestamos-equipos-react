@@ -14,6 +14,7 @@ export const CATEGORIAS = [
   'Periféricos',
   'Audio y video',
   'Redes',
+  'Accesorios',
 ]
 
 export const ESTADOS = ['Disponible', 'Prestado', 'En mantenimiento']
@@ -61,7 +62,7 @@ export function calcularTotalPaginas(totalElementos, porPagina = EQUIPOS_POR_PAG
 
 /**
  * Cuenta cuántos equipos hay en cada estado.
- * Resultado: { Disponible: 15, Prestado: 8, 'En mantenimiento': 4 }
+ * Resultado: { Disponible: 55, Prestado: 0, 'En mantenimiento': 5 }
  *
  * Se usa reduce: recorre el arreglo y va acumulando el conteo en un objeto.
  * El objeto inicial tiene todos los estados en 0, así ninguno queda sin valor.

@@ -3,9 +3,9 @@
 // PENDIENTE: reemplazar el enlace de LinkedIn cuando Juan lo comparta.
 export const perfil = {
   nombre: 'Juan David Paz Trochez',
-  rol: 'Desarrollador y soporte IT',
+  rol: 'Técnico de soporte TI y desarrollador',
   resumen:
-    'Sistema de préstamo de equipos de cómputo para instituciones educativas: portátiles, proyectores, tablets y periféricos.',
+    'Registro digital de préstamos de equipos de TI para los colaboradores de la empresa: reemplaza la hoja de papel por un inventario con estados e historial.',
   redes: [
     { nombre: 'GitHub', url: 'https://github.com/GojoSatorouXD' },
     { nombre: 'LinkedIn', url: '#', pendiente: true }, // placeholder

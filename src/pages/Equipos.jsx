@@ -8,7 +8,7 @@ import { paginar, calcularTotalPaginas, EQUIPOS_POR_PAGINA } from '../utils/equi
 import './Equipos.css'
 
 /**
- * Vista: Equipos disponibles (/equipos)
+ * Vista: Inventario de equipos (/equipos)
  *
  * 1. Lee del contexto la lista ya filtrada y si sigue cargando.
  * 2. Guarda en un estado local la página actual (empieza en 1).
@@ -64,8 +64,8 @@ function Equipos() {
   return (
     <section className="contenedor">
       <TituloPagina
-        titulo="Equipos disponibles"
-        subtitulo="Consulta el inventario de equipos para préstamo y su estado actual."
+        titulo="Inventario de equipos"
+        subtitulo="Inventario de equipos de TI para préstamo a los colaboradores, con su estado actual."
       />
       {contenido}
     </section>
