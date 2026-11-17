@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "nombreCompleto": "Diego Alejandro Cano Muñoz",
+    "documento": "1.107.452.318",
+    "correo": "diego.cano@colegio-ejemplo.example",
+    "cargo": "Docente de Matemáticas",
+    "area": "Académica – Bachillerato"
+  },
+  {
+    "id": 2,
+    "nombreCompleto": "Andrés Felipe Colonia Ocampo",
+    "documento": "1.144.208.731",
+    "correo": "andres.colonia@colegio-ejemplo.example",
+    "cargo": "Coordinador académico",
+    "area": "Coordinación académica"
+  },
+  {
+    "id": 3,
+    "nombreCompleto": "Juan José Cruz Serna",
+    "documento": "1.006.315.942",
+    "correo": "juan.cruz@colegio-ejemplo.example",
+    "cargo": "Docente de Ciencias Naturales",
+    "area": "Académica – Primaria"
+  },
+  {
+    "id": 4,
+    "nombreCompleto": "Carlos Esneider Espitia Paz",
+    "documento": "94.538.207",
+    "correo": "carlos.espitia@colegio-ejemplo.example",
+    "cargo": "Auxiliar administrativo",
+    "area": "Administrativa"
+  },
+  {
+    "id": 5,
+    "nombreCompleto": "Kenneth Ibarra Velasco",
+    "documento": "1.113.687.054",
+    "correo": "kenneth.ibarra@colegio-ejemplo.example",
+    "cargo": "Docente de Inglés",
+    "area": "Académica – Idiomas"
+  },
+  {
+    "id": 6,
+    "nombreCompleto": "Mauricio López Tamayo",
+    "documento": "16.792.435",
+    "correo": "mauricio.lopez@colegio-ejemplo.example",
+    "cargo": "Contador",
+    "area": "Contabilidad"
+  },
+  {
+    "id": 7,
+    "nombreCompleto": "Natalia Martínez Arévalo",
+    "documento": "1.130.564.829",
+    "correo": "natalia.martinez@colegio-ejemplo.example",
+    "cargo": "Analista de Recursos Humanos",
+    "area": "Recursos Humanos"
+  },
+  {
+    "id": 8,
+    "nombreCompleto": "Lizeth Tatiana Moreno Rosero",
+    "documento": "1.085.297.613",
+    "correo": "lizeth.moreno@colegio-ejemplo.example",
+    "cargo": "Coordinadora de convivencia",
+    "area": "Coordinación de convivencia"
+  },
+  {
+    "id": 9,
+    "nombreCompleto": "Carolina Muñoz Quintero",
+    "documento": "1.143.871.206",
+    "correo": "carolina.munoz@colegio-ejemplo.example",
+    "cargo": "Auxiliar contable",
+    "area": "Contabilidad"
+  },
+  {
+    "id": 10,
+    "nombreCompleto": "José Luis Oviedo Camacho",
+    "documento": "1.112.459.370",
+    "correo": "jose.oviedo@colegio-ejemplo.example",
+    "cargo": "Docente de Educación Física",
+    "area": "Académica – Bachillerato"
+  },
+  {
+    "id": 11,
+    "nombreCompleto": "Deyby Alejandro Rodríguez Castillo",
+    "documento": "1.107.083.546",
+    "correo": "deyby.rodriguez@colegio-ejemplo.example",
+    "cargo": "Secretario académico",
+    "area": "Secretaría académica"
+  }
+]
