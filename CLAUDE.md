@@ -104,10 +104,10 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [x] 5 testimonios inventados sobre los beneficios de PrestaTech (inventario, adiós al papel, quién tiene cada equipo, historial, Excel), cargos variados, con etiqueta "Ejemplo" visible
 
 ### 5. Propuesta de valor (`/propuesta`)
-- [ ] Título de la página
-- [ ] Sección principal: **antes** (hoja de papel: sin trazabilidad, letra ilegible, equipos sin ubicar, sin condición registrada) vs **después** (registro digital, estados claros, historial, exportación a Excel)
-- [ ] Sección secundaria: beneficios para la empresa y lo que aporta Juan (soporte TI + desarrollo)
-- [ ] Footer
+- [x] Título de la página
+- [x] Sección principal: **antes** (hoja de papel: sin trazabilidad, letra ilegible, equipos sin ubicar, sin condición registrada) vs **después** (registro digital, estados claros, historial, exportación a Excel)
+- [x] Sección secundaria: beneficios para la empresa y lo que aporta Juan (soporte TI + desarrollo)
+- [x] Footer
 
 ### 6. Préstamos (`/prestamos`) — vista extra
 - [ ] Título de la página y enlace en el navbar
@@ -125,7 +125,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 7. ✅ Vista Inicio
 8. ✅ Vista Stack
 9. ✅ Vista Contacto (validaciones + EmailJS + testimonios)
-10. Vista Propuesta de valor (antes / después)
+10. ✅ Vista Propuesta de valor (antes / después)
 11. Colaboradores + historial en el contexto con localStorage
 12. Formularios de préstamo y devolución + "Marcar como reparado" en el sidebar
 13. Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"

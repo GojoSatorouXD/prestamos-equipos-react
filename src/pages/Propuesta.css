@@ -1,0 +1,201 @@
+.propuesta-seccion {
+  margin-bottom: 56px;
+}
+
+.propuesta-seccion h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.propuesta-subtitulo {
+  margin-top: 48px;
+}
+
+.propuesta-intro {
+  margin: 0 0 20px;
+  max-width: 70ch;
+  color: var(--color-texto-suave);
+}
+
+/* ---------- Hoja de papel ---------- */
+.hoja-papel {
+  margin-bottom: 28px;
+  padding: 20px;
+  background-color: #fffdf5;
+  color: #3f3a2e;
+  border: 1px solid #e7dfc6;
+  border-radius: 6px;
+  box-shadow: var(--sombra);
+  transform: rotate(-0.6deg);
+}
+
+.hoja-papel-titulo {
+  margin: 0 0 12px;
+  font-family: 'Segoe Print', 'Comic Sans MS', cursive;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* En celular la tabla se desplaza hacia los lados dentro de la hoja */
+.hoja-papel-tabla {
+  overflow-x: auto;
+}
+
+.hoja-papel table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.hoja-papel th,
+.hoja-papel td {
+  border: 1px solid #b9ad8a;
+  padding: 6px 8px;
+  height: 30px;
+  text-align: left;
+}
+
+.hoja-papel th {
+  background-color: #f3ecd6;
+}
+
+/* ---------- Antes vs después ---------- */
+.comparacion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.comparacion-columna {
+  padding: 22px;
+  border-radius: var(--radio);
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra);
+}
+
+.comparacion-columna h3 {
+  margin-bottom: 12px;
+}
+
+.comparacion-columna ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comparacion-columna li {
+  position: relative;
+  padding-left: 28px;
+}
+
+/* Marca de cada punto: ✕ en antes y ✓ en después */
+.comparacion-columna li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+}
+
+.comparacion-antes {
+  border-top: 5px solid var(--color-prestado);
+}
+
+.comparacion-antes h3,
+.comparacion-antes li::before {
+  color: var(--color-prestado);
+}
+
+.comparacion-antes li::before {
+  content: '✕';
+}
+
+.comparacion-despues {
+  border-top: 5px solid var(--color-disponible);
+}
+
+.comparacion-despues h3,
+.comparacion-despues li::before {
+  color: var(--color-disponible);
+}
+
+.comparacion-despues li::before {
+  content: '✓';
+}
+
+/* ---------- Beneficios ---------- */
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.beneficio {
+  padding: 20px;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.beneficio-icono {
+  font-size: 1.75rem;
+}
+
+.beneficio h3 {
+  margin: 8px 0 4px;
+  font-size: 1.05rem;
+}
+
+.beneficio p {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
+
+/* ---------- Aporte ---------- */
+.aporte {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.aporte-bloque {
+  padding: 22px;
+  background-color: var(--color-primario-suave);
+  border-radius: var(--radio);
+}
+
+.aporte-bloque h3 {
+  color: var(--color-primario);
+}
+
+.aporte-bloque ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.propuesta-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 760px) {
+  .comparacion,
+  .aporte {
+    grid-template-columns: 1fr;
+  }
+
+  .hoja-papel {
+    transform: none;
+  }
+}
