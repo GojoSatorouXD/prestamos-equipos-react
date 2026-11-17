@@ -127,7 +127,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 9. ✅ Vista Contacto (validaciones + EmailJS + testimonios)
 10. ✅ Vista Propuesta de valor (antes / después)
 11. ✅ Colaboradores + historial en el contexto con localStorage
-12. Formularios de préstamo y devolución + "Marcar como reparado" en el sidebar
+12. ✅ Formularios de préstamo y devolución + "Marcar como reparado" en el sidebar
 13. Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"
 14. Exportar a Excel con SheetJS
 15. Botón de tema, revisión responsive y checklist completo

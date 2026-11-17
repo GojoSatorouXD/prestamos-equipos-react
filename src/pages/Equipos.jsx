@@ -6,6 +6,7 @@ import Filtros from '../components/equipos/Filtros'
 import ListaEquipos from '../components/equipos/ListaEquipos'
 import Paginacion from '../components/equipos/Paginacion'
 import SidebarDetalle from '../components/equipos/SidebarDetalle'
+import AccionesEquipo from '../components/prestamos/AccionesEquipo'
 import { usePrestamos } from '../context/PrestamosContext'
 import {
   paginar,
@@ -121,8 +122,14 @@ function Equipos() {
       />
       {contenido}
 
-      {/* El sidebar solo existe mientras hay un equipo seleccionado */}
-      {equipoSeleccionado && <SidebarDetalle equipo={equipoSeleccionado} onCerrar={cerrarDetalle} />}
+      {/* El sidebar solo existe mientras hay un equipo seleccionado.
+          Debajo de los 8 atributos van las acciones de préstamo (children).
+          key={id}: al cambiar de equipo, las acciones empiezan de cero. */}
+      {equipoSeleccionado && (
+        <SidebarDetalle equipo={equipoSeleccionado} onCerrar={cerrarDetalle}>
+          <AccionesEquipo key={equipoSeleccionado.id} equipo={equipoSeleccionado} />
+        </SidebarDetalle>
+      )}
     </section>
   )
 }
