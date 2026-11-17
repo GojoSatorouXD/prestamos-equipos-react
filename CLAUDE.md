@@ -131,10 +131,10 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 13. ✅ Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"
 14. ✅ Exportar a Excel con SheetJS
 15. ✅ Botón de tema, revisión responsive y checklist completo
-16. README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue
+16. ✅ README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue
 
 ## Entregables
-- [ ] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)
+- [x] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)
 - [ ] Diapositivas: agenda, introducción, maquetación, línea de diseño, una por vista, demo, conclusiones
 - [ ] Enviar diapositivas por correo institucional
 - [ ] Código y presentación entregados el domingo antes de la sustentación
