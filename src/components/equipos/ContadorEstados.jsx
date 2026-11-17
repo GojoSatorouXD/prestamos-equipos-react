@@ -1,3 +1,4 @@
+import { palabraSegunCantidad } from '../../utils/texto'
 import './ContadorEstados.css'
 
 /**
@@ -9,8 +10,16 @@ import './ContadorEstados.css'
 function ContadorEstados({ conteo, total }) {
   // Arreglo de objetos para dibujar las 3 cajitas con un map
   const items = [
-    { texto: 'disponibles', valor: conteo['Disponible'], clase: 'contador-disponible' },
-    { texto: 'prestados', valor: conteo['Prestado'], clase: 'contador-prestado' },
+    {
+      texto: palabraSegunCantidad(conteo['Disponible'], 'disponible', 'disponibles'),
+      valor: conteo['Disponible'],
+      clase: 'contador-disponible',
+    },
+    {
+      texto: palabraSegunCantidad(conteo['Prestado'], 'prestado', 'prestados'),
+      valor: conteo['Prestado'],
+      clase: 'contador-prestado',
+    },
     { texto: 'en mantenimiento', valor: conteo['En mantenimiento'], clase: 'contador-mantenimiento' },
   ]
 

@@ -110,10 +110,10 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [x] Footer
 
 ### 6. Préstamos (`/prestamos`) — vista extra
-- [ ] Título de la página y enlace en el navbar
-- [ ] Tabla del historial: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, estado (Activo / Devuelto)
+- [x] Título de la página y enlace en el navbar
+- [x] Tabla del historial: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, estado (Activo / Devuelto)
 - [ ] Botón "Exportar a Excel" que descarga un .xlsx con todas esas columnas
-- [ ] Botón "Restablecer datos de ejemplo" (borra localStorage) con mensaje de confirmación antes de borrar
+- [x] Botón "Restablecer datos de ejemplo" (borra localStorage) con mensaje de confirmación antes de borrar
 
 ## Orden de trabajo (un commit por paso)
 1. ✅ Router, layout, 5 vistas base, variables CSS
@@ -128,7 +128,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 10. ✅ Vista Propuesta de valor (antes / después)
 11. ✅ Colaboradores + historial en el contexto con localStorage
 12. ✅ Formularios de préstamo y devolución + "Marcar como reparado" en el sidebar
-13. Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"
+13. ✅ Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"
 14. Exportar a Excel con SheetJS
 15. Botón de tema, revisión responsive y checklist completo
 16. README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue

@@ -3,6 +3,7 @@ import { enlaces } from '../../data/navegacion'
 import { perfil } from '../../data/perfil'
 import { usePrestamos } from '../../context/PrestamosContext'
 import RedesSociales from '../comunes/RedesSociales'
+import { pluralizar } from '../../utils/texto'
 import './Footer.css'
 
 /**
@@ -17,7 +18,7 @@ function Footer() {
   const anio = new Date().getFullYear()
 
   // Texto del resumen del inventario según el estado de la carga
-  let resumenInventario = `Inventario: ${equipos.length} equipos · ${conteo['Disponible']} disponibles · ${conteo['Prestado']} prestados`
+  let resumenInventario = `Inventario: ${pluralizar(equipos.length, 'equipo', 'equipos')} · ${pluralizar(conteo['Disponible'], 'disponible', 'disponibles')} · ${pluralizar(conteo['Prestado'], 'prestado', 'prestados')}`
   if (cargando) resumenInventario = 'Cargando inventario…'
   if (error) resumenInventario = 'Inventario no disponible en este momento'
 

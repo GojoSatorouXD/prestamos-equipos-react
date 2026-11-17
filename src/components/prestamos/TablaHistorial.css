@@ -1,0 +1,78 @@
+/* La tabla tiene 13 columnas: se desplaza hacia los lados dentro de su caja */
+.tabla-envoltura {
+  overflow-x: auto;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.tabla-historial {
+  width: 100%;
+  min-width: 1500px;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.tabla-historial th,
+.tabla-historial td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.tabla-historial th {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-primario-suave);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* Las columnas de texto largo (condiciones) no se estiran demasiado */
+.tabla-historial td {
+  max-width: 240px;
+}
+
+/* Serial, fechas, duración y estado en una sola línea */
+.tabla-historial td:nth-child(1),
+.tabla-historial td:nth-child(7),
+.tabla-historial td:nth-child(8),
+.tabla-historial td:nth-child(12),
+.tabla-historial td:nth-child(13) {
+  white-space: nowrap;
+}
+
+/* Ancho mínimo para equipo y colaborador */
+.tabla-historial td:nth-child(2),
+.tabla-historial td:nth-child(4) {
+  min-width: 190px;
+}
+
+.tabla-historial tbody tr:hover {
+  background-color: var(--color-fondo);
+}
+
+.fila-activa td:first-child {
+  box-shadow: inset 4px 0 0 var(--color-prestado);
+}
+
+.estado-prestamo {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.estado-prestamo.activo {
+  color: var(--color-prestado);
+  background-color: var(--color-prestado-fondo);
+}
+
+.estado-prestamo.devuelto {
+  color: var(--color-disponible);
+  background-color: var(--color-disponible-fondo);
+}

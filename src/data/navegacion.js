@@ -4,6 +4,7 @@
 export const enlaces = [
   { ruta: '/', texto: 'Inicio' },
   { ruta: '/equipos', texto: 'Equipos' },
+  { ruta: '/prestamos', texto: 'Préstamos' }, // vista extra (historial)
   { ruta: '/stack', texto: 'Stack' },
   { ruta: '/contacto', texto: 'Contacto' },
   { ruta: '/propuesta', texto: 'Propuesta' },

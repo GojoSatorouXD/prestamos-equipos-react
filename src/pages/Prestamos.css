@@ -1,0 +1,89 @@
+.prestamos-barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.prestamos-resumen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prestamos-resumen li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+}
+
+.prestamos-resumen .resumen-activos {
+  color: var(--color-prestado);
+  background-color: var(--color-prestado-fondo);
+  border-color: transparent;
+}
+
+.prestamos-resumen .resumen-devueltos {
+  color: var(--color-disponible);
+  background-color: var(--color-disponible-fondo);
+  border-color: transparent;
+}
+
+.prestamos-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Botón de acción destructiva (rojo) */
+.boton-peligro {
+  border-color: var(--color-prestado);
+  color: var(--color-prestado);
+}
+
+.boton-peligro:hover {
+  background-color: var(--color-prestado-fondo);
+}
+
+.prestamos-mensaje {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--color-disponible);
+  background-color: var(--color-disponible-fondo);
+}
+
+.prestamos-vacio {
+  padding: 40px 16px;
+  text-align: center;
+  background-color: var(--color-superficie);
+  border: 1px dashed var(--color-borde);
+  border-radius: var(--radio);
+  color: var(--color-texto-suave);
+}
+
+.prestamos-vacio p {
+  margin: 0 0 16px;
+}
+
+.prestamos-vacio-titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 4px !important;
+}
+
+@media (max-width: 600px) {
+  .prestamos-botones,
+  .prestamos-botones .boton {
+    width: 100%;
+  }
+}
