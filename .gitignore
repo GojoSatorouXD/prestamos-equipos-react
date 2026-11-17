@@ -31,3 +31,6 @@ dist-ssr
 # Despliegue
 .vercel
 .netlify
+
+# Notas personales para la sustentación (no se suben)
+NOTAS-SUSTENTACION.md
