@@ -11,6 +11,17 @@ import {
 } from '../utils/prestamos'
 
 /**
+ * Tema al abrir la app: el guardado en localStorage o, si no hay,
+ * el que tenga configurado el sistema operativo.
+ */
+function temaInicial() {
+  const guardado = leerLocal(CLAVES.tema, null)
+  if (guardado === 'claro' || guardado === 'oscuro') return guardado
+  const prefiereOscuro = window.matchMedia?.('(prefers-color-scheme: dark)').matches
+  return prefiereOscuro ? 'oscuro' : 'claro'
+}
+
+/**
  * Proveedor del estado global. Envuelve toda la aplicación (main.jsx),
  * así cualquier componente puede leer estos datos con usePrestamos().
  *
@@ -37,7 +48,7 @@ function PrestamosProvider({ children }) {
   // así el sidebar muestra al instante el estado nuevo tras un préstamo
   const [equipoSeleccionadoId, setEquipoSeleccionadoId] = useState(null)
   const [filtros, setFiltros] = useState(FILTROS_INICIALES)
-  const [tema, setTema] = useState('claro')
+  const [tema, setTema] = useState(temaInicial)
 
   // ---------------------------------------------------------
   // Ciclo de vida: carga inicial (se ejecuta una sola vez al montar,
@@ -89,10 +100,12 @@ function PrestamosProvider({ children }) {
 
   // ---------------------------------------------------------
   // Efecto del tema: cada vez que cambia "tema" se actualiza el
-  // atributo data-theme de <html>, y el CSS cambia los colores.
+  // atributo data-theme de <html> (el CSS cambia los colores)
+  // y se guarda la preferencia en localStorage.
   // ---------------------------------------------------------
   useEffect(() => {
     document.documentElement.dataset.theme = tema
+    guardarLocal(CLAVES.tema, tema)
   }, [tema])
 
   // ---------------------------------------------------------

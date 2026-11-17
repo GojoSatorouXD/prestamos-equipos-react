@@ -40,6 +40,9 @@
   --sombra: 0 4px 14px rgba(15, 23, 42, 0.08);
   --ancho-maximo: 1150px;
   --alto-header: 64px;
+
+  /* Controles nativos (selects, casillas, barras de scroll) en tema claro */
+  color-scheme: light;
 }
 
 /* Tema oscuro: solo se redefinen los colores */
@@ -64,6 +67,9 @@
 
   --color-error: #fca5a5;
   --sombra: 0 4px 14px rgba(0, 0, 0, 0.4);
+
+  /* Controles nativos en tema oscuro */
+  color-scheme: dark;
 }
 
 /* ---------- Reset básico ---------- */

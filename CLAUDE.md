@@ -31,15 +31,15 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - Antes de pasar a la siguiente vista, verificar contra el checklist.
 
 ## Lo que se evalúa (debe verse en el código)
-- [ ] Funciones propias en JS (filtrar, paginar, validar, contar por estado, calcular duración)
-- [ ] Arreglos y objetos (equipos, colaboradores, historial, testimonios, experiencias, stack)
-- [ ] Gestión de eventos (onClick, onChange, onSubmit)
-- [ ] Promesas: carga de datos con fetch/async-await y envío del formulario
-- [ ] Componentes y props
-- [ ] Ciclo de vida (useEffect para la carga inicial y limpieza)
-- [ ] useState
-- [ ] useEffect para cargar información
-- [ ] useContext: `PrestamosContext` con equipos, equipo seleccionado, filtros, tema, colaboradores e historial
+- [x] Funciones propias en JS: `utils/equipos.js` (filtrar, normalizar texto, paginar, contar por estado), `utils/validaciones.js`, `utils/prestamos.js` (crear préstamo, calcular duración, formatear fecha), `utils/historial.js`, `utils/exportarExcel.js`
+- [x] Arreglos y objetos: equipos, colaboradores, historial, testimonios, experiencias, stack, propuesta, navegación
+- [x] Gestión de eventos: onClick (ver detalle, paginación, tema, exportar), onChange (filtros, formularios), onSubmit (filtros, contacto, préstamo, devolución), onError (foto), keydown (Esc)
+- [x] Promesas: fetch con async/await, Promise.all (equipos + colaboradores), envío con EmailJS, import() dinámico de SheetJS, new Promise con setTimeout
+- [x] Componentes y props (TarjetaEquipo, Paginacion, Filtros, SidebarDetalle, CampoFormulario, TarjetaStack, Timeline…)
+- [x] Ciclo de vida: useEffect con limpieza (AbortController en la carga, listener de Esc, setInterval del reloj, cerrar sidebar al salir de la vista)
+- [x] useState (página actual, borrador de filtros, formularios, mensajes)
+- [x] useEffect para cargar información (carga inicial) y para guardar en localStorage
+- [x] useContext: `PrestamosContext` con equipos, equipo seleccionado, filtros, tema, colaboradores e historial
 
 ## Modelo de equipo (exactamente 8 atributos + id)
 `id, nombre, imagen, categoria, marca, estado, especificaciones, ubicacion, serial`
@@ -130,7 +130,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 12. ✅ Formularios de préstamo y devolución + "Marcar como reparado" en el sidebar
 13. ✅ Vista Préstamos: tabla del historial + "Restablecer datos de ejemplo"
 14. ✅ Exportar a Excel con SheetJS
-15. Botón de tema, revisión responsive y checklist completo
+15. ✅ Botón de tema, revisión responsive y checklist completo
 16. README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue
 
 ## Entregables

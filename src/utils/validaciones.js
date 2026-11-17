@@ -30,12 +30,13 @@ const REGEX_TELEFONO = /^\d{7,10}$/
  * Valida nombre o apellidos: obligatorio, solo letras, máximo 20 caracteres.
  * @param {string} valor
  * @param {string} campo - 'El nombre' o 'Los apellidos' (para el mensaje)
+ * @param {boolean} plural - true para "Los apellidos" (concordancia del mensaje)
  */
-export function validarNombre(valor, campo = 'El nombre') {
+export function validarNombre(valor, campo = 'El nombre', plural = false) {
   const texto = valor.trim()
-  if (texto === '') return `${campo} es obligatorio.`
-  if (!REGEX_LETRAS.test(texto)) return `${campo} solo puede tener letras y espacios.`
-  if (texto.length > MAX_NOMBRE) return `${campo} admite máximo ${MAX_NOMBRE} caracteres.`
+  if (texto === '') return plural ? `${campo} son obligatorios.` : `${campo} es obligatorio.`
+  if (!REGEX_LETRAS.test(texto)) return `${campo} solo ${plural ? 'pueden' : 'puede'} tener letras y espacios.`
+  if (texto.length > MAX_NOMBRE) return `${campo} ${plural ? 'admiten' : 'admite'} máximo ${MAX_NOMBRE} caracteres.`
   return ''
 }
 
@@ -69,7 +70,7 @@ export function validarCampo(nombreCampo, valor) {
     case 'nombre':
       return validarNombre(valor, 'El nombre')
     case 'apellidos':
-      return validarNombre(valor, 'Los apellidos')
+      return validarNombre(valor, 'Los apellidos', true)
     case 'correo':
       return validarCorreo(valor)
     case 'telefono':

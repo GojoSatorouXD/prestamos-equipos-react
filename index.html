@@ -9,6 +9,14 @@
       content="PrestaTech: registro digital de préstamos de equipos de TI a colaboradores - Juan David Paz Trochez"
     />
     <title>PrestaTech | Préstamo de equipos</title>
+    <script>
+      // Aplica el tema guardado ANTES de que cargue React, para que la
+      // página no aparezca un instante en tema claro si el usuario eligió el oscuro.
+      try {
+        var tema = JSON.parse(localStorage.getItem('prestatech:tema'))
+        if (tema === 'claro' || tema === 'oscuro') document.documentElement.dataset.theme = tema
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
