@@ -61,6 +61,20 @@
   background-color: var(--color-disponible-fondo);
 }
 
+.prestamos-botones .boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prestamos-error {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--color-prestado);
+  background-color: var(--color-prestado-fondo);
+}
+
 .prestamos-vacio {
   padding: 40px 16px;
   text-align: center;

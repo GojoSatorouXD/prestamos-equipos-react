@@ -6,17 +6,35 @@ import TablaHistorial from '../components/prestamos/TablaHistorial'
 import { usePrestamos } from '../context/PrestamosContext'
 import { resumenHistorial } from '../utils/historial'
 import { pluralizar, palabraSegunCantidad } from '../utils/texto'
+import { exportarHistorialExcel } from '../utils/exportarExcel'
 import './Prestamos.css'
 
 /**
  * Vista extra: Préstamos (/prestamos)
- * Historial de préstamos y devoluciones + restablecer datos de ejemplo.
+ * Historial de préstamos y devoluciones, exportar a Excel y
+ * restablecer datos de ejemplo.
  */
 function Prestamos() {
   const { historial, cargando, restablecerDatos } = usePrestamos()
   const [mensaje, setMensaje] = useState('')
+  const [errorExcel, setErrorExcel] = useState('')
+  const [exportando, setExportando] = useState(false)
 
   const resumen = resumenHistorial(historial)
+
+  // Evento onClick: genera y descarga el .xlsx (función async)
+  const manejarExportar = async () => {
+    setErrorExcel('')
+    setExportando(true)
+    try {
+      await exportarHistorialExcel(historial)
+      setMensaje(`Excel descargado con ${pluralizar(resumen.total, 'préstamo', 'préstamos')}.`)
+    } catch {
+      setErrorExcel('No se pudo generar el archivo de Excel. Inténtalo de nuevo.')
+    } finally {
+      setExportando(false)
+    }
+  }
 
   // Evento onClick: pide confirmación antes de borrar
   const manejarRestablecer = () => {
@@ -56,6 +74,15 @@ function Prestamos() {
             </ul>
 
             <div className="prestamos-botones">
+              {/* Deshabilitado si no hay nada que exportar o mientras se genera */}
+              <button
+                type="button"
+                className="boton boton-primario"
+                onClick={manejarExportar}
+                disabled={historial.length === 0 || exportando}
+              >
+                {exportando ? 'Generando…' : 'Exportar a Excel'}
+              </button>
               <button type="button" className="boton boton-secundario boton-peligro" onClick={manejarRestablecer}>
                 Restablecer datos de ejemplo
               </button>
@@ -65,6 +92,12 @@ function Prestamos() {
           {mensaje && (
             <p className="prestamos-mensaje" role="status">
               ✓ {mensaje}
+            </p>
+          )}
+
+          {errorExcel && (
+            <p className="prestamos-error" role="alert">
+              {errorExcel}
             </p>
           )}
 
