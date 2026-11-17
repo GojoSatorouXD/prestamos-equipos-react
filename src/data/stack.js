@@ -5,7 +5,7 @@
 // Imágenes en public/img/stack/:
 //  - Logos de tecnologías: Devicon (https://devicon.dev), licencia MIT.
 //  - Íconos genéricos propios: glpi, soporte-remoto, microsoft-365,
-//    context-api, localstorage, sheetjs, claude-chat, claude-code.
+//    context-api, localstorage, sheetjs, emailjs, claude-chat, claude-code.
 // =========================================================
 
 const IMG = '/img/stack'
@@ -41,6 +41,11 @@ export const stackProyecto = [
     nombre: 'SheetJS',
     imagen: `${IMG}/sheetjs.svg`,
     descripcion: 'Exporta el historial de préstamos a un archivo de Excel (.xlsx).',
+  },
+  {
+    nombre: 'EmailJS',
+    imagen: `${IMG}/emailjs.svg`,
+    descripcion: 'Envía el formulario de contacto por correo desde el navegador, sin servidor propio.',
   },
   {
     nombre: 'CSS con variables',

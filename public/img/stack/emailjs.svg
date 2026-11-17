@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Ícono genérico: envío de correos (EmailJS) -->
+  <rect x="10" y="28" width="96" height="68" rx="8" fill="#f97316"/>
+  <path d="M14 34l44 34 44-34" stroke="#fff" stroke-width="6" fill="none" stroke-linejoin="round"/>
+  <circle cx="102" cy="92" r="20" fill="#16a34a"/>
+  <path d="M92 92l7 7 13-14" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

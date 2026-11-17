@@ -1,0 +1,40 @@
+.testimonio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 22px 20px 18px;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.testimonio-ejemplo {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-mantenimiento);
+  background-color: var(--color-mantenimiento-fondo);
+}
+
+.testimonio-texto {
+  flex: 1;
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+.testimonio-autor {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.testimonio-autor span {
+  color: var(--color-texto-suave);
+}
