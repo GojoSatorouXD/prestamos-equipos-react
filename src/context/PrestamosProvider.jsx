@@ -12,13 +12,12 @@ import {
 
 /**
  * Tema al abrir la app: el guardado en localStorage o, si no hay,
- * el que tenga configurado el sistema operativo.
+ * el oscuro (es la identidad visual de PrestaTech: "tech oscuro con neón").
  */
 function temaInicial() {
   const guardado = leerLocal(CLAVES.tema, null)
   if (guardado === 'claro' || guardado === 'oscuro') return guardado
-  const prefiereOscuro = window.matchMedia?.('(prefers-color-scheme: dark)').matches
-  return prefiereOscuro ? 'oscuro' : 'claro'
+  return 'oscuro'
 }
 
 /**

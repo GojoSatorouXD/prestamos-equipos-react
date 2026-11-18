@@ -7,6 +7,13 @@
   border: 1px solid var(--color-borde);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.tarjeta-stack:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: var(--sombra), 0 0 26px -8px var(--brillo-violeta);
 }
 
 /* Fondo blanco siempre: algunos logos son negros y no se verían en tema oscuro */

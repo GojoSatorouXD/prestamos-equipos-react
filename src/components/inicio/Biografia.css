@@ -3,7 +3,7 @@
   list-style: none;
   margin: 0;
   padding: 0 0 0 28px;
-  border-left: 3px solid var(--color-primario-suave);
+  border-left: 2px solid var(--color-primario-suave);
 }
 
 .biografia-item {
@@ -24,8 +24,9 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: var(--color-primario);
+  background-image: var(--degradado);
   border: 3px solid var(--color-fondo);
+  box-shadow: 0 0 14px var(--brillo-violeta);
 }
 
 .biografia-periodo {

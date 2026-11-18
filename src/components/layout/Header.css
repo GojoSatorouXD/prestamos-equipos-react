@@ -1,8 +1,9 @@
+/* Header de vidrio: se queda arriba al hacer scroll y difumina el contenido */
 .header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: var(--color-superficie);
+  background-color: var(--color-header);
   border-bottom: 1px solid var(--color-borde);
 }
 
@@ -20,8 +21,20 @@
 }
 
 .header-logo {
-  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--color-texto);
   text-decoration: none;
+}
+
+/* "Tech" en degradado */
+.header-logo strong {
+  background: var(--degradado-texto);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

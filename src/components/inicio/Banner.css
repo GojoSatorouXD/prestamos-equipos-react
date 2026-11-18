@@ -1,7 +1,23 @@
 .banner {
-  padding: 56px 0;
-  background: linear-gradient(135deg, var(--color-primario-suave), var(--color-fondo));
+  position: relative;
+  padding: 64px 0;
   border-bottom: 1px solid var(--color-borde);
+  overflow: hidden;
+  isolation: isolate; /* el ::before con z-index -1 queda dentro del banner */
+}
+
+/* Cuadrícula tenue de fondo ("tech"), que se desvanece hacia abajo */
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--color-borde) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-borde) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
 }
 
 /* Texto a la izquierda y foto a la derecha */
@@ -13,16 +29,21 @@
 }
 
 .banner-etiqueta {
-  margin: 0 0 8px;
-  font-size: 0.875rem;
-  font-weight: 700;
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 4px 12px;
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  border-radius: 999px;
+  background-color: var(--color-primario-suave);
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-primario);
 }
 
 .banner-titulo {
-  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-size: clamp(1.9rem, 4.8vw, 3rem);
   margin-bottom: 20px;
 }
 
@@ -39,7 +60,7 @@
 
 .banner-descripcion {
   max-width: 60ch;
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   color: var(--color-texto-suave);
 }
 
@@ -49,19 +70,29 @@
   gap: 12px;
 }
 
+/* Foto con un anillo en degradado y brillo */
+.banner-foto-marco {
+  padding: 5px;
+  border-radius: 50%;
+  background-image: var(--degradado);
+  box-shadow:
+    0 0 50px -10px var(--brillo-violeta),
+    0 0 80px -20px var(--brillo-cian);
+}
+
 .banner-foto {
   width: 280px;
   height: 280px;
   object-fit: cover;
   border-radius: 50%;
-  border: 6px solid var(--color-superficie);
-  box-shadow: var(--sombra);
+  border: 5px solid var(--color-fondo);
+  background-color: var(--color-fondo);
 }
 
 /* Celular y tablet: la foto pasa arriba del texto */
 @media (max-width: 760px) {
   .banner {
-    padding: 32px 0;
+    padding: 36px 0;
   }
 
   .banner-contenido {
@@ -69,8 +100,12 @@
     gap: 24px;
   }
 
-  .banner-foto {
+  .banner-foto-marco {
     order: -1;
+    justify-self: start;
+  }
+
+  .banner-foto {
     width: 160px;
     height: 160px;
   }

@@ -40,14 +40,17 @@ function Banner({ perfil }) {
           </div>
         </div>
 
-        <img
-          className="banner-foto"
-          src={perfil.foto}
-          alt={`Foto de ${perfil.nombre}`}
-          width="320"
-          height="320"
-          onError={manejarErrorFoto}
-        />
+        {/* El marco dibuja el anillo en degradado alrededor de la foto */}
+        <div className="banner-foto-marco">
+          <img
+            className="banner-foto"
+            src={perfil.foto}
+            alt={`Foto de ${perfil.nombre}`}
+            width="320"
+            height="320"
+            onError={manejarErrorFoto}
+          />
+        </div>
       </div>
     </section>
   )

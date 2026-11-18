@@ -25,7 +25,10 @@
 .tabla-historial th {
   position: sticky;
   top: 0;
-  background-color: var(--color-primario-suave);
+  /* Fondo sólido + capa violeta: al hacer scroll las filas no se ven por detrás */
+  background-color: var(--color-superficie-solida);
+  background-image: linear-gradient(var(--color-primario-suave), var(--color-primario-suave));
+  font-family: var(--fuente-titulos);
   font-size: 0.8rem;
   white-space: nowrap;
 }
@@ -51,7 +54,7 @@
 }
 
 .tabla-historial tbody tr:hover {
-  background-color: var(--color-fondo);
+  background-color: var(--color-primario-suave);
 }
 
 .fila-activa td:first-child {

@@ -4,12 +4,14 @@
   display: grid;
   place-items: center;
   border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  background-color: var(--color-superficie);
+  border-radius: 10px;
+  background-color: var(--color-primario-suave);
   font-size: 1.1rem;
   cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.25s;
 }
 
 .boton-tema:hover {
-  border-color: var(--color-primario);
+  border-color: var(--color-cian);
+  box-shadow: 0 0 18px -4px var(--brillo-cian);
 }

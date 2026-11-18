@@ -19,14 +19,17 @@ function TarjetaEquipo({ equipo }) {
 
   return (
     <article className="tarjeta-equipo">
-      <img
-        className="tarjeta-equipo-imagen"
-        src={equipo.imagen}
-        alt={equipo.nombre}
-        width="400"
-        height="260"
-        loading="lazy"
-      />
+      {/* El marco recorta la imagen cuando hace zoom al pasar el mouse */}
+      <div className="tarjeta-equipo-marco">
+        <img
+          className="tarjeta-equipo-imagen"
+          src={equipo.imagen}
+          alt={equipo.nombre}
+          width="400"
+          height="260"
+          loading="lazy"
+        />
+      </div>
 
       <div className="tarjeta-equipo-cuerpo">
         <BadgeEstado estado={equipo.estado} />

@@ -18,13 +18,14 @@
   color: var(--color-texto);
   text-decoration: none;
   font-weight: 500;
+  transition: border-color 0.2s, box-shadow 0.25s;
   /* Correos largos pueden partirse en pantallas angostas */
   overflow-wrap: anywhere;
 }
 
 .redes-enlace:hover {
-  border-color: var(--color-primario);
-  color: var(--color-primario);
+  border-color: var(--color-cian);
+  box-shadow: 0 0 18px -6px var(--brillo-cian);
 }
 
 .redes-icono {

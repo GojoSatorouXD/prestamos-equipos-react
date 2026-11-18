@@ -1,27 +1,92 @@
 /* =========================================================
    Estilos globales y variables de tema
    ---------------------------------------------------------
-   Todos los colores se definen como variables CSS.
-   El tema claro es el valor por defecto (:root) y el tema
-   oscuro se activa con el atributo data-theme="oscuro" en
-   la etiqueta <html> (lo cambiará el PrestamosContext).
+   Línea de diseño: "Tech oscuro con brillo (neón)".
+   - Fondo casi negro con manchas de luz violeta y cian.
+   - Superficies de vidrio esmerilado (glassmorphism):
+     fondo semitransparente + backdrop-filter: blur().
+   - Acentos en degradado violeta -> cian.
+
+   Todos los colores son variables CSS. El tema OSCURO es la
+   identidad del sitio y es el valor por defecto (:root).
+   El tema claro se activa con data-theme="claro" en <html>
+   (lo cambia el PrestamosContext) y mantiene el violeta/cian.
    ========================================================= */
 
 :root {
   /* Colores base */
-  --color-fondo: #f5f7fb;
-  --color-superficie: #ffffff;
-  --color-texto: #1f2937;
-  --color-texto-suave: #5b6474;
-  --color-borde: #e2e6ee;
+  --color-fondo: #0b0f19;
+  --color-superficie: rgba(255, 255, 255, 0.045); /* vidrio */
+  --color-superficie-solida: #121829; /* paneles que no deben transparentar */
+  --color-campo: rgba(255, 255, 255, 0.06); /* fondo de inputs y selects */
+  --color-texto: #e6e9f2;
+  --color-texto-suave: #9aa3b8;
+  --color-borde: rgba(255, 255, 255, 0.1);
+  --color-header: rgba(11, 15, 25, 0.72); /* header de vidrio, más opaco */
 
-  /* Color principal (azul institucional) */
-  --color-primario: #1d4ed8;
-  --color-primario-hover: #1e40af;
-  --color-primario-suave: #e0e9ff;
+  /* Identidad: violeta y cian */
+  --color-violeta: #8b5cf6;
+  --color-cian: #22d3ee;
+  --color-primario: #a78bfa; /* enlaces y textos destacados */
+  --color-primario-hover: #c4b5fd;
+  --color-primario-suave: rgba(139, 92, 246, 0.16);
   --color-sobre-primario: #ffffff;
+  --degradado: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #0891b2 100%);
+  --degradado-texto: linear-gradient(90deg, #c4b5fd 0%, #67e8f9 100%);
+
+  /* Brillos (glow) */
+  --brillo-violeta: rgba(139, 92, 246, 0.55);
+  --brillo-cian: rgba(34, 211, 238, 0.45);
 
   /* Colores de los estados de un equipo (badges) */
+  --color-disponible: #4ade80;
+  --color-disponible-fondo: rgba(74, 222, 128, 0.13);
+  --color-prestado: #fca5a5;
+  --color-prestado-fondo: rgba(248, 113, 113, 0.15);
+  --color-mantenimiento: #fcd34d;
+  --color-mantenimiento-fondo: rgba(251, 191, 36, 0.14);
+
+  /* Colores para mensajes de error del formulario */
+  --color-error: #fca5a5;
+
+  /* Manchas de luz del fondo */
+  --luz-1: rgba(124, 58, 237, 0.22);
+  --luz-2: rgba(8, 145, 178, 0.18);
+
+  /* Tipografía: Inter para el texto y Space Grotesk para los títulos */
+  --fuente: 'Inter', system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  --fuente-titulos: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+
+  /* Medidas reutilizables */
+  --radio: 16px;
+  --sombra: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --vidrio: blur(14px) saturate(140%);
+  --ancho-maximo: 1150px;
+  --alto-header: 64px;
+
+  /* Controles nativos (selects, casillas, barras de scroll) */
+  color-scheme: dark;
+}
+
+/* Tema claro: mismos acentos violeta/cian sobre un fondo lavanda muy suave */
+:root[data-theme='claro'] {
+  --color-fondo: #f5f4ff;
+  --color-superficie: rgba(255, 255, 255, 0.72);
+  --color-superficie-solida: #ffffff;
+  --color-campo: rgba(255, 255, 255, 0.9);
+  --color-texto: #151a2d;
+  --color-texto-suave: #535b75;
+  --color-borde: rgba(76, 29, 149, 0.13);
+  --color-header: rgba(245, 244, 255, 0.78);
+
+  --color-primario: #6d28d9;
+  --color-primario-hover: #5b21b6;
+  --color-primario-suave: rgba(124, 58, 237, 0.1);
+  --degradado-texto: linear-gradient(90deg, #6d28d9 0%, #0e7490 100%);
+
+  --brillo-violeta: rgba(124, 58, 237, 0.35);
+  --brillo-cian: rgba(8, 145, 178, 0.3);
+
   --color-disponible: #15803d;
   --color-disponible-fondo: #dcfce7;
   --color-prestado: #b91c1c;
@@ -29,47 +94,14 @@
   --color-mantenimiento: #a16207;
   --color-mantenimiento-fondo: #fef3c7;
 
-  /* Colores para mensajes de error del formulario */
   --color-error: #b91c1c;
 
-  /* Tipografía */
-  --fuente: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --luz-1: rgba(139, 92, 246, 0.16);
+  --luz-2: rgba(34, 211, 238, 0.16);
 
-  /* Medidas reutilizables */
-  --radio: 12px;
-  --sombra: 0 4px 14px rgba(15, 23, 42, 0.08);
-  --ancho-maximo: 1150px;
-  --alto-header: 64px;
+  --sombra: 0 8px 30px rgba(76, 29, 149, 0.1);
 
-  /* Controles nativos (selects, casillas, barras de scroll) en tema claro */
   color-scheme: light;
-}
-
-/* Tema oscuro: solo se redefinen los colores */
-:root[data-theme='oscuro'] {
-  --color-fondo: #0f172a;
-  --color-superficie: #1e293b;
-  --color-texto: #e5e7eb;
-  --color-texto-suave: #a3adbf;
-  --color-borde: #334155;
-
-  --color-primario: #60a5fa;
-  --color-primario-hover: #93c5fd;
-  --color-primario-suave: #1e3a5f;
-  --color-sobre-primario: #0f172a;
-
-  --color-disponible: #4ade80;
-  --color-disponible-fondo: #14532d;
-  --color-prestado: #fca5a5;
-  --color-prestado-fondo: #7f1d1d;
-  --color-mantenimiento: #fcd34d;
-  --color-mantenimiento-fondo: #713f12;
-
-  --color-error: #fca5a5;
-  --sombra: 0 4px 14px rgba(0, 0, 0, 0.4);
-
-  /* Controles nativos en tema oscuro */
-  color-scheme: dark;
 }
 
 /* ---------- Reset básico ---------- */
@@ -86,7 +118,13 @@ body {
   line-height: 1.6;
   color: var(--color-texto);
   background-color: var(--color-fondo);
+  /* Dos manchas de luz fijas detrás del contenido: el vidrio las difumina */
+  background-image:
+    radial-gradient(ellipse 60% 50% at 10% 0%, var(--luz-1), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 95% 30%, var(--luz-2), transparent 70%);
+  background-attachment: fixed;
   transition: background-color 0.2s, color 0.2s;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -101,8 +139,15 @@ a {
 h1,
 h2,
 h3 {
-  line-height: 1.25;
+  font-family: var(--fuente-titulos);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   margin-top: 0;
+}
+
+::selection {
+  background-color: var(--color-violeta);
+  color: #ffffff;
 }
 
 /* ---------- Estructura general (Layout) ---------- */
@@ -118,6 +163,29 @@ h3 {
   flex: 1;
 }
 
+/* ---------- Vidrio esmerilado ----------
+   Todas estas superficies usan el fondo semitransparente
+   (--color-superficie) y difuminan lo que tienen detrás. */
+.vidrio,
+.header,
+.footer,
+.filtros,
+.tarjeta-equipo,
+.contacto-formulario,
+.contacto-gracias,
+.testimonio,
+.tarjeta-stack,
+.timeline-item,
+.estudio,
+.beneficio,
+.comparacion-columna,
+.tabla-envoltura,
+.contador-tarjeta,
+.dashboard-panel {
+  -webkit-backdrop-filter: var(--vidrio);
+  backdrop-filter: var(--vidrio);
+}
+
 /* ---------- Clases de utilidad reutilizables ---------- */
 
 /* Contenedor centrado con margen lateral de 16px en móvil */
@@ -128,40 +196,81 @@ h3 {
   padding: 0 16px;
 }
 
+/* Texto con el degradado violeta -> cian */
+.texto-degradado {
+  background: var(--degradado-texto);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Botones */
 .boton {
   display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 2px solid var(--color-primario);
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
   font: inherit;
   font-weight: 600;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.25s,
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
 }
 
+/* Botón principal: degradado + brillo al pasar el mouse */
 .boton-primario {
-  background-color: var(--color-primario);
+  background-image: var(--degradado);
+  background-size: 150% 100%;
+  background-position: 0% 50%;
   color: var(--color-sobre-primario);
+  box-shadow: 0 4px 16px -6px var(--brillo-violeta);
 }
 
-.boton-primario:hover {
-  background-color: var(--color-primario-hover);
-  border-color: var(--color-primario-hover);
+.boton-primario:hover:not(:disabled) {
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(196, 181, 253, 0.35),
+    0 10px 28px -6px var(--brillo-violeta),
+    0 0 26px -4px var(--brillo-cian);
 }
 
+/* Botón secundario: contorno violeta que brilla en cian */
 .boton-secundario {
-  background-color: transparent;
-  color: var(--color-primario);
+  background-color: var(--color-primario-suave);
+  border-color: rgba(167, 139, 250, 0.45);
+  color: var(--color-texto);
 }
 
-.boton-secundario:hover {
-  background-color: var(--color-primario-suave);
+.boton-secundario:hover:not(:disabled) {
+  border-color: var(--color-cian);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px -6px var(--brillo-cian);
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Foco visible para navegación con teclado */
 :focus-visible {
-  outline: 3px solid var(--color-primario);
+  outline: 2px solid var(--color-cian);
   outline-offset: 2px;
+}
+
+/* Si el usuario pidió menos movimiento en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

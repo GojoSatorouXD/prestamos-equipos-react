@@ -1,10 +1,16 @@
 .titulo-pagina {
-  padding: 40px 0 24px;
+  padding: 48px 0 28px;
 }
 
+/* Título con el degradado violeta -> cian */
 .titulo-pagina h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  display: inline-block;
+  font-size: clamp(1.9rem, 4.5vw, 2.75rem);
   margin-bottom: 8px;
+  background: var(--degradado-texto);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .titulo-pagina p {

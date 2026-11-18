@@ -13,7 +13,10 @@ function Header() {
     <header className="header">
       <div className="contenedor header-contenido">
         <Link to="/" className="header-logo">
-          <span aria-hidden="true">💻</span> PrestaTech
+          <span aria-hidden="true">💻</span>
+          <span>
+            Presta<strong>Tech</strong>
+          </span>
         </Link>
         <div className="header-acciones">
           <Navbar enlaces={enlaces} />

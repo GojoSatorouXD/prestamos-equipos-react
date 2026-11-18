@@ -6,11 +6,26 @@
   border-radius: var(--radio);
   box-shadow: var(--sombra);
   overflow: hidden;
-  transition: transform 0.2s;
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
+/* Al pasar el mouse la tarjeta se eleva y brilla en violeta/cian */
 .tarjeta-equipo:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
+  border-color: rgba(167, 139, 250, 0.5);
+  box-shadow:
+    var(--sombra),
+    0 14px 36px -12px var(--brillo-violeta),
+    0 0 24px -10px var(--brillo-cian);
+}
+
+/* Marco de la imagen: oculta lo que sobra cuando la imagen hace zoom */
+.tarjeta-equipo-marco {
+  overflow: hidden;
+  background-color: #ffffff; /* las fotos de producto suelen tener fondo blanco */
 }
 
 .tarjeta-equipo-imagen {
@@ -18,6 +33,11 @@
   height: auto;
   aspect-ratio: 400 / 260;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-equipo:hover .tarjeta-equipo-imagen {
+  transform: scale(1.08);
 }
 
 /* El cuerpo crece para que el botón quede siempre abajo */
