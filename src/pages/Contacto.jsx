@@ -1,6 +1,7 @@
 import TituloPagina from '../components/comunes/TituloPagina'
 import FormularioContacto from '../components/contacto/FormularioContacto'
 import Testimonio from '../components/contacto/Testimonio'
+import Revelar from '../components/animaciones/Revelar'
 import { testimonios } from '../data/testimonios'
 import './Contacto.css'
 
@@ -16,11 +17,11 @@ function Contacto() {
         subtitulo="¿Tu empresa necesita digitalizar el préstamo de sus equipos? Escríbeme y cuéntame tu proyecto."
       />
 
-      <section aria-label="Formulario de contacto" className="contacto-seccion">
+      <Revelar como="section" aria-label="Formulario de contacto" className="contacto-seccion">
         <FormularioContacto />
-      </section>
+      </Revelar>
 
-      <section aria-labelledby="titulo-testimonios" className="contacto-seccion">
+      <Revelar como="section" aria-labelledby="titulo-testimonios" className="contacto-seccion">
         <h2 id="titulo-testimonios">Testimonios</h2>
         <p className="contacto-nota">
           Testimonios de ejemplo que ilustran los beneficios de PrestaTech; no corresponden a personas reales.
@@ -36,7 +37,7 @@ function Contacto() {
             />
           ))}
         </div>
-      </section>
+      </Revelar>
     </div>
   )
 }

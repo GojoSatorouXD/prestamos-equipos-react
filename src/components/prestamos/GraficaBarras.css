@@ -1,0 +1,112 @@
+/* Panel de vidrio que contiene una gráfica */
+.dashboard-panel {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra);
+}
+
+.grafica-titulo {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.grafica-descripcion {
+  margin: 2px 0 16px;
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+}
+
+.grafica-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grafica-fila {
+  position: relative;
+  padding: 2px 0;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.grafica-fila:focus-visible {
+  outline-offset: 4px;
+}
+
+.grafica-etiquetas {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+}
+
+.grafica-etiqueta {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grafica-detalle {
+  color: var(--color-texto-suave);
+}
+
+/* El número va en color de texto, no en el color de la barra */
+.grafica-valor {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pista (fondo) y barra: delgadas, con el extremo redondeado */
+.grafica-pista {
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--color-primario-suave);
+  overflow: hidden;
+}
+
+.grafica-barra {
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background-color: var(--color-violeta);
+  transition: box-shadow 0.2s;
+}
+
+.grafica-fila:hover .grafica-barra,
+.grafica-fila:focus-visible .grafica-barra {
+  box-shadow: 0 0 12px var(--brillo-violeta);
+}
+
+/* Tooltip: aparece encima de la fila al pasar el mouse o enfocarla */
+.grafica-tooltip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 4px);
+  z-index: 2;
+  padding: 4px 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-superficie-solida);
+  box-shadow: var(--sombra);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+}
+
+.grafica-fila:hover .grafica-tooltip,
+.grafica-fila:focus-visible .grafica-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}

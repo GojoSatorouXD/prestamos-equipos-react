@@ -16,7 +16,8 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 ## Stack
 - Vite + React (JavaScript, sin TypeScript)
 - react-router-dom: 5 vistas obligatorias + 1 vista extra ("Préstamos")
-- CSS propio con variables (tema claro/oscuro), diseño responsive
+- CSS propio con variables, diseño responsive. Línea de diseño "Tech oscuro con neón": fondo #0B0F19, vidrio esmerilado, degradado violeta → cian, Inter + Space Grotesk. El oscuro es el tema por defecto; el claro mantiene la identidad violeta/cian
+- Framer Motion: transiciones entre vistas, scroll (`Revelar`), contadores (`NumeroAnimado`), toasts (`NotificacionesContext`), skeletons, barras del dashboard
 - Datos en `public/data/equipos.json` y `public/data/colaboradores.json`, cargados con fetch
 - localStorage para estados de equipos e historial de préstamos
 - EmailJS para el formulario de contacto (claves en `.env`, plantilla en `.env.example`)
@@ -87,7 +88,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 
 ### 3. Stack tecnológico y estudios (`/stack`)
 - [x] Título de la página
-- [x] Sección "Stack implementado en este proyecto": React, Vite, react-router-dom, Context API, localStorage, SheetJS, EmailJS, CSS con variables
+- [x] Sección "Stack implementado en este proyecto": React, Vite, react-router-dom, Context API, localStorage, SheetJS, EmailJS, Framer Motion, CSS con variables
 - [x] Sección "Stack del autor" en 2 grupos: Desarrollo (React, Node.js/Express, MongoDB, SQLite, Git/GitHub, Linux, Docker) y Soporte TI (GLPI, AnyDesk/TeamViewer, Windows, Microsoft 365). Logos de Devicon (MIT) + íconos genéricos propios
 - [x] 2 herramientas de IA: Claude (chat) y Claude Code
 - [x] Timeline con 3 experiencias: Auxiliar de Soporte IT en el Colegio Colombo Británico + "Desarrollador – Sistema de préstamos de equipos TI (UNIAJC)" + "Desarrollador – APA Interactivo, proyecto de grado (UNIAJC)" (los dos últimos marcados como proyectos académicos)
@@ -112,6 +113,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 ### 6. Préstamos (`/prestamos`) — vista extra
 - [x] Título de la página y enlace en el navbar
 - [x] Tabla del historial: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, estado (Activo / Devuelto)
+- [x] Mini dashboard: préstamos por categoría y equipos más prestados (barras HTML + CSS)
 - [x] Botón "Exportar a Excel" que descarga un .xlsx con todas esas columnas (mismas columnas que la tabla; SheetJS se carga con import() dinámico)
 - [x] Botón "Restablecer datos de ejemplo" (borra localStorage) con mensaje de confirmación antes de borrar
 
@@ -132,6 +134,8 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 14. ✅ Exportar a Excel con SheetJS
 15. ✅ Botón de tema, revisión responsive y checklist completo
 16. ✅ README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue
+17. ✅ Rediseño "Tech oscuro con neón"
+18. ✅ Framer Motion: transiciones, scroll, contadores, toasts, skeletons y mini dashboard
 
 ## Entregables
 - [x] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)

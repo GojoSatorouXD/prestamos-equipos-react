@@ -4,15 +4,6 @@
   gap: 12px;
 }
 
-.acciones-mensaje {
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  color: var(--color-disponible);
-  background-color: var(--color-disponible-fondo);
-}
-
 /* Estilo común de los formularios de préstamo, devolución y reparación */
 .form-prestamo {
   display: flex;

@@ -3,34 +3,47 @@ import { Link } from 'react-router-dom'
 import TituloPagina from '../components/comunes/TituloPagina'
 import Cargando from '../components/comunes/Cargando'
 import TablaHistorial from '../components/prestamos/TablaHistorial'
+import GraficaBarras from '../components/prestamos/GraficaBarras'
+import Revelar from '../components/animaciones/Revelar'
 import { usePrestamos } from '../context/PrestamosContext'
-import { resumenHistorial } from '../utils/historial'
+import { useNotificaciones } from '../context/NotificacionesContext'
+import { resumenHistorial, prestamosPorCategoria, equiposMasPrestados } from '../utils/historial'
 import { pluralizar, palabraSegunCantidad } from '../utils/texto'
 import { exportarHistorialExcel } from '../utils/exportarExcel'
 import './Prestamos.css'
 
 /**
  * Vista extra: Préstamos (/prestamos)
- * Historial de préstamos y devoluciones, exportar a Excel y
+ * Mini dashboard (préstamos por categoría y equipos más prestados),
+ * historial de préstamos y devoluciones, exportar a Excel y
  * restablecer datos de ejemplo.
  */
 function Prestamos() {
   const { historial, cargando, restablecerDatos } = usePrestamos()
-  const [mensaje, setMensaje] = useState('')
-  const [errorExcel, setErrorExcel] = useState('')
+  const { notificar } = useNotificaciones()
   const [exportando, setExportando] = useState(false)
 
   const resumen = resumenHistorial(historial)
+  // Datos de las dos gráficas (se calculan a partir del historial)
+  const porCategoria = prestamosPorCategoria(historial)
+  const masPrestados = equiposMasPrestados(historial, 5)
 
   // Evento onClick: genera y descarga el .xlsx (función async)
   const manejarExportar = async () => {
-    setErrorExcel('')
     setExportando(true)
     try {
       await exportarHistorialExcel(historial)
-      setMensaje(`Excel descargado con ${pluralizar(resumen.total, 'préstamo', 'préstamos')}.`)
+      notificar({
+        tipo: 'exito',
+        titulo: 'Excel descargado',
+        mensaje: `El archivo tiene ${pluralizar(resumen.total, 'préstamo', 'préstamos')}.`,
+      })
     } catch {
-      setErrorExcel('No se pudo generar el archivo de Excel. Inténtalo de nuevo.')
+      notificar({
+        tipo: 'error',
+        titulo: 'No se pudo exportar',
+        mensaje: 'Hubo un problema al generar el archivo de Excel. Inténtalo de nuevo.',
+      })
     } finally {
       setExportando(false)
     }
@@ -45,7 +58,11 @@ function Prestamos() {
     )
     if (!confirmado) return
     restablecerDatos()
-    setMensaje('Datos restablecidos: historial vacío y equipos en su estado inicial.')
+    notificar({
+      tipo: 'aviso',
+      titulo: 'Datos restablecidos',
+      mensaje: 'Historial vacío y equipos en su estado inicial.',
+    })
   }
 
   return (
@@ -89,18 +106,6 @@ function Prestamos() {
             </div>
           </div>
 
-          {mensaje && (
-            <p className="prestamos-mensaje" role="status">
-              ✓ {mensaje}
-            </p>
-          )}
-
-          {errorExcel && (
-            <p className="prestamos-error" role="alert">
-              {errorExcel}
-            </p>
-          )}
-
           {historial.length === 0 ? (
             <div className="prestamos-vacio">
               <p className="prestamos-vacio-titulo">Aún no hay préstamos registrados.</p>
@@ -112,7 +117,26 @@ function Prestamos() {
               </Link>
             </div>
           ) : (
-            <TablaHistorial prestamos={historial} />
+            <>
+              {/* Mini dashboard: dos gráficas de barras */}
+              <Revelar como="section" className="dashboard" aria-label="Resumen gráfico de préstamos">
+                <GraficaBarras
+                  titulo="Préstamos por categoría"
+                  descripcion="Cuántas veces se ha prestado cada tipo de equipo."
+                  datos={porCategoria}
+                />
+                <GraficaBarras
+                  titulo="Equipos más prestados"
+                  descripcion="Los 5 equipos con más préstamos registrados."
+                  datos={masPrestados}
+                />
+              </Revelar>
+
+              <Revelar>
+                <h2 className="prestamos-subtitulo">Historial</h2>
+                <TablaHistorial prestamos={historial} />
+              </Revelar>
+            </>
           )}
         </>
       )}

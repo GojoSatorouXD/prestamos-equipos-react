@@ -1,43 +1,77 @@
 .contador {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .contador-total {
-  margin: 0;
+  margin: 0 0 10px;
   color: var(--color-texto-suave);
 }
 
+/* Tres tarjetas de vidrio, una por estado */
 .contador-lista {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.contador-item {
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.875rem;
-}
-
-.contador-disponible {
-  color: var(--color-disponible);
-  background-color: var(--color-disponible-fondo);
+.contador-tarjeta {
+  /* Cada tarjeta define su color y el resto de reglas lo reutiliza */
+  --color-estado: var(--color-disponible);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 18px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  box-shadow: inset 0 2px 0 var(--color-estado);
 }
 
 .contador-prestado {
-  color: var(--color-prestado);
-  background-color: var(--color-prestado-fondo);
+  --color-estado: var(--color-prestado);
 }
 
 .contador-mantenimiento {
-  color: var(--color-mantenimiento);
-  background-color: var(--color-mantenimiento-fondo);
+  --color-estado: var(--color-mantenimiento);
+}
+
+.contador-numero {
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums; /* los dígitos no "bailan" al contar */
+}
+
+.contador-texto {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+
+.contador-punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-estado);
+  box-shadow: 0 0 10px var(--color-estado);
+}
+
+@media (max-width: 520px) {
+  .contador-tarjeta {
+    padding: 10px 12px;
+  }
+
+  .contador-numero {
+    font-size: 1.5rem;
+  }
+
+  .contador-texto {
+    font-size: 0.78rem;
+  }
 }

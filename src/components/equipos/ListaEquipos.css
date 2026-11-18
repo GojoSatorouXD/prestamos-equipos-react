@@ -5,6 +5,15 @@
   gap: 20px;
 }
 
+/* La envoltura animada ocupa toda la celda: las tarjetas quedan del mismo alto */
+.lista-equipos-item {
+  display: flex;
+}
+
+.lista-equipos-item > .tarjeta-equipo {
+  flex: 1;
+}
+
 .lista-vacia {
   padding: 40px 16px;
   text-align: center;

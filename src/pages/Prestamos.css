@@ -46,19 +46,13 @@
 .boton-peligro {
   border-color: var(--color-prestado);
   color: var(--color-prestado);
-}
-
-.boton-peligro:hover {
   background-color: var(--color-prestado-fondo);
 }
 
-.prestamos-mensaje {
-  margin: 0 0 16px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  color: var(--color-disponible);
-  background-color: var(--color-disponible-fondo);
+/* :not(:disabled) iguala la especificidad del hover del botón secundario */
+.boton-peligro:hover:not(:disabled) {
+  border-color: var(--color-prestado);
+  box-shadow: 0 0 22px -6px var(--color-prestado);
 }
 
 .prestamos-botones .boton:disabled {
@@ -66,13 +60,17 @@
   cursor: not-allowed;
 }
 
-.prestamos-error {
-  margin: 0 0 16px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  color: var(--color-prestado);
-  background-color: var(--color-prestado-fondo);
+/* Mini dashboard: dos paneles lado a lado (uno debajo del otro en celular) */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.prestamos-subtitulo {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
 }
 
 .prestamos-vacio {

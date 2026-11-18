@@ -1,12 +1,14 @@
 import TituloPagina from '../components/comunes/TituloPagina'
 import TarjetaStack from '../components/stack/TarjetaStack'
 import Timeline from '../components/stack/Timeline'
+import Revelar from '../components/animaciones/Revelar'
 import { stackProyecto, stackAutor, herramientasIA, experiencias, estudios } from '../data/stack'
 import './Stack.css'
 
 /**
  * Vista: Stack tecnológico y estudios (/stack)
  * Todas las secciones se generan recorriendo arreglos de src/data/stack.js
+ * y aparecen con una animación al hacer scroll (<Revelar>).
  */
 function Stack() {
   return (
@@ -17,7 +19,7 @@ function Stack() {
       />
 
       {/* 1. Stack implementado en este proyecto */}
-      <section className="stack-seccion" aria-labelledby="titulo-proyecto">
+      <Revelar como="section" className="stack-seccion" aria-labelledby="titulo-proyecto">
         <h2 id="titulo-proyecto">Stack implementado en este proyecto</h2>
         <p className="stack-intro">Con estas herramientas está construido PrestaTech.</p>
         <div className="stack-cuadricula">
@@ -30,10 +32,10 @@ function Stack() {
             />
           ))}
         </div>
-      </section>
+      </Revelar>
 
       {/* 2. Stack del autor: un map para los grupos y otro map adentro para sus tecnologías */}
-      <section className="stack-seccion" aria-labelledby="titulo-autor">
+      <Revelar como="section" className="stack-seccion" aria-labelledby="titulo-autor">
         <h2 id="titulo-autor">Mi stack</h2>
         {stackAutor.map((grupo) => (
           <div key={grupo.grupo} className="stack-grupo">
@@ -50,10 +52,10 @@ function Stack() {
             </div>
           </div>
         ))}
-      </section>
+      </Revelar>
 
       {/* 3. Herramientas de IA (mismo componente de tarjeta) */}
-      <section className="stack-seccion" aria-labelledby="titulo-ia">
+      <Revelar como="section" className="stack-seccion" aria-labelledby="titulo-ia">
         <h2 id="titulo-ia">Herramientas de IA</h2>
         <div className="stack-cuadricula">
           {herramientasIA.map((herramienta) => (
@@ -65,16 +67,16 @@ function Stack() {
             />
           ))}
         </div>
-      </section>
+      </Revelar>
 
       {/* 4. Experiencia en timeline */}
-      <section className="stack-seccion" aria-labelledby="titulo-experiencia">
+      <Revelar como="section" className="stack-seccion" aria-labelledby="titulo-experiencia">
         <h2 id="titulo-experiencia">Experiencia</h2>
         <Timeline experiencias={experiencias} />
-      </section>
+      </Revelar>
 
       {/* 5. Estudios */}
-      <section className="stack-seccion" aria-labelledby="titulo-estudios">
+      <Revelar como="section" className="stack-seccion" aria-labelledby="titulo-estudios">
         <h2 id="titulo-estudios">Estudios</h2>
         <ul className="estudios">
           {estudios.map((estudio) => (
@@ -88,7 +90,7 @@ function Stack() {
             </li>
           ))}
         </ul>
-      </section>
+      </Revelar>
     </div>
   )
 }

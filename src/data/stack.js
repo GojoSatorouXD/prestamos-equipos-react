@@ -6,6 +6,7 @@
 //  - Logos de tecnologías: Devicon (https://devicon.dev), licencia MIT.
 //  - Íconos genéricos propios: glpi, soporte-remoto, microsoft-365,
 //    context-api, localstorage, sheetjs, emailjs, claude-chat, claude-code.
+//  - framer-motion.svg: logo de Devicon (MIT).
 // =========================================================
 
 const IMG = '/img/stack'
@@ -48,9 +49,16 @@ export const stackProyecto = [
     descripcion: 'Envía el formulario de contacto por correo desde el navegador, sin servidor propio.',
   },
   {
+    nombre: 'Framer Motion',
+    imagen: `${IMG}/framer-motion.svg`,
+    descripcion:
+      'Animaciones: transiciones entre vistas, entrada al hacer scroll, contadores animados, avisos (toasts) y barras del dashboard.',
+  },
+  {
     nombre: 'CSS con variables',
     imagen: `${IMG}/css3.svg`,
-    descripcion: 'Estilos propios y responsive; los colores son variables para cambiar entre tema claro y oscuro.',
+    descripcion:
+      'Estilos propios y responsive con vidrio esmerilado y degradado violeta–cian; los colores son variables para cambiar entre tema oscuro y claro.',
   },
 ]
 

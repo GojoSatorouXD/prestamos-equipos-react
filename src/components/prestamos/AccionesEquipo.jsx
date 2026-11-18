@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { usePrestamos } from '../../context/PrestamosContext'
+import { useNotificaciones } from '../../context/NotificacionesContext'
 import FormularioPrestamo from './FormularioPrestamo'
 import FormularioDevolucion from './FormularioDevolucion'
 import './AccionesEquipo.css'
@@ -12,27 +12,41 @@ import './AccionesEquipo.css'
  * Props:
  *  - equipo: el equipo seleccionado
  *
- * Después de cada acción muestra un mensaje de confirmación.
+ * Después de cada acción muestra un aviso flotante (toast) de confirmación.
  */
 function AccionesEquipo({ equipo }) {
   const { colaboradores, registrarPrestamo, registrarDevolucion, marcarReparado, obtenerPrestamoActivo } =
     usePrestamos()
-  const [mensaje, setMensaje] = useState('')
+  const { notificar } = useNotificaciones()
 
   const manejarPrestamo = (datos) => {
     // Si registrarPrestamo lanza un Error, lo atrapa el formulario
+    // (y no se llega a mostrar el aviso)
     const prestamo = registrarPrestamo({ equipoId: equipo.id, ...datos })
-    setMensaje(`Préstamo registrado: ${prestamo.colaborador} recibió el equipo.`)
+    notificar({
+      tipo: 'exito',
+      titulo: 'Préstamo registrado',
+      mensaje: `${prestamo.colaborador} recibió ${equipo.nombre} (${equipo.serial}).`,
+    })
   }
 
   const manejarDevolucion = (datos) => {
     const nuevoEstado = registrarDevolucion({ equipoId: equipo.id, ...datos })
-    setMensaje(`Devolución registrada. El equipo quedó ${nuevoEstado}.`)
+    // Si no llegó en las mismas condiciones el aviso es amarillo (revisión)
+    notificar({
+      tipo: nuevoEstado === 'Disponible' ? 'exito' : 'aviso',
+      titulo: 'Devolución registrada',
+      mensaje: `${equipo.nombre} quedó ${nuevoEstado}.`,
+    })
   }
 
   const manejarReparado = () => {
     marcarReparado(equipo.id)
-    setMensaje('El equipo quedó Disponible.')
+    notificar({
+      tipo: 'exito',
+      titulo: 'Equipo reparado',
+      mensaje: `${equipo.nombre} volvió a estar Disponible.`,
+    })
   }
 
   // Se elige qué mostrar según el estado actual del equipo
@@ -56,14 +70,7 @@ function AccionesEquipo({ equipo }) {
   }
 
   return (
-    <div className="acciones-equipo">
-      {mensaje && (
-        <p className="acciones-mensaje" role="status">
-          ✓ {mensaje}
-        </p>
-      )}
-      {accion}
-    </div>
+    <div className="acciones-equipo">{accion}</div>
   )
 }
 

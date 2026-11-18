@@ -58,6 +58,7 @@ Todas comparten el **Header** (nombre, navbar y botón de tema) y el **Footer** 
   - Si llegó igual, el equipo queda **Disponible**; si no, queda **En mantenimiento**.
 - **Marcar como reparado** (equipo En mantenimiento): vuelve a **Disponible**.
 - **Historial** con 13 columnas: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada y estado (Activo / Devuelto).
+- **Mini dashboard** en Préstamos: gráficas de barras de préstamos por categoría y de los 5 equipos más prestados.
 - **Exportar a Excel** (.xlsx) con las mismas columnas de la tabla.
 - **Restablecer datos de ejemplo**, con confirmación previa.
 - **Formulario de contacto validado:**
@@ -65,7 +66,9 @@ Todas comparten el **Header** (nombre, navbar y botón de tema) y el **Footer** 
   - Correo: validado con regex.
   - Teléfono: solo números.
   - Todos los campos son obligatorios.
-- **Tema claro / oscuro**, que se guarda en el navegador.
+- **Animaciones con Framer Motion:** transiciones entre vistas, entrada al hacer scroll, contadores animados, tarjetas que entran escalonadas y avisos flotantes (toasts) al registrar préstamo, devolución, reparación y al exportar a Excel.
+- **Skeletons** (tarjetas esqueleto) mientras cargan los equipos.
+- **Tema oscuro / claro** ("Tech oscuro con neón": vidrio esmerilado y degradado violeta → cian), que se guarda en el navegador.
 - **Diseño responsive:** celular, tablet y escritorio.
 
 ## Tecnologías
@@ -79,7 +82,8 @@ Todas comparten el **Header** (nombre, navbar y botón de tema) y el **Footer** 
 | **localStorage** | Persistencia de estados de equipos, historial y tema. |
 | **EmailJS** (`@emailjs/browser`) | Envío del formulario de contacto sin servidor propio. |
 | **SheetJS** (`xlsx` 0.20.3) | Exportación del historial a Excel. Instalado desde el **CDN oficial** (`cdn.sheetjs.com`), no desde el paquete `xlsx` del registro de npm, que está desactualizado. |
-| **CSS propio con variables** | Estilos responsive y temas claro/oscuro, sin frameworks. |
+| **Framer Motion** | Animaciones: transiciones entre vistas, scroll, contadores, toasts y barras del dashboard. |
+| **CSS propio con variables** | Estilos responsive, vidrio esmerilado (`backdrop-filter`) y temas oscuro/claro, sin frameworks. Tipografías Inter y Space Grotesk (Google Fonts). |
 | **ESLint** | Revisión de calidad del código. |
 
 ## Cómo correrlo
@@ -145,18 +149,20 @@ prestamos-equipos-react/
 │       ├── stack/                # logos e íconos de la vista Stack
 │       └── perfil-placeholder.svg
 ├── src/
-│   ├── main.jsx                  # Punto de entrada: BrowserRouter + PrestamosProvider
+│   ├── main.jsx                  # Punto de entrada: BrowserRouter + MotionConfig + proveedores
 │   ├── App.jsx                   # Rutas de las vistas
 │   ├── context/
 │   │   ├── PrestamosContext.js   # createContext + hook usePrestamos()
-│   │   └── PrestamosProvider.jsx # Estado global y acciones
+│   │   ├── PrestamosProvider.jsx # Estado global y acciones
+│   │   ├── NotificacionesContext.js   # contexto de avisos + hook useNotificaciones()
+│   │   └── NotificacionesProvider.jsx # lista de toasts y función notificar()
 │   ├── services/
 │   │   ├── equiposService.js     # fetch de equipos y colaboradores
 │   │   └── correoService.js      # envío con EmailJS
 │   ├── utils/                    # Funciones propias (lógica sin interfaz)
 │   │   ├── equipos.js            # filtrar, normalizar texto, paginar, contar por estado
 │   │   ├── prestamos.js          # crear préstamo, validar condición, fechas, duración
-│   │   ├── historial.js          # columnas del historial (tabla y Excel)
+│   │   ├── historial.js          # columnas del historial (tabla y Excel) y datos del dashboard
 │   │   ├── exportarExcel.js      # generar el .xlsx con SheetJS
 │   │   ├── validaciones.js       # validaciones del formulario de contacto (regex)
 │   │   ├── almacenamiento.js     # leer/guardar en localStorage
@@ -165,9 +171,10 @@ prestamos-equipos-react/
 │   │   ├── perfil.js  stack.js  testimonios.js  propuesta.js  navegacion.js
 │   ├── components/
 │   │   ├── layout/               # Layout, Header, Navbar, Footer, BotonTema
-│   │   ├── comunes/              # TituloPagina, Cargando, BadgeEstado, CampoFormulario, RedesSociales
-│   │   ├── equipos/              # TarjetaEquipo, ListaEquipos, Paginacion, Filtros, ContadorEstados, SidebarDetalle
-│   │   ├── prestamos/            # AccionesEquipo, FormularioPrestamo, FormularioDevolucion, RelojActual, TablaHistorial
+│   │   ├── animaciones/          # Revelar (entrada al hacer scroll), NumeroAnimado (contador)
+│   │   ├── comunes/              # TituloPagina, Cargando, BadgeEstado, CampoFormulario, RedesSociales, Notificaciones
+│   │   ├── equipos/              # TarjetaEquipo, ListaEquipos, ListaSkeleton, Paginacion, Filtros, ContadorEstados, SidebarDetalle
+│   │   ├── prestamos/            # AccionesEquipo, FormularioPrestamo, FormularioDevolucion, RelojActual, TablaHistorial, GraficaBarras
 │   │   ├── inicio/               # Banner, Biografia
 │   │   ├── stack/                # TarjetaStack, Timeline, ItemTimeline
 │   │   └── contacto/             # FormularioContacto, Testimonio
@@ -191,7 +198,7 @@ prestamos-equipos-react/
 ### 1. Carga de datos
 1. `PrestamosProvider` envuelve toda la app.
 2. Al montarse, un `useEffect` con `[]` llama en paralelo a `obtenerEquipos()` y `obtenerColaboradores()` con `Promise.all`. Las dos funciones usan `fetch` + `async/await`.
-3. Mientras tanto, `cargando` es `true` y las vistas muestran "Cargando…".
+3. Mientras tanto, `cargando` es `true` y las vistas muestran "Cargando…" (en Equipos, con tarjetas esqueleto).
 4. Si el componente se desmonta antes de terminar, la función de limpieza cancela las peticiones con `AbortController`.
 
 ### 2. Estado global (`PrestamosContext`)
@@ -231,6 +238,14 @@ Cualquier componente las usa con `usePrestamos()`.
 ### 6. Historial y Excel
 - `utils/historial.js` define las 13 columnas **una sola vez**. Las usan tanto `TablaHistorial` como `exportarHistorialExcel()`, así la tabla y el Excel siempre coinciden.
 - SheetJS se carga con `import()` dinámico, solo cuando se presiona "Exportar a Excel".
+- El dashboard usa `contarAgrupado()` (con `reduce`) para calcular los préstamos por categoría y el ranking de equipos. Las barras son HTML + CSS; su ancho es el valor dividido entre el máximo.
+
+### 7. Animaciones y avisos
+- `Layout` envuelve la vista actual en `AnimatePresence` con `key={pathname}`: al cambiar de ruta, la vista anterior sale y la nueva entra.
+- `Revelar` usa `whileInView` para animar las secciones cuando aparecen al hacer scroll.
+- `NumeroAnimado` usa `animate()` de Framer Motion dentro de un `useEffect`; la limpieza detiene la animación.
+- `NotificacionesProvider` guarda los avisos en un arreglo. Cada aviso se cierra solo con un `setTimeout` (limpiado con `clearTimeout`).
+- `MotionConfig reducedMotion="user"` respeta la preferencia de "reducir movimiento" del sistema.
 
 ## Conceptos evaluados y dónde están
 
@@ -241,10 +256,10 @@ Cualquier componente las usa con `usePrestamos()`.
 | Eventos | `onClick` (Ver detalle, paginación, tema), `onChange` y `onSubmit` (filtros y formularios), `keydown` (Esc en el sidebar), `onError` (foto) |
 | Promesas | `services/equiposService.js` (fetch, `Promise.all`), `services/correoService.js` (EmailJS), `utils/exportarExcel.js` (`import()`) |
 | Componentes y props | `src/components/**` (por ejemplo `TarjetaEquipo`, `Paginacion`, `CampoFormulario`, `TarjetaStack`) |
-| Ciclo de vida | `useEffect` con limpieza: carga inicial (`AbortController`), sidebar (listener de Esc), `RelojActual` (`setInterval`) |
+| Ciclo de vida | `useEffect` con limpieza: carga inicial (`AbortController`), sidebar (listener de Esc), `RelojActual` (`setInterval`), `NumeroAnimado` (detener animación), avisos (`setTimeout`) |
 | `useState` | página actual, borrador de filtros, formularios, mensajes |
 | `useEffect` para cargar información | carga inicial en `PrestamosProvider.jsx` |
-| `useContext` | `PrestamosContext` + hook `usePrestamos()` |
+| `useContext` | `PrestamosContext` + hook `usePrestamos()`; `NotificacionesContext` + hook `useNotificaciones()` |
 
 ## Datos de ejemplo
 
@@ -264,7 +279,9 @@ Cualquier componente las usa con `usePrestamos()`.
 
 ## Créditos
 
-- Logos de tecnologías: [Devicon](https://devicon.dev) (licencia MIT).
+- Logos de tecnologías: [Devicon](https://devicon.dev) (licencia MIT), incluido el de Framer Motion.
+- Animaciones: [Framer Motion](https://motion.dev) (licencia MIT).
+- Tipografías: [Inter](https://fonts.google.com/specimen/Inter) y [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) (SIL Open Font License).
 - Ilustraciones de categorías e íconos genéricos: elaboración propia (SVG).
 - [SheetJS Community Edition](https://sheetjs.com) (licencia Apache 2.0).
 - Desarrollado con apoyo de Claude (chat) para planificación y Claude Code para programación asistida.

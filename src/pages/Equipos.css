@@ -11,3 +11,8 @@
   background-color: var(--color-prestado-fondo);
   font-weight: 600;
 }
+
+.equipos-cargando {
+  margin: 0 0 16px;
+  color: var(--color-texto-suave);
+}

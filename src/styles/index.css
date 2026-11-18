@@ -204,6 +204,16 @@ h3 {
   color: transparent;
 }
 
+/* Texto solo para lectores de pantalla */
+.solo-lector {
+  white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
 /* Botones */
 .boton {
   display: inline-block;

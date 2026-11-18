@@ -1,41 +1,48 @@
+import NumeroAnimado from '../animaciones/NumeroAnimado'
 import { palabraSegunCantidad } from '../../utils/texto'
 import './ContadorEstados.css'
 
 /**
- * Resumen del inventario total por estado.
+ * Resumen del inventario total por estado, con contadores animados.
  * Props:
  *  - conteo: objeto { Disponible, Prestado, 'En mantenimiento' }
  *  - total: cantidad total de equipos del inventario
  */
 function ContadorEstados({ conteo, total }) {
-  // Arreglo de objetos para dibujar las 3 cajitas con un map
+  // Arreglo de objetos para dibujar las 3 tarjetas con un map
   const items = [
     {
-      texto: palabraSegunCantidad(conteo['Disponible'], 'disponible', 'disponibles'),
+      clave: 'disponible',
+      texto: palabraSegunCantidad(conteo['Disponible'], 'Disponible', 'Disponibles'),
       valor: conteo['Disponible'],
-      clase: 'contador-disponible',
     },
     {
-      texto: palabraSegunCantidad(conteo['Prestado'], 'prestado', 'prestados'),
+      clave: 'prestado',
+      texto: palabraSegunCantidad(conteo['Prestado'], 'Prestado', 'Prestados'),
       valor: conteo['Prestado'],
-      clase: 'contador-prestado',
     },
-    { texto: 'en mantenimiento', valor: conteo['En mantenimiento'], clase: 'contador-mantenimiento' },
+    { clave: 'mantenimiento', texto: 'En mantenimiento', valor: conteo['En mantenimiento'] },
   ]
 
   return (
-    <div className="contador" aria-label="Resumen del inventario">
+    <section className="contador" aria-label="Resumen del inventario">
       <p className="contador-total">
         Inventario total: <strong>{total}</strong> equipos
       </p>
       <ul className="contador-lista">
         {items.map((item) => (
-          <li key={item.texto} className={`contador-item ${item.clase}`}>
-            <strong>{item.valor}</strong> {item.texto}
+          <li key={item.clave} className={`contador-tarjeta contador-${item.clave}`}>
+            <span className="contador-numero">
+              <NumeroAnimado valor={item.valor} />
+            </span>
+            <span className="contador-texto">
+              <span className="contador-punto" aria-hidden="true"></span>
+              {item.texto}
+            </span>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 

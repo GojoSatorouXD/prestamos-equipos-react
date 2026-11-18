@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import BadgeEstado from '../comunes/BadgeEstado'
 import './SidebarDetalle.css'
 
@@ -48,7 +49,9 @@ function SidebarDetalle({ equipo, onCerrar, children }) {
     { etiqueta: 'Especificaciones', valor: equipo.especificaciones },
   ]
 
-  return (
+  // createPortal dibuja el panel directamente dentro de <body>, fuera de la
+  // vista. Así ninguna animación de la página (transform) lo desacomoda.
+  return createPortal(
     <div className="sidebar-capa">
       {/* Fondo oscuro: un clic aquí cierra el panel */}
       <div className="sidebar-fondo" onClick={onCerrar} aria-hidden="true"></div>
@@ -97,7 +100,8 @@ function SidebarDetalle({ equipo, onCerrar, children }) {
           {children && <div className="sidebar-acciones">{children}</div>}
         </div>
       </aside>
-    </div>
+    </div>,
+    document.body,
   )
 }
 

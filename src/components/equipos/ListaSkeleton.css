@@ -1,0 +1,60 @@
+.skeleton-tarjeta {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  overflow: hidden;
+}
+
+.skeleton-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+}
+
+/* Caja base: un degradado que se desplaza de izquierda a derecha (brillo) */
+.skeleton {
+  border-radius: 8px;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primario-suave) 0%,
+    rgba(34, 211, 238, 0.16) 50%,
+    var(--color-primario-suave) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-brillo 1.4s ease-in-out infinite;
+}
+
+.skeleton-imagen {
+  aspect-ratio: 400 / 260;
+  border-radius: 0;
+}
+
+.skeleton-badge {
+  width: 90px;
+  height: 20px;
+  border-radius: 999px;
+}
+
+.skeleton-linea {
+  height: 16px;
+}
+
+.skeleton-linea.corta {
+  width: 60%;
+}
+
+.skeleton-boton {
+  height: 42px;
+  margin-top: 6px;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-brillo {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

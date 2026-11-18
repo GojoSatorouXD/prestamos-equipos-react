@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import TituloPagina from '../components/comunes/TituloPagina'
-import Cargando from '../components/comunes/Cargando'
+import ListaSkeleton from '../components/equipos/ListaSkeleton'
 import ContadorEstados from '../components/equipos/ContadorEstados'
 import Filtros from '../components/equipos/Filtros'
 import ListaEquipos from '../components/equipos/ListaEquipos'
@@ -75,7 +75,15 @@ function Equipos() {
   // Contenido según el estado de la carga
   let contenido
   if (cargando) {
-    contenido = <Cargando mensaje="Cargando equipos…" />
+    // Mientras llegan los datos: texto "Cargando…" + tarjetas esqueleto (skeletons)
+    contenido = (
+      <>
+        <p className="equipos-cargando" role="status">
+          Cargando equipos…
+        </p>
+        <ListaSkeleton cantidad={EQUIPOS_POR_PAGINA} />
+      </>
+    )
   } else if (error) {
     contenido = (
       <p className="equipos-error" role="alert">

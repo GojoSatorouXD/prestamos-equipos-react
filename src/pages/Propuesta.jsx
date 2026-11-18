@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import TituloPagina from '../components/comunes/TituloPagina'
+import Revelar from '../components/animaciones/Revelar'
 import { columnasHojaPapel, antes, despues, beneficios, aporte } from '../data/propuesta'
 import './Propuesta.css'
 
@@ -18,7 +19,7 @@ function Propuesta() {
       />
 
       {/* ---------- Sección principal: antes vs después ---------- */}
-      <section className="propuesta-seccion" aria-labelledby="titulo-principal">
+      <Revelar como="section" className="propuesta-seccion" aria-labelledby="titulo-principal">
         <h2 id="titulo-principal">Del papel a lo digital</h2>
         <p className="propuesta-intro">
           Así se registraban los préstamos: una hoja de papel con estas columnas, llenada a mano en cada entrega.
@@ -73,10 +74,10 @@ function Propuesta() {
             </ul>
           </div>
         </div>
-      </section>
+      </Revelar>
 
       {/* ---------- Sección secundaria: beneficios y aporte ---------- */}
-      <section className="propuesta-seccion" aria-labelledby="titulo-beneficios">
+      <Revelar como="section" className="propuesta-seccion" aria-labelledby="titulo-beneficios">
         <h2 id="titulo-beneficios">Beneficios para la empresa</h2>
         <div className="beneficios">
           {beneficios.map((beneficio) => (
@@ -115,7 +116,7 @@ function Propuesta() {
             Quiero PrestaTech en mi empresa
           </Link>
         </div>
-      </section>
+      </Revelar>
     </div>
   )
 }
