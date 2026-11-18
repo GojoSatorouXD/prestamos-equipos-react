@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import BadgeEstado from '../comunes/BadgeEstado'
+import { usarImagenRespaldo } from '../../utils/equipos'
 import './SidebarDetalle.css'
 
 /**
@@ -84,6 +85,7 @@ function SidebarDetalle({ equipo, onCerrar, children }) {
             alt={equipo.nombre}
             width="400"
             height="260"
+            onError={(evento) => usarImagenRespaldo(evento, equipo.categoria)}
           />
 
           {/* Atributos 2 a 8 */}

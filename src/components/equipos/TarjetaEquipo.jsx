@@ -1,5 +1,6 @@
 import BadgeEstado from '../comunes/BadgeEstado'
 import { usePrestamos } from '../../context/PrestamosContext'
+import { usarImagenRespaldo } from '../../utils/equipos'
 import './TarjetaEquipo.css'
 
 /**
@@ -28,6 +29,8 @@ function TarjetaEquipo({ equipo }) {
           width="400"
           height="260"
           loading="lazy"
+          // Evento onError: si la foto no carga, se muestra la ilustración de la categoría
+          onError={(evento) => usarImagenRespaldo(evento, equipo.categoria)}
         />
       </div>
 

@@ -22,6 +22,37 @@ export const ESTADOS = ['Disponible', 'Prestado', 'En mantenimiento']
 // Cantidad de tarjetas por página que pide el proyecto
 export const EQUIPOS_POR_PAGINA = 10
 
+// Ilustración SVG de cada categoría. Se usa como respaldo cuando
+// la foto real de un equipo no existe o no carga.
+const ILUSTRACIONES = {
+  Portátiles: 'portatiles',
+  Proyectores: 'proyectores',
+  Tablets: 'tablets',
+  Periféricos: 'perifericos',
+  'Audio y video': 'audio-video',
+  Redes: 'redes',
+  Accesorios: 'accesorios',
+}
+
+/**
+ * Ruta de la ilustración SVG de una categoría.
+ *   imagenRespaldo('Redes') -> '/img/categorias/redes.svg'
+ */
+export function imagenRespaldo(categoria) {
+  return `/img/categorias/${ILUSTRACIONES[categoria] ?? 'accesorios'}.svg`
+}
+
+/**
+ * Manejador del evento onError de una <img> de equipo: si la foto falla,
+ * la cambia por la ilustración de su categoría. Se comprueba la ruta
+ * para no entrar en un ciclo si también fallara la ilustración.
+ */
+export function usarImagenRespaldo(evento, categoria) {
+  const imagen = evento.currentTarget
+  const respaldo = imagenRespaldo(categoria)
+  if (!imagen.src.endsWith(respaldo)) imagen.src = respaldo
+}
+
 // Filtros vacíos = mostrar todos los equipos
 export const FILTROS_INICIALES = { texto: '', categoria: '', estado: '' }
 

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "nombre": "Portátil Lenovo ThinkPad E14 Gen 5",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0001.jpg",
     "categoria": "Portátiles",
     "marca": "Lenovo",
     "estado": "Disponible",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "nombre": "Tablet Samsung Galaxy Tab A9+",
-    "imagen": "/img/categorias/tablets.svg",
+    "imagen": "/img/equipos/ti-tb-0001.jpg",
     "categoria": "Tablets",
     "marca": "Samsung",
     "estado": "Disponible",
@@ -24,7 +24,7 @@
   {
     "id": 3,
     "nombre": "Proyector Epson PowerLite X49",
-    "imagen": "/img/categorias/proyectores.svg",
+    "imagen": "/img/equipos/ti-py-0001.jpg",
     "categoria": "Proyectores",
     "marca": "Epson",
     "estado": "Disponible",
@@ -35,7 +35,7 @@
   {
     "id": 4,
     "nombre": "Mouse inalámbrico Logitech M185",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0001.jpg",
     "categoria": "Periféricos",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -46,7 +46,7 @@
   {
     "id": 5,
     "nombre": "Parlante Bluetooth JBL Flip 6",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0001.jpg",
     "categoria": "Audio y video",
     "marca": "JBL",
     "estado": "Disponible",
@@ -57,7 +57,7 @@
   {
     "id": 6,
     "nombre": "Router TP-Link Archer C6",
-    "imagen": "/img/categorias/redes.svg",
+    "imagen": "/img/equipos/ti-rd-0001.jpg",
     "categoria": "Redes",
     "marca": "TP-Link",
     "estado": "Disponible",
@@ -68,7 +68,7 @@
   {
     "id": 7,
     "nombre": "Cargador USB-C Lenovo 65 W",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0001.jpg",
     "categoria": "Accesorios",
     "marca": "Lenovo",
     "estado": "Disponible",
@@ -79,7 +79,7 @@
   {
     "id": 8,
     "nombre": "Portátil HP ProBook 440 G10",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0002.jpg",
     "categoria": "Portátiles",
     "marca": "HP",
     "estado": "Disponible",
@@ -90,7 +90,7 @@
   {
     "id": 9,
     "nombre": "iPad 10.ª generación",
-    "imagen": "/img/categorias/tablets.svg",
+    "imagen": "/img/equipos/ti-tb-0002.jpg",
     "categoria": "Tablets",
     "marca": "Apple",
     "estado": "Disponible",
@@ -101,7 +101,7 @@
   {
     "id": 10,
     "nombre": "Proyector BenQ MS560",
-    "imagen": "/img/categorias/proyectores.svg",
+    "imagen": "/img/equipos/ti-py-0002.jpg",
     "categoria": "Proyectores",
     "marca": "BenQ",
     "estado": "Disponible",
@@ -112,7 +112,7 @@
   {
     "id": 11,
     "nombre": "Teclado USB Genius KB-117",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0002.jpg",
     "categoria": "Periféricos",
     "marca": "Genius",
     "estado": "Disponible",
@@ -123,7 +123,7 @@
   {
     "id": 12,
     "nombre": "Micrófono inalámbrico Shure BLX24/PG58",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0002.jpg",
     "categoria": "Audio y video",
     "marca": "Shure",
     "estado": "Disponible",
@@ -134,7 +134,7 @@
   {
     "id": 13,
     "nombre": "Switch Cisco CBS110 de 16 puertos",
-    "imagen": "/img/categorias/redes.svg",
+    "imagen": "/img/equipos/ti-rd-0002.jpg",
     "categoria": "Redes",
     "marca": "Cisco",
     "estado": "Disponible",
@@ -145,7 +145,7 @@
   {
     "id": 14,
     "nombre": "Cargador HP 65 W punta azul",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0002.jpg",
     "categoria": "Accesorios",
     "marca": "HP",
     "estado": "En mantenimiento",
@@ -156,7 +156,7 @@
   {
     "id": 15,
     "nombre": "Portátil Dell Latitude 3440",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0003.jpg",
     "categoria": "Portátiles",
     "marca": "Dell",
     "estado": "Disponible",
@@ -167,7 +167,7 @@
   {
     "id": 16,
     "nombre": "Tablet Lenovo Tab M10 (3.ª gen.)",
-    "imagen": "/img/categorias/tablets.svg",
+    "imagen": "/img/equipos/ti-tb-0003.jpg",
     "categoria": "Tablets",
     "marca": "Lenovo",
     "estado": "En mantenimiento",
@@ -178,7 +178,7 @@
   {
     "id": 17,
     "nombre": "Proyector ViewSonic PA503W",
-    "imagen": "/img/categorias/proyectores.svg",
+    "imagen": "/img/equipos/ti-py-0003.jpg",
     "categoria": "Proyectores",
     "marca": "ViewSonic",
     "estado": "En mantenimiento",
@@ -189,7 +189,7 @@
   {
     "id": 18,
     "nombre": "Cámara web Logitech C920",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0003.jpg",
     "categoria": "Periféricos",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -200,7 +200,7 @@
   {
     "id": 19,
     "nombre": "Diadema HyperX Cloud Stinger",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0003.jpg",
     "categoria": "Audio y video",
     "marca": "HyperX",
     "estado": "En mantenimiento",
@@ -211,7 +211,7 @@
   {
     "id": 20,
     "nombre": "Punto de acceso Ubiquiti UniFi U6 Lite",
-    "imagen": "/img/categorias/redes.svg",
+    "imagen": "/img/equipos/ti-rd-0003.jpg",
     "categoria": "Redes",
     "marca": "Ubiquiti",
     "estado": "Disponible",
@@ -222,7 +222,7 @@
   {
     "id": 21,
     "nombre": "Adaptador USB-C a HDMI Ugreen",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0003.jpg",
     "categoria": "Accesorios",
     "marca": "Ugreen",
     "estado": "Disponible",
@@ -233,7 +233,7 @@
   {
     "id": 22,
     "nombre": "Portátil Acer Aspire 5",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0004.jpg",
     "categoria": "Portátiles",
     "marca": "Acer",
     "estado": "En mantenimiento",
@@ -244,7 +244,7 @@
   {
     "id": 23,
     "nombre": "Tablet Samsung Galaxy Tab S6 Lite",
-    "imagen": "/img/categorias/tablets.svg",
+    "imagen": "/img/equipos/ti-tb-0004.jpg",
     "categoria": "Tablets",
     "marca": "Samsung",
     "estado": "Disponible",
@@ -255,7 +255,7 @@
   {
     "id": 24,
     "nombre": "Proyector Epson PowerLite E20",
-    "imagen": "/img/categorias/proyectores.svg",
+    "imagen": "/img/equipos/ti-py-0004.jpg",
     "categoria": "Proyectores",
     "marca": "Epson",
     "estado": "Disponible",
@@ -266,7 +266,7 @@
   {
     "id": 25,
     "nombre": "Combo teclado y mouse Logitech MK270",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0004.jpg",
     "categoria": "Periféricos",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -277,7 +277,7 @@
   {
     "id": 26,
     "nombre": "Cámara Canon EOS Rebel T7",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0004.jpg",
     "categoria": "Audio y video",
     "marca": "Canon",
     "estado": "Disponible",
@@ -288,7 +288,7 @@
   {
     "id": 27,
     "nombre": "Switch TP-Link TL-SG108 de 8 puertos",
-    "imagen": "/img/categorias/redes.svg",
+    "imagen": "/img/equipos/ti-rd-0004.jpg",
     "categoria": "Redes",
     "marca": "TP-Link",
     "estado": "Disponible",
@@ -299,7 +299,7 @@
   {
     "id": 28,
     "nombre": "Adaptador HDMI a VGA Ugreen",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0004.jpg",
     "categoria": "Accesorios",
     "marca": "Ugreen",
     "estado": "Disponible",
@@ -310,7 +310,7 @@
   {
     "id": 29,
     "nombre": "Portátil Asus VivoBook 15",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0005.jpg",
     "categoria": "Portátiles",
     "marca": "Asus",
     "estado": "Disponible",
@@ -321,7 +321,7 @@
   {
     "id": 30,
     "nombre": "Tablet Xiaomi Redmi Pad SE",
-    "imagen": "/img/categorias/tablets.svg",
+    "imagen": "/img/equipos/ti-tb-0005.jpg",
     "categoria": "Tablets",
     "marca": "Xiaomi",
     "estado": "Disponible",
@@ -332,7 +332,7 @@
   {
     "id": 31,
     "nombre": "Proyector Optoma S343",
-    "imagen": "/img/categorias/proyectores.svg",
+    "imagen": "/img/equipos/ti-py-0005.jpg",
     "categoria": "Proyectores",
     "marca": "Optoma",
     "estado": "Disponible",
@@ -343,7 +343,7 @@
   {
     "id": 32,
     "nombre": "Monitor Samsung 24\" S3",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0005.jpg",
     "categoria": "Periféricos",
     "marca": "Samsung",
     "estado": "Disponible",
@@ -354,7 +354,7 @@
   {
     "id": 33,
     "nombre": "Diadema USB Logitech H390",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0005.jpg",
     "categoria": "Audio y video",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -365,7 +365,7 @@
   {
     "id": 34,
     "nombre": "Kit de ponchadora y probador de red",
-    "imagen": "/img/categorias/redes.svg",
+    "imagen": "/img/equipos/ti-rd-0005.jpg",
     "categoria": "Redes",
     "marca": "Klein Tools",
     "estado": "Disponible",
@@ -376,7 +376,7 @@
   {
     "id": 35,
     "nombre": "Hub USB-C 7 en 1 Anker",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0005.jpg",
     "categoria": "Accesorios",
     "marca": "Anker",
     "estado": "Disponible",
@@ -387,7 +387,7 @@
   {
     "id": 36,
     "nombre": "Portátil Lenovo IdeaPad 3",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0006.jpg",
     "categoria": "Portátiles",
     "marca": "Lenovo",
     "estado": "Disponible",
@@ -409,7 +409,7 @@
   {
     "id": 38,
     "nombre": "Mouse USB Genius DX-120",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0006.jpg",
     "categoria": "Periféricos",
     "marca": "Genius",
     "estado": "Disponible",
@@ -420,7 +420,7 @@
   {
     "id": 39,
     "nombre": "Parlantes Logitech Z313",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0006.jpg",
     "categoria": "Audio y video",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -431,7 +431,7 @@
   {
     "id": 40,
     "nombre": "Extensión eléctrica Belkin de 6 tomas",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0006.jpg",
     "categoria": "Accesorios",
     "marca": "Belkin",
     "estado": "Disponible",
@@ -442,7 +442,7 @@
   {
     "id": 41,
     "nombre": "Portátil HP 250 G9",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0007.jpg",
     "categoria": "Portátiles",
     "marca": "HP",
     "estado": "Disponible",
@@ -453,7 +453,7 @@
   {
     "id": 42,
     "nombre": "Teclado inalámbrico Logitech K380",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0007.jpg",
     "categoria": "Periféricos",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -464,7 +464,7 @@
   {
     "id": 43,
     "nombre": "Micrófono de solapa Boya BY-M1",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0007.jpg",
     "categoria": "Audio y video",
     "marca": "Boya",
     "estado": "Disponible",
@@ -475,7 +475,7 @@
   {
     "id": 44,
     "nombre": "Presentador con puntero láser Logitech R400",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0007.jpg",
     "categoria": "Accesorios",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -486,7 +486,7 @@
   {
     "id": 45,
     "nombre": "Portátil Dell Vostro 3520",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0008.jpg",
     "categoria": "Portátiles",
     "marca": "Dell",
     "estado": "Disponible",
@@ -497,7 +497,7 @@
   {
     "id": 46,
     "nombre": "Cámara web Logitech C270",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0008.jpg",
     "categoria": "Periféricos",
     "marca": "Logitech",
     "estado": "Disponible",
@@ -508,7 +508,7 @@
   {
     "id": 47,
     "nombre": "Micrófono USB Fifine K669B",
-    "imagen": "/img/categorias/audio-video.svg",
+    "imagen": "/img/equipos/ti-av-0008.jpg",
     "categoria": "Audio y video",
     "marca": "Fifine",
     "estado": "Disponible",
@@ -519,7 +519,7 @@
   {
     "id": 48,
     "nombre": "Presentador con puntero láser Targus AMP13",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0008.jpg",
     "categoria": "Accesorios",
     "marca": "Targus",
     "estado": "Disponible",
@@ -530,7 +530,7 @@
   {
     "id": 49,
     "nombre": "Portátil Lenovo ThinkPad L14 Gen 4",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0009.jpg",
     "categoria": "Portátiles",
     "marca": "Lenovo",
     "estado": "Disponible",
@@ -541,7 +541,7 @@
   {
     "id": 50,
     "nombre": "Monitor LG 22\" 22MR410",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0009.jpg",
     "categoria": "Periféricos",
     "marca": "LG",
     "estado": "Disponible",
@@ -552,7 +552,7 @@
   {
     "id": 51,
     "nombre": "Memoria USB Kingston DataTraveler 64 GB",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0009.jpg",
     "categoria": "Accesorios",
     "marca": "Kingston",
     "estado": "Disponible",
@@ -563,7 +563,7 @@
   {
     "id": 52,
     "nombre": "MacBook Air 13\" M2",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0010.jpg",
     "categoria": "Portátiles",
     "marca": "Apple",
     "estado": "Disponible",
@@ -574,7 +574,7 @@
   {
     "id": 53,
     "nombre": "Lector de código de barras Honeywell Voyager 1250g",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0010.jpg",
     "categoria": "Periféricos",
     "marca": "Honeywell",
     "estado": "Disponible",
@@ -585,7 +585,7 @@
   {
     "id": 54,
     "nombre": "Memoria USB SanDisk Ultra Flair 32 GB",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0010.jpg",
     "categoria": "Accesorios",
     "marca": "SanDisk",
     "estado": "Disponible",
@@ -596,7 +596,7 @@
   {
     "id": 55,
     "nombre": "Portátil HP EliteBook 840 G9",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0011.jpg",
     "categoria": "Portátiles",
     "marca": "HP",
     "estado": "Disponible",
@@ -607,7 +607,7 @@
   {
     "id": 56,
     "nombre": "Tableta digitalizadora Wacom Intuos S",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0011.jpg",
     "categoria": "Periféricos",
     "marca": "Wacom",
     "estado": "Disponible",
@@ -618,7 +618,7 @@
   {
     "id": 57,
     "nombre": "Disco externo Seagate One Touch 1 TB",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0011.jpg",
     "categoria": "Accesorios",
     "marca": "Seagate",
     "estado": "Disponible",
@@ -629,7 +629,7 @@
   {
     "id": 58,
     "nombre": "Portátil Acer TravelMate P2",
-    "imagen": "/img/categorias/portatiles.svg",
+    "imagen": "/img/equipos/ti-pt-0012.jpg",
     "categoria": "Portátiles",
     "marca": "Acer",
     "estado": "Disponible",
@@ -640,7 +640,7 @@
   {
     "id": 59,
     "nombre": "Base refrigerante para portátil Klip Xtreme",
-    "imagen": "/img/categorias/perifericos.svg",
+    "imagen": "/img/equipos/ti-pf-0012.jpg",
     "categoria": "Periféricos",
     "marca": "Klip Xtreme",
     "estado": "Disponible",
@@ -651,7 +651,7 @@
   {
     "id": 60,
     "nombre": "Disco externo WD Elements 2 TB",
-    "imagen": "/img/categorias/accesorios.svg",
+    "imagen": "/img/equipos/ti-ac-0012.jpg",
     "categoria": "Accesorios",
     "marca": "Western Digital",
     "estado": "Disponible",

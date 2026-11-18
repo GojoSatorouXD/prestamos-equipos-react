@@ -51,7 +51,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - Estados: Disponible, Prestado, En mantenimiento. En el JSON **ningún equipo arranca como Prestado**: la mayoría Disponible y unos pocos En mantenimiento. Los préstamos solo se registran en vivo desde la app.
 - serial: `TI-<prefijo>-<4 dígitos>` (ej. `TI-PT-0012`). Prefijos: PT, TB, PY, PF, AV, RD, AC
 - ubicacion: bodega u oficina de TI (ej. "Bodega TI – Estante A2")
-- imagen: una ilustración SVG por categoría en `public/img/categorias/` (reemplazable por fotos cambiando la ruta en el JSON)
+- imagen: foto real con licencia libre (Wikimedia Commons) en `public/img/equipos/<serial>.jpg`, 800×520, ≤150 KB. Créditos en el README. Respaldo: ilustración SVG por categoría en `public/img/categorias/` (onError). TI-TB-0006 usa el SVG porque no hay foto libre
 
 ## Modelo de colaborador (`public/data/colaboradores.json`, datos de ejemplo)
 `id, nombreCompleto, documento, correo, cargo, area`
@@ -136,6 +136,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 16. ✅ README (módulos, funcionamiento, cómo correrlo, trabajo futuro) + vercel.json + despliegue
 17. ✅ Rediseño "Tech oscuro con neón"
 18. ✅ Framer Motion: transiciones, scroll, contadores, toasts, skeletons y mini dashboard
+19. ✅ Fotos reales de los equipos (Wikimedia Commons) + créditos en el README
 
 ## Entregables
 - [x] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)

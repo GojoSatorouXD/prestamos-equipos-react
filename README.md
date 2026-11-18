@@ -145,7 +145,8 @@ prestamos-equipos-react/
 │   │   ├── equipos.json          # 60 equipos (8 atributos + id)
 │   │   └── colaboradores.json    # 11 colaboradores de ejemplo
 │   └── img/
-│       ├── categorias/           # 1 ilustración SVG por categoría
+│       ├── equipos/              # 59 fotos reales optimizadas (nombre = serial, ej. ti-pt-0001.jpg)
+│       ├── categorias/           # 1 ilustración SVG por categoría (respaldo si falta la foto)
 │       ├── stack/                # logos e íconos de la vista Stack
 │       └── perfil-placeholder.svg
 ├── src/
@@ -274,7 +275,7 @@ Cualquier componente las usa con `usePrestamos()`.
 - **Backend y base de datos** (por ejemplo Node.js + Express + PostgreSQL o MongoDB). Así el inventario y el historial se comparten entre varios equipos y no dependen del navegador.
 - **Firma o confirmación** del colaborador al recibir el equipo.
 - **Alertas** de préstamos vencidos y **notificaciones por correo** al colaborador.
-- **Fotos reales** de cada equipo y lectura del serial con código de barras o QR.
+- **Lectura del serial** con código de barras o QR.
 - **Pruebas automatizadas** (Vitest + Testing Library).
 
 ## Créditos
@@ -283,5 +284,78 @@ Cualquier componente las usa con `usePrestamos()`.
 - Animaciones: [Framer Motion](https://motion.dev) (licencia MIT).
 - Tipografías: [Inter](https://fonts.google.com/specimen/Inter) y [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) (SIL Open Font License).
 - Ilustraciones de categorías e íconos genéricos: elaboración propia (SVG).
+- Fotos de los equipos: Wikimedia Commons, con licencias libres. Detalle en [Créditos de imágenes](#créditos-de-imágenes).
 - [SheetJS Community Edition](https://sheetjs.com) (licencia Apache 2.0).
 - Desarrollado con apoyo de Claude (chat) para planificación y Claude Code para programación asistida.
+
+## Créditos de imágenes
+
+Las fotos de los equipos son **fotos reales con licencia libre** tomadas de [Wikimedia Commons](https://commons.wikimedia.org). Cuando fue posible se eligió el **modelo exacto** (por ejemplo ThinkPad E14, Logitech M185, Shure PG58, Canon EOS Rebel T7, Galaxy Tab S6 Lite, Wacom Intuos S, SanDisk Ultra Flair, WD Elements, MacBook Air M2). Si no, se usó una foto de la misma marca o del mismo tipo de producto.
+
+- Se descargaron con un ancho de 800 px y se optimizaron con FFmpeg a **800 × 520 px en JPG (máximo 79 KB cada una)**. Así quedan en la proporción de la tarjeta: la foto completa va centrada sobre una versión difuminada de sí misma, para no recortar el producto.
+- El archivo se llama como el serial del equipo (`public/img/equipos/ti-pt-0001.jpg`) y la ruta está en el atributo `imagen` de `equipos.json`.
+- **Tablet Lenovo Tab P11 (TI-TB-0006):** no se encontró una foto con licencia libre adecuada, así que usa la ilustración SVG de su categoría.
+- **Respaldo:** si una foto no carga, el evento `onError` la cambia por la ilustración SVG de la categoría (`usarImagenRespaldo()` en `utils/equipos.js`).
+- **Licencias:** CC0 y dominio público no exigen atribución. Las CC BY y CC BY-SA exigen dar crédito al autor y enlazar la licencia, como se hace en esta tabla. Las CC BY-SA además piden compartir con la misma licencia las versiones modificadas: las fotos optimizadas de esta carpeta se comparten bajo la misma licencia de su original.
+
+| Serial | Equipo | Foto (Wikimedia Commons) | Autor | Licencia |
+|---|---|---|---|---|
+| TI-PT-0001 | Portátil Lenovo ThinkPad E14 Gen 5 | [Lenovo ThinkPad E14 G7 14 WUXGA.jpg](https://commons.wikimedia.org/wiki/File:Lenovo_ThinkPad_E14_G7_14_WUXGA.jpg) | Rakoon | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-TB-0001 | Tablet Samsung Galaxy Tab A9+ | [Samsung galaxy tab A9+ Bagian depan.jpg](https://commons.wikimedia.org/wiki/File:Samsung_galaxy_tab_A9%2B_Bagian_depan.jpg) | MobilGalantsuper1999PS | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-PY-0001 | Proyector Epson PowerLite X49 | [EPSON CH-TW5400 LCD PROJECTOR.jpg](https://commons.wikimedia.org/wiki/File:EPSON_CH-TW5400_LCD_PROJECTOR.jpg) | Dinkun Chen | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0001 | Mouse inalámbrico Logitech M185 | [Logitech M185 mouse HS05.jpg](https://commons.wikimedia.org/wiki/File:Logitech_M185_mouse_HS05.jpg) | Hayden Schiff | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-AV-0001 | Parlante Bluetooth JBL Flip 6 | [Głośnik JBL Flip 3.jpg](https://commons.wikimedia.org/wiki/File:G%C5%82o%C5%9Bnik_JBL_Flip_3.jpg) | Przemek Pietrak | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) |
+| TI-RD-0001 | Router TP-Link Archer C6 | [TP-LINK Archer C9 AC1900Gigabit無線AP (23494189080).jpg](https://commons.wikimedia.org/wiki/File:TP-LINK_Archer_C9_AC1900Gigabit%E7%84%A1%E7%B7%9AAP_(23494189080).jpg) | Kenming Wang from Taipei, Taiwan | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) |
+| TI-AC-0001 | Cargador USB-C Lenovo 65 W | [Apple 96W USB Type-C Power Adapter for new 16 inch MacBook Pro (49165128252).jpg](https://commons.wikimedia.org/wiki/File:Apple_96W_USB_Type-C_Power_Adapter_for_new_16_inch_MacBook_Pro_(49165128252).jpg) | Tony Webster from Minneapolis, Minnesota, United States | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) |
+| TI-PT-0002 | Portátil HP ProBook 440 G10 | [IMG-20190927-WA0014.jpg](https://commons.wikimedia.org/wiki/File:IMG-20190927-WA0014.jpg) | Allan Kibe | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-TB-0002 | iPad 10.ª generación | [Ipadtenthgen.jpg](https://commons.wikimedia.org/wiki/File:Ipadtenthgen.jpg) | Wiikiipediia | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PY-0002 | Proyector BenQ MS560 | [BenQ DLP projector MP515 20101213.jpg](https://commons.wikimedia.org/wiki/File:BenQ_DLP_projector_MP515_20101213.jpg) | Aivar Luist | Public domain |
+| TI-PF-0002 | Teclado USB Genius KB-117 | [KYE Systems Genius KB-06XE-0534.jpg](https://commons.wikimedia.org/wiki/File:KYE_Systems_Genius_KB-06XE-0534.jpg) | Raimond Spekking | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AV-0002 | Micrófono inalámbrico Shure BLX24/PG58 | [Shure PG58 with PG2 wireless microphone - on.jpg](https://commons.wikimedia.org/wiki/File:Shure_PG58_with_PG2_wireless_microphone_-_on.jpg) | Christian Dahlqvist | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) |
+| TI-RD-0002 | Switch Cisco CBS110 de 16 puertos | [Netgear ProSafe 16-Port 10-Gigabit Smart Managed Switch XS716T.jpg](https://commons.wikimedia.org/wiki/File:Netgear_ProSafe_16-Port_10-Gigabit_Smart_Managed_Switch_XS716T.jpg) | Sergklim | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AC-0002 | Cargador HP 65 W punta azul | [Notebook-Computer-AC-Adapter.jpg](https://commons.wikimedia.org/wiki/File:Notebook-Computer-AC-Adapter.jpg) | Evan-Amos | Public domain |
+| TI-PT-0003 | Portátil Dell Latitude 3440 | [Dell Latitude E6540.jpg](https://commons.wikimedia.org/wiki/File:Dell_Latitude_E6540.jpg) | PolarisLakewell | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-TB-0003 | Tablet Lenovo Tab M10 (3.ª gen.) | [Lenovo Tab M10 FHD Plus (2026).jpg](https://commons.wikimedia.org/wiki/File:Lenovo_Tab_M10_FHD_Plus_(2026).jpg) | Gpkp | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PY-0003 | Proyector ViewSonic PA503W | [Benq Projector 03.jpg](https://commons.wikimedia.org/wiki/File:Benq_Projector_03.jpg) | Hp.Baumeler | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0003 | Cámara web Logitech C920 | [Webcam (Logitech c922).jpg](https://commons.wikimedia.org/wiki/File:Webcam_(Logitech_c922).jpg) | Zsinytwiki | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-AV-0003 | Diadema HyperX Cloud Stinger | [Headphones with Microphone.jpg](https://commons.wikimedia.org/wiki/File:Headphones_with_Microphone.jpg) | Zephyris at English Wikipedia | [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) |
+| TI-RD-0003 | Punto de acceso Ubiquiti UniFi U6 Lite | [Ubiquiti Unifi AP.jpg](https://commons.wikimedia.org/wiki/File:Ubiquiti_Unifi_AP.jpg) | L3u | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-AC-0003 | Adaptador USB-C a HDMI Ugreen | [USB-C Digital AV Multiport Adapter.jpeg](https://commons.wikimedia.org/wiki/File:USB-C_Digital_AV_Multiport_Adapter.jpeg) | Thefreeencyclopedia1 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PT-0004 | Portátil Acer Aspire 5 | [Acer Aspire One A150 - open.jpg](https://commons.wikimedia.org/wiki/File:Acer_Aspire_One_A150_-_open.jpg) | Ajgelado | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-TB-0004 | Tablet Samsung Galaxy Tab S6 Lite | [Samsung Galaxy Tab S6.png](https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_Tab_S6.png) | AnVuong1222004 (11) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PY-0004 | Proyector Epson PowerLite E20 | [Epson EB-U04-5357.jpg](https://commons.wikimedia.org/wiki/File:Epson_EB-U04-5357.jpg) | Raimond Spekking | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0004 | Combo teclado y mouse Logitech MK270 | [Computerhardware und Peripherie 20240203 HOF07063 RAW-Export.png](https://commons.wikimedia.org/wiki/File:Computerhardware_und_Peripherie_20240203_HOF07063_RAW-Export.png) | PantheraLeo1359531 | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-AV-0004 | Cámara Canon EOS Rebel T7 | [The Canon EOS Rebel T7 (2000D) being held by a lake.jpg](https://commons.wikimedia.org/wiki/File:The_Canon_EOS_Rebel_T7_(2000D)_being_held_by_a_lake.jpg) | Greyfiveys | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-RD-0004 | Switch TP-Link TL-SG108 de 8 puertos | [TP-Link LS1005G.jpg](https://commons.wikimedia.org/wiki/File:TP-Link_LS1005G.jpg) | Piotr Doroszewski | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-AC-0004 | Adaptador HDMI a VGA Ugreen | [HDMI轉VGA轉接頭.jpg](https://commons.wikimedia.org/wiki/File:HDMI%E8%BD%89VGA%E8%BD%89%E6%8E%A5%E9%A0%AD.jpg) | 7blackrats | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-PT-0005 | Portátil Asus VivoBook 15 | [Asus Vivobook 15.jpg](https://commons.wikimedia.org/wiki/File:Asus_Vivobook_15.jpg) | LeopardWin | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-TB-0005 | Tablet Xiaomi Redmi Pad SE | [Redmi Pad Pro VHU4746JP.jpg](https://commons.wikimedia.org/wiki/File:Redmi_Pad_Pro_VHU4746JP.jpg) | Kyu3a | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PY-0005 | Proyector Optoma S343 | [InFocus IN34.jpg](https://commons.wikimedia.org/wiki/File:InFocus_IN34.jpg) | Dave Pape | Public domain |
+| TI-PF-0005 | Monitor Samsung 24" S3 | [Samsung DeX dock with S8, plugged into monitor.jpg](https://commons.wikimedia.org/wiki/File:Samsung_DeX_dock_with_S8,_plugged_into_monitor.jpg) | Maurizio Pesce from Milan, Italia | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) |
+| TI-AV-0005 | Diadema USB Logitech H390 | [Logitech PC Headset 960 USB A-00011 (24181923271).jpg](https://commons.wikimedia.org/wiki/File:Logitech_PC_Headset_960_USB_A-00011_(24181923271).jpg) | I G | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) |
+| TI-RD-0005 | Kit de ponchadora y probador de red | [Cable stripper, cable tester (RJ45, RJ11), LSA-Tool and crimping tool.jpg](https://commons.wikimedia.org/wiki/File:Cable_stripper,_cable_tester_(RJ45,_RJ11),_LSA-Tool_and_crimping_tool.jpg) | www.heimnetzwerke.net | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-AC-0005 | Hub USB-C 7 en 1 Anker | [Anker PowerExpand 8-in-1-2188.jpg](https://commons.wikimedia.org/wiki/File:Anker_PowerExpand_8-in-1-2188.jpg) | Raimond Spekking | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PT-0006 | Portátil Lenovo IdeaPad 3 | [Lenovo IdeaPad 110.jpg](https://commons.wikimedia.org/wiki/File:Lenovo_IdeaPad_110.jpg) | EEIM | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) |
+| TI-PF-0006 | Mouse USB Genius DX-120 | [HP Mouse M-U0031-O-1680.jpg](https://commons.wikimedia.org/wiki/File:HP_Mouse_M-U0031-O-1680.jpg) | Raimond Spekking | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AV-0006 | Parlantes Logitech Z313 | [Logitech-usb-speakers.jpg](https://commons.wikimedia.org/wiki/File:Logitech-usb-speakers.jpg) | Evan-Amos | Public domain |
+| TI-AC-0006 | Extensión eléctrica Belkin de 6 tomas | [(20241007) APC power strip.jpg](https://commons.wikimedia.org/wiki/File:(20241007)_APC_power_strip.jpg) | Roy Zuo | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PT-0007 | Portátil HP 250 G9 | [HP Laptop Notebook.png](https://commons.wikimedia.org/wiki/File:HP_Laptop_Notebook.png) | Walkercaki12 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0007 | Teclado inalámbrico Logitech K380 | [Logitech K380 CJK Keyboard.jpg](https://commons.wikimedia.org/wiki/File:Logitech_K380_CJK_Keyboard.jpg) | Cangjie6 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AV-0007 | Micrófono de solapa Boya BY-M1 | [GA100 Mic.png](https://commons.wikimedia.org/wiki/File:GA100_Mic.png) | 多多123 | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-AC-0007 | Presentador con puntero láser Logitech R400 | [August LP205R Wireless Presenter.jpg](https://commons.wikimedia.org/wiki/File:August_LP205R_Wireless_Presenter.jpg) | Katie Chan | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) |
+| TI-PT-0008 | Portátil Dell Vostro 3520 | [Dell Vostro 14 5000 Series Laptop.jpg](https://commons.wikimedia.org/wiki/File:Dell_Vostro_14_5000_Series_Laptop.jpg) | Vostrouser | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-PF-0008 | Cámara web Logitech C270 | [Fancy webcam on computer screen.jpg](https://commons.wikimedia.org/wiki/File:Fancy_webcam_on_computer_screen.jpg) | Peter Placzek | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AV-0008 | Micrófono USB Fifine K669B | [Rode NT-USB.jpg](https://commons.wikimedia.org/wiki/File:Rode_NT-USB.jpg) | Nicolas Rück (WMDE) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) |
+| TI-AC-0008 | Presentador con puntero láser Targus AMP13 | [Inateck WP1002 Wireless Presenter (16593914759).jpg](https://commons.wikimedia.org/wiki/File:Inateck_WP1002_Wireless_Presenter_(16593914759).jpg) | Mack Male from Edmonton, AB, Canada | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) |
+| TI-PT-0009 | Portátil Lenovo ThinkPad L14 Gen 4 | [Lenovo ThinkPad T470.jpg](https://commons.wikimedia.org/wiki/File:Lenovo_ThinkPad_T470.jpg) | NickW1129 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) |
+| TI-PF-0009 | Monitor LG 22" 22MR410 | [Monitor lcd lg de frente.jpeg](https://commons.wikimedia.org/wiki/File:Monitor_lcd_lg_de_frente.jpeg) | EEIM | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) |
+| TI-AC-0009 | Memoria USB Kingston DataTraveler 64 GB | [Kingston Technology DataTraveler G4 USB flash drive USB 3.0 32 Gb.jpg](https://commons.wikimedia.org/wiki/File:Kingston_Technology_DataTraveler_G4_USB_flash_drive_USB_3.0_32_Gb.jpg) | Dmitry Makeev | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PT-0010 | MacBook Air 13" M2 | [M2 Macbook Air Starlight model.jpg](https://commons.wikimedia.org/wiki/File:M2_Macbook_Air_Starlight_model.jpg) | KKPCW（Kyu3） | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0010 | Lector de código de barras Honeywell Voyager 1250g | [Honeywell 4600g-8665.jpg](https://commons.wikimedia.org/wiki/File:Honeywell_4600g-8665.jpg) | Raimond Spekking | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AC-0010 | Memoria USB SanDisk Ultra Flair 32 GB | [SanDisk Ultra Fair USB 3.0.jpg](https://commons.wikimedia.org/wiki/File:SanDisk_Ultra_Fair_USB_3.0.jpg) | Raspberry3783 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PT-0011 | Portátil HP EliteBook 840 G9 | [HP EliteBook 840 G8.png](https://commons.wikimedia.org/wiki/File:HP_EliteBook_840_G8.png) | Infinatious | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0011 | Tableta digitalizadora Wacom Intuos S | [Wacom Intuos S.jpg](https://commons.wikimedia.org/wiki/File:Wacom_Intuos_S.jpg) | Smitop | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-AC-0011 | Disco externo Seagate One Touch 1 TB | [Seagate SRD0NF1 portable hard drive HS3.jpg](https://commons.wikimedia.org/wiki/File:Seagate_SRD0NF1_portable_hard_drive_HS3.jpg) | Hayden Schiff | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
+| TI-PT-0012 | Portátil Acer TravelMate P2 | [Acer TravelMate P253-M-32344G50Maks-93688.jpg](https://commons.wikimedia.org/wiki/File:Acer_TravelMate_P253-M-32344G50Maks-93688.jpg) | Raimond Spekking | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
+| TI-PF-0012 | Base refrigerante para portátil Klip Xtreme | [Laptop cooler.JPG](https://commons.wikimedia.org/wiki/File:Laptop_cooler.JPG) | User:Littletung | [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) |
+| TI-AC-0012 | Disco externo WD Elements 2 TB | [2TB WD Elements Portable 1 2016-07-03.jpg](https://commons.wikimedia.org/wiki/File:2TB_WD_Elements_Portable_1_2016-07-03.jpg) | FASTILY | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) |
