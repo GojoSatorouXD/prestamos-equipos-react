@@ -48,7 +48,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - Sidebar "Ver detalle": los 8 atributos
 - 60 equipos: Portátiles 12, Tablets 6, Proyectores 5, Periféricos 12, Audio y video 8, Redes 5, Accesorios 12
 - Accesorios: cargadores, adaptadores HDMI/USB-C, extensiones, punteros láser, memorias USB, discos externos
-- Estados: Disponible, Prestado, En mantenimiento. En el JSON **ningún equipo arranca como Prestado**: la mayoría Disponible y unos pocos En mantenimiento. Los préstamos solo se registran en vivo desde la app.
+- Estados: Disponible, Prestado, En mantenimiento. En el JSON **los 60 equipos arrancan como Disponible**, en su ubicación de bodega u oficina de TI (ninguno Prestado ni En mantenimiento, sin textos "En revisión" en las especificaciones). Préstamos, devoluciones y mantenimientos solo se registran en vivo desde la app.
 - serial: `TI-<prefijo>-<4 dígitos>` (ej. `TI-PT-0012`). Prefijos: PT, TB, PY, PF, AV, RD, AC
 - ubicacion: bodega u oficina de TI (ej. "Bodega TI – Estante A2")
 - imagen: foto real con licencia libre (Wikimedia Commons) en `public/img/equipos/<serial>.jpg`, 800×520, ≤150 KB. Créditos en el README. Respaldo: ilustración SVG por categoría en `public/img/categorias/` (onError). TI-TB-0006 usa el SVG porque no hay foto libre

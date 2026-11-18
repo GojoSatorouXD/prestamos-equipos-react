@@ -148,9 +148,9 @@
     "imagen": "/img/equipos/ti-ac-0002.jpg",
     "categoria": "Accesorios",
     "marca": "HP",
-    "estado": "En mantenimiento",
-    "especificaciones": "Cargador de 65 W con conector de 4.5 mm, para portátiles HP. En revisión: cable con el forro dañado",
-    "ubicacion": "Oficina TI – Mesa de reparación",
+    "estado": "Disponible",
+    "especificaciones": "Cargador de 65 W con conector de 4.5 mm, para portátiles HP",
+    "ubicacion": "Oficina TI – Gabinete de accesorios",
     "serial": "TI-AC-0002"
   },
   {
@@ -170,9 +170,9 @@
     "imagen": "/img/equipos/ti-tb-0003.jpg",
     "categoria": "Tablets",
     "marca": "Lenovo",
-    "estado": "En mantenimiento",
-    "especificaciones": "Pantalla 10.1\", 4 GB RAM, 64 GB, Wi-Fi, Android 12. En revisión: pantalla táctil no responde",
-    "ubicacion": "Oficina TI – Mesa de reparación",
+    "estado": "Disponible",
+    "especificaciones": "Pantalla 10.1\", 4 GB RAM, 64 GB, Wi-Fi, Android 12",
+    "ubicacion": "Bodega TI – Estante B1",
     "serial": "TI-TB-0003"
   },
   {
@@ -181,9 +181,9 @@
     "imagen": "/img/equipos/ti-py-0003.jpg",
     "categoria": "Proyectores",
     "marca": "ViewSonic",
-    "estado": "En mantenimiento",
-    "especificaciones": "3800 lúmenes, resolución WXGA, entradas HDMI y VGA. En revisión: lámpara con poca intensidad",
-    "ubicacion": "Oficina TI – Mesa de reparación",
+    "estado": "Disponible",
+    "especificaciones": "3800 lúmenes, resolución WXGA, entradas HDMI y VGA",
+    "ubicacion": "Bodega TI – Estante B2",
     "serial": "TI-PY-0003"
   },
   {
@@ -203,9 +203,9 @@
     "imagen": "/img/equipos/ti-av-0003.jpg",
     "categoria": "Audio y video",
     "marca": "HyperX",
-    "estado": "En mantenimiento",
-    "especificaciones": "Audífonos de 50 mm, micrófono con cancelación de ruido, conector 3.5 mm. En revisión: el micrófono no capta audio",
-    "ubicacion": "Oficina TI – Mesa de reparación",
+    "estado": "Disponible",
+    "especificaciones": "Audífonos de 50 mm, micrófono con cancelación de ruido, conector 3.5 mm",
+    "ubicacion": "Bodega TI – Estante D1",
     "serial": "TI-AV-0003"
   },
   {
@@ -236,9 +236,9 @@
     "imagen": "/img/equipos/ti-pt-0004.jpg",
     "categoria": "Portátiles",
     "marca": "Acer",
-    "estado": "En mantenimiento",
-    "especificaciones": "AMD Ryzen 5 7520U, 8 GB RAM, SSD 512 GB, pantalla 15.6\" FHD. En revisión: la batería no carga",
-    "ubicacion": "Oficina TI – Mesa de reparación",
+    "estado": "Disponible",
+    "especificaciones": "AMD Ryzen 5 7520U, 8 GB RAM, SSD 512 GB, pantalla 15.6\" FHD",
+    "ubicacion": "Bodega TI – Estante A2",
     "serial": "TI-PT-0004"
   },
   {

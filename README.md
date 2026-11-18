@@ -219,7 +219,7 @@ prestamos-equipos-react/
 Cualquier componente las usa con `usePrestamos()`.
 
 ### 3. Estados de los equipos y persistencia
-- `equipos.json` trae el estado inicial: la mayoría Disponible y 5 En mantenimiento.
+- `equipos.json` trae el estado inicial: los 60 equipos arrancan **Disponibles**, cada uno en su ubicación de bodega u oficina de TI. Los préstamos, devoluciones y mantenimientos se registran en vivo desde la app.
 - Los cambios se guardan aparte, en un objeto `{ idEquipo: estado }`. La función `aplicarEstadosGuardados()` los combina con el JSON.
 - Las ubicaciones que cambian se guardan en otro objeto, `{ idEquipo: { actual, original } }`. Se guarda la **original** para poder restaurarla; al volver a ella, la entrada se borra y el equipo usa otra vez la ubicación del JSON.
 - Unos `useEffect` guardan esos objetos y el historial en `localStorage` cada vez que cambian. Al recargar la página, se leen otra vez.
