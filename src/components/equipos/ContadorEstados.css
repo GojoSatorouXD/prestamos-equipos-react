@@ -10,7 +10,8 @@
 /* Tres tarjetas de vidrio, una por estado */
 .contador-lista {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* minmax(0, 1fr): las columnas pueden encogerse en pantallas angostas */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   list-style: none;
   margin: 0;
@@ -64,14 +65,23 @@
 
 @media (max-width: 520px) {
   .contador-tarjeta {
-    padding: 10px 12px;
+    padding: 10px;
   }
 
   .contador-numero {
     font-size: 1.5rem;
   }
 
+  /* En celular el texto puede partirse en dos líneas ("En / mantenimiento") */
   .contador-texto {
-    font-size: 0.78rem;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .contador-punto {
+    flex-shrink: 0;
+    margin-top: 4px;
   }
 }
