@@ -35,6 +35,11 @@ export const COLUMNAS_HISTORIAL = [
       return p.fechaDevolucion ? duracion : `${duracion} (en curso)`
     },
   },
+  // Ubicación dinámica. "?? '—'": los préstamos guardados antes de esta
+  // función no tienen estos datos y se muestran con una raya.
+  { titulo: 'Ubicación original', valor: (p) => p.ubicacionOriginal ?? '—' },
+  { titulo: 'Ubicación durante el préstamo', valor: (p) => p.ubicacionPrestamo ?? '—' },
+  { titulo: 'Ubicación tras la devolución', valor: (p) => p.ubicacionDevolucion ?? '—' },
   { titulo: 'Estado', valor: (p) => estadoPrestamo(p) },
 ]
 

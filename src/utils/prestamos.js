@@ -5,20 +5,54 @@
 export const MIN_CONDICION = 5
 export const MAX_CONDICION = 200
 
+// Dónde queda un equipo que llega dañado y pasa a mantenimiento
+export const UBICACION_REPARACION = 'Oficina TI – Mesa de reparación'
+
 /**
- * Aplica sobre el inventario del JSON los estados guardados en localStorage.
- * Ejemplo: si estados = { 3: 'Prestado' }, el equipo con id 3 queda Prestado.
+ * Ubicación de un equipo prestado: el área del colaborador y su nombre.
+ *   -> 'Área de Educación Física – José Luis Oviedo Camacho'
+ */
+export function ubicacionColaborador(colaborador) {
+  return `Área de ${colaborador.area} – ${colaborador.nombreCompleto}`
+}
+
+/**
+ * Aplica sobre el inventario del JSON lo guardado en localStorage:
+ * el estado y la ubicación actual de cada equipo.
+ * Ejemplo: si estados = { 3: 'Prestado' } y
+ * ubicaciones = { 3: { actual: 'Área de Contabilidad – …', original: 'Bodega TI – Estante B2' } },
+ * el equipo 3 queda Prestado y en el área de Contabilidad.
+ *
+ * El equipo sigue teniendo los mismos 8 atributos: solo cambian los
+ * VALORES de "estado" y "ubicacion". La ubicación original no se pierde:
+ * está guardada en "ubicaciones" (y en el JSON).
  *
  * @param {Array} equiposBase - equipos tal como vienen del JSON
  * @param {object} estados - { idEquipo: estado }
- * @returns {Array} nuevo arreglo con los estados actualizados
+ * @param {object} ubicaciones - { idEquipo: { actual, original } }
+ * @returns {Array} nuevo arreglo con los equipos actualizados
  */
-export function aplicarEstadosGuardados(equiposBase, estados) {
+export function aplicarEstadosGuardados(equiposBase, estados, ubicaciones = {}) {
   return equiposBase.map((equipo) => {
     const estadoGuardado = estados[equipo.id]
-    // Si hay un estado guardado se crea una copia del equipo con ese estado
-    return estadoGuardado ? { ...equipo, estado: estadoGuardado } : equipo
+    const ubicacionGuardada = ubicaciones[equipo.id]
+    // Si no hay nada guardado, el equipo queda igual que en el JSON
+    if (!estadoGuardado && !ubicacionGuardada) return equipo
+    // Si hay algo guardado se crea una COPIA del equipo con esos valores
+    return {
+      ...equipo,
+      estado: estadoGuardado ?? equipo.estado,
+      ubicacion: ubicacionGuardada?.actual ?? equipo.ubicacion,
+    }
   })
+}
+
+/**
+ * Ubicación a la que debe volver un equipo: la original guardada o,
+ * si nunca se ha movido, la que tiene en el JSON.
+ */
+export function obtenerUbicacionOriginal(equipoBase, ubicaciones) {
+  return ubicaciones[equipoBase.id]?.original ?? equipoBase.ubicacion
 }
 
 /**
@@ -34,12 +68,16 @@ export function buscarPrestamoActivo(historial, equipoId) {
  * Guarda una COPIA de los datos del equipo y del colaborador: así el
  * historial queda igual aunque luego cambien esos datos (como la hoja de papel).
  *
+ * También guarda las ubicaciones: la original (a donde vuelve) y la del
+ * préstamo (área del colaborador). La de devolución se completa al devolver.
+ *
  * @param {object} equipo
  * @param {object} colaborador
  * @param {string} condicionEntrega
  * @param {Date} fecha - fecha y hora del préstamo (automática)
+ * @param {string} ubicacionOriginal - ubicación de bodega/oficina del equipo
  */
-export function crearPrestamo(equipo, colaborador, condicionEntrega, fecha = new Date()) {
+export function crearPrestamo(equipo, colaborador, condicionEntrega, fecha = new Date(), ubicacionOriginal = equipo.ubicacion) {
   return {
     id: `${equipo.id}-${fecha.getTime()}`, // identificador único
     equipoId: equipo.id,
@@ -53,9 +91,12 @@ export function crearPrestamo(equipo, colaborador, condicionEntrega, fecha = new
     area: colaborador.area,
     fechaPrestamo: fecha.toISOString(), // texto, para poder guardarlo en localStorage
     condicionEntrega: condicionEntrega.trim(),
+    ubicacionOriginal,
+    ubicacionPrestamo: ubicacionColaborador(colaborador),
     fechaDevolucion: null,
     condicionDevolucion: null,
     mismasCondiciones: null,
+    ubicacionDevolucion: null, // original (buen estado) o mesa de reparación
   }
 }
 

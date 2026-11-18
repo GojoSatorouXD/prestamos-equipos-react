@@ -56,12 +56,13 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 ## Modelo de colaborador (`public/data/colaboradores.json`, datos de ejemplo)
 `id, nombreCompleto, documento, correo, cargo, area`
 - 11 colaboradores: Diego Alejandro Cano Muñoz, Andrés Felipe Colonia Ocampo, Juan José Cruz Serna, Carlos Esneider Espitia Paz, Kenneth Ibarra Velasco, Mauricio López Tamayo, Natalia Martínez Arévalo, Lizeth Tatiana Moreno Rosero, Carolina Muñoz Quintero, José Luis Oviedo Camacho, Deyby Alejandro Rodríguez Castillo
-- Correo con dominio reservado `.example` (ej. `diego.cano@colegio-ejemplo.example`); documento, cargo y área inventados y variados (docentes, coordinación, administrativo, RR. HH., contabilidad)
+- Correo con dominio reservado `.example` (ej. `diego.cano@colegio-ejemplo.example`); documento, cargo y área inventados y variados (docentes, coordinación, administrativo, RR. HH., contabilidad). El área se escribe para leerse después de "Área de …" (ej. José Luis Oviedo Camacho → "Educación Física")
 
 ## Préstamo y devolución (desde el sidebar, debajo de los 8 atributos)
 - **Registrar préstamo** (solo si está Disponible): elegir colaborador, fecha y hora automáticas, "Condición de entrega" obligatoria → estado pasa a **Prestado**
 - **Registrar devolución** (solo si está Prestado): fecha y hora automáticas, "Condición de devolución" obligatoria y casilla "¿Llegó en las mismas condiciones?" → Sí: **Disponible**; No: **En mantenimiento**
 - **Marcar como reparado** (solo si está En mantenimiento) → vuelve a **Disponible**
+- **Ubicación dinámica**: al prestar → `Área de <área> – <colaborador>`; al devolver en buen estado → ubicación original; si pasa a mantenimiento → `Oficina TI – Mesa de reparación`; al reparar → original. Se guarda `{ actual, original }` en localStorage (`prestatech:ubicaciones`). Cada préstamo guarda ubicación original, durante el préstamo y tras la devolución (tabla y Excel)
 - El historial **empieza vacío** (no hay préstamos de ejemplo)
 - Todo desde `PrestamosContext`, persistido en localStorage (estados de equipos + historial)
 - Es un formulario aparte del de Contacto
@@ -113,7 +114,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 
 ### 6. Préstamos (`/prestamos`) — vista extra
 - [x] Título de la página y enlace en el navbar
-- [x] Tabla del historial: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, estado (Activo / Devuelto)
+- [x] Tabla del historial: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, ubicación original, ubicación durante el préstamo, ubicación tras la devolución, estado (Activo / Devuelto)
 - [x] Mini dashboard: préstamos por categoría y equipos más prestados (barras HTML + CSS)
 - [x] Botón "Exportar a Excel" que descarga un .xlsx con todas esas columnas (mismas columnas que la tabla; SheetJS se carga con import() dinámico)
 - [x] Botón "Restablecer datos de ejemplo" (borra localStorage) con mensaje de confirmación antes de borrar
@@ -139,6 +140,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 18. ✅ Framer Motion: transiciones, scroll, contadores, toasts, skeletons y mini dashboard
 19. ✅ Fotos reales de los equipos (Wikimedia Commons) + créditos en el README
 20. ✅ Inicio: saludo directo arriba de todo
+21. ✅ Ubicación dinámica (préstamo, devolución, mantenimiento, reparación) en sidebar, tabla y Excel
 
 ## Entregables
 - [x] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)

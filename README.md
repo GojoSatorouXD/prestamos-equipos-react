@@ -52,12 +52,12 @@ Todas comparten el **Header** (nombre, navbar y botón de tema) y el **Footer** 
   - Buscador de texto que busca en nombre, marca, serial y especificaciones, sin distinguir mayúsculas ni tildes.
   - Selector de categoría y selector de estado.
   - Se aplican solo al presionar **Filtrar** (o Enter). **Limpiar filtros** deja todo en blanco. Los dos botones vuelven a la página 1.
-- **Préstamo** (equipo Disponible): se elige el colaborador y se escribe la condición de entrega. La fecha y la hora son automáticas. El equipo pasa a **Prestado**.
+- **Préstamo** (equipo Disponible): se elige el colaborador y se escribe la condición de entrega. La fecha y la hora son automáticas. El equipo pasa a **Prestado** y su ubicación cambia al área del colaborador (por ejemplo "Área de Educación Física – José Luis Oviedo Camacho").
 - **Devolución** (equipo Prestado):
   - Se escribe la condición de devolución y se marca si llegó en las mismas condiciones.
-  - Si llegó igual, el equipo queda **Disponible**; si no, queda **En mantenimiento**.
-- **Marcar como reparado** (equipo En mantenimiento): vuelve a **Disponible**.
-- **Historial** con 13 columnas: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada y estado (Activo / Devuelto).
+  - Si llegó igual, el equipo queda **Disponible** y vuelve a su ubicación original; si no, queda **En mantenimiento** en "Oficina TI – Mesa de reparación".
+- **Marcar como reparado** (equipo En mantenimiento): vuelve a **Disponible** y a su ubicación original.
+- **Historial** con 16 columnas: serial, equipo, categoría, colaborador, cargo, área, fecha y hora de préstamo, fecha y hora de devolución, condición de entrega, condición de devolución, ¿mismas condiciones?, duración calculada, ubicación original, ubicación durante el préstamo, ubicación tras la devolución y estado (Activo / Devuelto).
 - **Mini dashboard** en Préstamos: gráficas de barras de préstamos por categoría y de los 5 equipos más prestados.
 - **Exportar a Excel** (.xlsx) con las mismas columnas de la tabla.
 - **Restablecer datos de ejemplo**, con confirmación previa.
@@ -220,7 +220,9 @@ Cualquier componente las usa con `usePrestamos()`.
 ### 3. Estados de los equipos y persistencia
 - `equipos.json` trae el estado inicial: la mayoría Disponible y 5 En mantenimiento.
 - Los cambios se guardan aparte, en un objeto `{ idEquipo: estado }`. La función `aplicarEstadosGuardados()` los combina con el JSON.
-- Dos `useEffect` guardan ese objeto y el historial en `localStorage` cada vez que cambian. Al recargar la página, se leen otra vez.
+- Las ubicaciones que cambian se guardan en otro objeto, `{ idEquipo: { actual, original } }`. Se guarda la **original** para poder restaurarla; al volver a ella, la entrada se borra y el equipo usa otra vez la ubicación del JSON.
+- Unos `useEffect` guardan esos objetos y el historial en `localStorage` cada vez que cambian. Al recargar la página, se leen otra vez.
+- El equipo sigue teniendo los mismos 8 atributos: solo cambian los valores de `estado` y `ubicacion`.
 
 ### 4. Filtros y paginación
 - **Filtros:** lo que el usuario escribe vive en un estado *borrador* dentro de `Filtros`. Solo al presionar Filtrar se copia a los filtros del contexto, y `filtrarEquipos()` recalcula la lista.
@@ -231,13 +233,15 @@ Cualquier componente las usa con `usePrestamos()`.
   - valida los datos
   - crea un registro con `crearPrestamo()` (copia de los datos del equipo y del colaborador, y fecha `new Date()`)
   - lo agrega al inicio del historial
-  - cambia el equipo a Prestado
+  - cambia el equipo a Prestado y lo mueve al área del colaborador (`ubicacionColaborador()`)
 - `registrarDevolucion()`:
   - completa el préstamo activo con la fecha de devolución, la condición y si llegó en las mismas condiciones
-  - cambia el estado del equipo según esa casilla
+  - cambia el estado del equipo según esa casilla y lo mueve: a su ubicación original (buen estado) o a la mesa de reparación (`UBICACION_REPARACION`)
+- `marcarReparado()`: el equipo vuelve a Disponible y a su ubicación original.
+- Cada préstamo guarda tres ubicaciones (`ubicacionOriginal`, `ubicacionPrestamo`, `ubicacionDevolucion`) que se ven en la tabla y en el Excel.
 
 ### 6. Historial y Excel
-- `utils/historial.js` define las 13 columnas **una sola vez**. Las usan tanto `TablaHistorial` como `exportarHistorialExcel()`, así la tabla y el Excel siempre coinciden.
+- `utils/historial.js` define las 16 columnas **una sola vez**. Las usan tanto `TablaHistorial` como `exportarHistorialExcel()`, así la tabla y el Excel siempre coinciden.
 - SheetJS se carga con `import()` dinámico, solo cuando se presiona "Exportar a Excel".
 - El dashboard usa `contarAgrupado()` (con `reduce`) para calcular los préstamos por categoría y el ranking de equipos. Las barras son HTML + CSS; su ancho es el valor dividido entre el máximo.
 

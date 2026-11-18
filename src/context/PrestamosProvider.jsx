@@ -8,6 +8,9 @@ import {
   buscarPrestamoActivo,
   crearPrestamo,
   validarCondicion,
+  obtenerUbicacionOriginal,
+  ubicacionColaborador,
+  UBICACION_REPARACION,
 } from '../utils/prestamos'
 
 /**
@@ -26,7 +29,8 @@ function temaInicial() {
  *
  * Maneja:
  *  - equipos, colaboradores, cargando, error -> carga inicial con fetch
- *  - estadosGuardados, historial              -> préstamos (en localStorage)
+ *  - estadosGuardados, ubicacionesGuardadas,
+ *    historial                                -> préstamos (en localStorage)
  *  - equipoSeleccionado                       -> equipo que se muestra en el sidebar
  *  - filtros                                  -> filtros aplicados (al presionar "Filtrar")
  *  - tema                                     -> 'claro' u 'oscuro'
@@ -41,6 +45,9 @@ function PrestamosProvider({ children }) {
   // Datos que se guardan en localStorage. La función dentro de useState
   // (inicialización perezosa) lee localStorage UNA sola vez, al montar.
   const [estadosGuardados, setEstadosGuardados] = useState(() => leerLocal(CLAVES.estados, {}))
+  // Ubicación dinámica: { idEquipo: { actual, original } }. Solo están los
+  // equipos que se movieron; "original" se guarda para poder restaurarla.
+  const [ubicacionesGuardadas, setUbicacionesGuardadas] = useState(() => leerLocal(CLAVES.ubicaciones, {}))
   const [historial, setHistorial] = useState(() => leerLocal(CLAVES.historial, []))
 
   // Se guarda solo el id: el equipo se busca en la lista actualizada,
@@ -94,6 +101,10 @@ function PrestamosProvider({ children }) {
   }, [estadosGuardados])
 
   useEffect(() => {
+    guardarLocal(CLAVES.ubicaciones, ubicacionesGuardadas)
+  }, [ubicacionesGuardadas])
+
+  useEffect(() => {
     guardarLocal(CLAVES.historial, historial)
   }, [historial])
 
@@ -111,7 +122,7 @@ function PrestamosProvider({ children }) {
   // Valores calculados a partir del estado (no se guardan en useState
   // porque siempre se pueden obtener de otros estados).
   // ---------------------------------------------------------
-  const equipos = aplicarEstadosGuardados(equiposBase, estadosGuardados)
+  const equipos = aplicarEstadosGuardados(equiposBase, estadosGuardados, ubicacionesGuardadas)
   const equiposFiltrados = filtrarEquipos(equipos, filtros)
   // El conteo usa el inventario TOTAL, no la lista filtrada
   const conteo = contarPorEstado(equipos)
@@ -137,13 +148,42 @@ function PrestamosProvider({ children }) {
     setEstadosGuardados((anteriores) => ({ ...anteriores, [equipoId]: nuevoEstado }))
   }
 
+  // Ubicación original de un equipo (la de bodega u oficina de TI)
+  const ubicacionOriginalDe = (equipoId) => {
+    const equipoBase = equiposBase.find((e) => e.id === equipoId)
+    return equipoBase ? obtenerUbicacionOriginal(equipoBase, ubicacionesGuardadas) : ''
+  }
+
+  /**
+   * Mueve un equipo a otra ubicación guardando la original.
+   * @param {number} equipoId
+   * @param {string|null} nuevaUbicacion - null = volver a la ubicación original
+   * @returns {string} la ubicación en la que quedó el equipo
+   */
+  const moverEquipo = (equipoId, nuevaUbicacion) => {
+    const original = ubicacionOriginalDe(equipoId)
+    setUbicacionesGuardadas((anteriores) => {
+      // Se crea una copia del objeto para no modificar el estado anterior
+      const copia = { ...anteriores }
+      if (nuevaUbicacion === null) {
+        // Volver a la original: se borra la entrada y el equipo usa la del JSON
+        delete copia[equipoId]
+      } else {
+        copia[equipoId] = { actual: nuevaUbicacion, original }
+      }
+      return copia
+    })
+    return nuevaUbicacion ?? original
+  }
+
   // ---------------------------------------------------------
   // Acciones: préstamo, devolución, reparación y restablecer.
   // Si algo no es válido lanzan un Error con el mensaje para el usuario.
   // ---------------------------------------------------------
 
   /**
-   * Registra un préstamo: el equipo pasa a Prestado y se agrega al historial.
+   * Registra un préstamo: el equipo pasa a Prestado, se mueve al área del
+   * colaborador y se agrega al historial.
    * La fecha y la hora se toman automáticamente (new Date()).
    */
   const registrarPrestamo = ({ equipoId, colaboradorId, condicionEntrega }) => {
@@ -155,17 +195,20 @@ function PrestamosProvider({ children }) {
     const errorCondicion = validarCondicion(condicionEntrega, 'La condición de entrega')
     if (errorCondicion) throw new Error(errorCondicion)
 
-    const nuevoPrestamo = crearPrestamo(equipo, colaborador, condicionEntrega, new Date())
+    const nuevoPrestamo = crearPrestamo(equipo, colaborador, condicionEntrega, new Date(), ubicacionOriginalDe(equipoId))
     // El más reciente va primero en el historial
     setHistorial((anterior) => [nuevoPrestamo, ...anterior])
     cambiarEstado(equipoId, 'Prestado')
+    // Ej.: 'Área de Educación Física – José Luis Oviedo Camacho'
+    moverEquipo(equipoId, ubicacionColaborador(colaborador))
     return nuevoPrestamo
   }
 
   /**
    * Registra la devolución del préstamo activo del equipo.
-   * Si llegó en las mismas condiciones -> Disponible; si no -> En mantenimiento.
-   * @returns {string} el nuevo estado del equipo
+   * Si llegó en las mismas condiciones -> Disponible y vuelve a su ubicación original.
+   * Si no -> En mantenimiento y queda en la mesa de reparación de TI.
+   * @returns {{ estado: string, ubicacion: string }} cómo y dónde quedó el equipo
    */
   const registrarDevolucion = ({ equipoId, condicionDevolucion, mismasCondiciones }) => {
     const prestamoActivo = buscarPrestamoActivo(historial, equipoId)
@@ -174,6 +217,10 @@ function PrestamosProvider({ children }) {
     if (errorCondicion) throw new Error(errorCondicion)
 
     const fechaDevolucion = new Date().toISOString()
+    const nuevoEstado = mismasCondiciones ? 'Disponible' : 'En mantenimiento'
+    // null = vuelve a la ubicación original
+    const nuevaUbicacion = moverEquipo(equipoId, mismasCondiciones ? null : UBICACION_REPARACION)
+
     // map devuelve un arreglo nuevo: se cambia solo el préstamo activo
     setHistorial((anterior) =>
       anterior.map((prestamo) =>
@@ -183,33 +230,38 @@ function PrestamosProvider({ children }) {
               fechaDevolucion,
               condicionDevolucion: condicionDevolucion.trim(),
               mismasCondiciones,
+              ubicacionDevolucion: nuevaUbicacion,
             }
           : prestamo,
       ),
     )
 
-    const nuevoEstado = mismasCondiciones ? 'Disponible' : 'En mantenimiento'
     cambiarEstado(equipoId, nuevoEstado)
-    return nuevoEstado
+    return { estado: nuevoEstado, ubicacion: nuevaUbicacion }
   }
 
   /**
-   * Un equipo En mantenimiento vuelve a estar Disponible.
+   * Un equipo En mantenimiento vuelve a estar Disponible
+   * y regresa a su ubicación original.
+   * @returns {string} la ubicación a la que volvió
    */
   const marcarReparado = (equipoId) => {
     const equipo = equipos.find((e) => e.id === equipoId)
     if (!equipo || equipo.estado !== 'En mantenimiento') throw new Error('Este equipo no está en mantenimiento.')
     cambiarEstado(equipoId, 'Disponible')
+    return moverEquipo(equipoId, null)
   }
 
   /**
    * Borra lo guardado en localStorage y vuelve a los datos de ejemplo:
-   * estados del JSON e historial vacío.
+   * estados y ubicaciones del JSON e historial vacío.
    */
   const restablecerDatos = () => {
     borrarLocal(CLAVES.estados)
+    borrarLocal(CLAVES.ubicaciones)
     borrarLocal(CLAVES.historial)
     setEstadosGuardados({})
+    setUbicacionesGuardadas({})
     setHistorial([])
     setEquipoSeleccionadoId(null)
   }
@@ -239,6 +291,7 @@ function PrestamosProvider({ children }) {
     marcarReparado,
     restablecerDatos,
     obtenerPrestamoActivo,
+    ubicacionOriginalDe,
   }
 
   return <PrestamosContext.Provider value={valor}>{children}</PrestamosContext.Provider>

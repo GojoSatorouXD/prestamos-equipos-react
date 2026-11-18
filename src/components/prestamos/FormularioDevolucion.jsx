@@ -1,19 +1,26 @@
 import { useState } from 'react'
 import CampoFormulario from '../comunes/CampoFormulario'
 import RelojActual from './RelojActual'
-import { validarCondicion, formatearFechaHora, calcularDuracion, MAX_CONDICION } from '../../utils/prestamos'
+import {
+  validarCondicion,
+  formatearFechaHora,
+  calcularDuracion,
+  MAX_CONDICION,
+  UBICACION_REPARACION,
+} from '../../utils/prestamos'
 
 /**
  * Formulario "Registrar devolución" (solo para equipos Prestados).
  * Props:
  *  - prestamo: el préstamo activo del equipo (quién lo tiene y desde cuándo)
+ *  - ubicacionOriginal: a dónde vuelve el equipo si llega en buen estado
  *  - onRegistrar: función que recibe { condicionDevolucion, mismasCondiciones }
  *
- * La casilla decide el nuevo estado:
- *  - marcada (Sí)    -> Disponible
- *  - sin marcar (No) -> En mantenimiento
+ * La casilla decide el nuevo estado y la nueva ubicación:
+ *  - marcada (Sí)    -> Disponible, en su ubicación original
+ *  - sin marcar (No) -> En mantenimiento, en la mesa de reparación de TI
  */
-function FormularioDevolucion({ prestamo, onRegistrar }) {
+function FormularioDevolucion({ prestamo, ubicacionOriginal, onRegistrar }) {
   const [condicion, setCondicion] = useState('')
   const [mismasCondiciones, setMismasCondiciones] = useState(false)
   const [errores, setErrores] = useState({})
@@ -36,6 +43,7 @@ function FormularioDevolucion({ prestamo, onRegistrar }) {
 
   // Texto que anticipa el resultado según la casilla
   const resultado = mismasCondiciones ? 'Disponible' : 'En mantenimiento'
+  const destino = mismasCondiciones ? ubicacionOriginal : UBICACION_REPARACION
 
   return (
     <form className="form-prestamo" onSubmit={manejarEnvio} noValidate>
@@ -92,7 +100,7 @@ function FormularioDevolucion({ prestamo, onRegistrar }) {
       </label>
 
       <p className={mismasCondiciones ? 'form-prestamo-resultado ok' : 'form-prestamo-resultado revision'}>
-        {mismasCondiciones ? 'Sí' : 'No'} → el equipo quedará <strong>{resultado}</strong>.
+        {mismasCondiciones ? 'Sí' : 'No'} → el equipo quedará <strong>{resultado}</strong> en <strong>{destino}</strong>.
       </p>
 
       {errores.general && (

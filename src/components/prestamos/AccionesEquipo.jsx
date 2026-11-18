@@ -15,8 +15,14 @@ import './AccionesEquipo.css'
  * Después de cada acción muestra un aviso flotante (toast) de confirmación.
  */
 function AccionesEquipo({ equipo }) {
-  const { colaboradores, registrarPrestamo, registrarDevolucion, marcarReparado, obtenerPrestamoActivo } =
-    usePrestamos()
+  const {
+    colaboradores,
+    registrarPrestamo,
+    registrarDevolucion,
+    marcarReparado,
+    obtenerPrestamoActivo,
+    ubicacionOriginalDe,
+  } = usePrestamos()
   const { notificar } = useNotificaciones()
 
   const manejarPrestamo = (datos) => {
@@ -26,26 +32,26 @@ function AccionesEquipo({ equipo }) {
     notificar({
       tipo: 'exito',
       titulo: 'Préstamo registrado',
-      mensaje: `${prestamo.colaborador} recibió ${equipo.nombre} (${equipo.serial}).`,
+      mensaje: `${prestamo.colaborador} recibió ${equipo.nombre}. Nueva ubicación: ${prestamo.ubicacionPrestamo}.`,
     })
   }
 
   const manejarDevolucion = (datos) => {
-    const nuevoEstado = registrarDevolucion({ equipoId: equipo.id, ...datos })
+    const resultado = registrarDevolucion({ equipoId: equipo.id, ...datos })
     // Si no llegó en las mismas condiciones el aviso es amarillo (revisión)
     notificar({
-      tipo: nuevoEstado === 'Disponible' ? 'exito' : 'aviso',
+      tipo: resultado.estado === 'Disponible' ? 'exito' : 'aviso',
       titulo: 'Devolución registrada',
-      mensaje: `${equipo.nombre} quedó ${nuevoEstado}.`,
+      mensaje: `${equipo.nombre} quedó ${resultado.estado}, en ${resultado.ubicacion}.`,
     })
   }
 
   const manejarReparado = () => {
-    marcarReparado(equipo.id)
+    const ubicacion = marcarReparado(equipo.id)
     notificar({
       tipo: 'exito',
       titulo: 'Equipo reparado',
-      mensaje: `${equipo.nombre} volvió a estar Disponible.`,
+      mensaje: `${equipo.nombre} volvió a estar Disponible, en ${ubicacion}.`,
     })
   }
 
@@ -54,13 +60,22 @@ function AccionesEquipo({ equipo }) {
   if (equipo.estado === 'Disponible') {
     accion = <FormularioPrestamo colaboradores={colaboradores} onRegistrar={manejarPrestamo} />
   } else if (equipo.estado === 'Prestado') {
-    accion = <FormularioDevolucion prestamo={obtenerPrestamoActivo(equipo.id)} onRegistrar={manejarDevolucion} />
+    accion = (
+      <FormularioDevolucion
+        prestamo={obtenerPrestamoActivo(equipo.id)}
+        ubicacionOriginal={ubicacionOriginalDe(equipo.id)}
+        onRegistrar={manejarDevolucion}
+      />
+    )
   } else if (equipo.estado === 'En mantenimiento') {
     accion = (
       <div className="form-prestamo">
         <h3>En mantenimiento</h3>
         <p className="form-prestamo-texto">
           Cuando el equipo esté revisado y funcionando, márcalo como reparado para que vuelva a estar disponible.
+        </p>
+        <p className="form-prestamo-texto">
+          Volverá a: <strong>{ubicacionOriginalDe(equipo.id)}</strong>
         </p>
         <button type="button" className="boton boton-primario" onClick={manejarReparado}>
           Marcar como reparado

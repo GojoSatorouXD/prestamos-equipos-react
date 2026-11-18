@@ -14,6 +14,7 @@
 // Nombres (claves) con los que se guarda cada dato
 export const CLAVES = {
   estados: 'prestatech:estados', // { idEquipo: 'Prestado', ... }
+  ubicaciones: 'prestatech:ubicaciones', // { idEquipo: { actual, original }, ... }
   historial: 'prestatech:historial', // arreglo de préstamos
   tema: 'prestatech:tema', // 'claro' | 'oscuro'
 }

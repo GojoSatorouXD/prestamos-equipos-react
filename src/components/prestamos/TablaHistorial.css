@@ -1,4 +1,4 @@
-/* La tabla tiene 13 columnas: se desplaza hacia los lados dentro de su caja */
+/* La tabla tiene 16 columnas: se desplaza hacia los lados dentro de su caja */
 .tabla-envoltura {
   overflow-x: auto;
   background-color: var(--color-superficie);
@@ -9,7 +9,7 @@
 
 .tabla-historial {
   width: 100%;
-  min-width: 1500px;
+  min-width: 2100px;
   border-collapse: collapse;
   font-size: 0.875rem;
 }
@@ -43,8 +43,15 @@
 .tabla-historial td:nth-child(7),
 .tabla-historial td:nth-child(8),
 .tabla-historial td:nth-child(12),
-.tabla-historial td:nth-child(13) {
+.tabla-historial td:nth-child(16) {
   white-space: nowrap;
+}
+
+/* Ubicaciones: un ancho mínimo para que no queden en columnas muy angostas */
+.tabla-historial td:nth-child(13),
+.tabla-historial td:nth-child(14),
+.tabla-historial td:nth-child(15) {
+  min-width: 200px;
 }
 
 /* Ancho mínimo para equipo y colaborador */

@@ -6,7 +6,7 @@
 import { COLUMNAS_HISTORIAL } from './historial'
 
 // Ancho aproximado de cada columna en Excel (en caracteres), mismo orden
-const ANCHOS = [13, 34, 14, 32, 28, 26, 22, 24, 36, 36, 12, 18, 10]
+const ANCHOS = [13, 34, 14, 32, 28, 26, 22, 24, 36, 36, 12, 18, 30, 52, 32, 10]
 
 /**
  * Convierte el historial en filas para Excel.

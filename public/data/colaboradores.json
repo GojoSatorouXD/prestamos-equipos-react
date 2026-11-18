@@ -5,7 +5,7 @@
     "documento": "1.107.452.318",
     "correo": "diego.cano@colegio-ejemplo.example",
     "cargo": "Docente de Matemáticas",
-    "area": "Académica – Bachillerato"
+    "area": "Matemáticas"
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "documento": "1.006.315.942",
     "correo": "juan.cruz@colegio-ejemplo.example",
     "cargo": "Docente de Ciencias Naturales",
-    "area": "Académica – Primaria"
+    "area": "Ciencias Naturales"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "documento": "94.538.207",
     "correo": "carlos.espitia@colegio-ejemplo.example",
     "cargo": "Auxiliar administrativo",
-    "area": "Administrativa"
+    "area": "Administración"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "documento": "1.113.687.054",
     "correo": "kenneth.ibarra@colegio-ejemplo.example",
     "cargo": "Docente de Inglés",
-    "area": "Académica – Idiomas"
+    "area": "Idiomas"
   },
   {
     "id": 6,
@@ -61,7 +61,7 @@
     "documento": "1.085.297.613",
     "correo": "lizeth.moreno@colegio-ejemplo.example",
     "cargo": "Coordinadora de convivencia",
-    "area": "Coordinación de convivencia"
+    "area": "Convivencia"
   },
   {
     "id": 9,
@@ -77,7 +77,7 @@
     "documento": "1.112.459.370",
     "correo": "jose.oviedo@colegio-ejemplo.example",
     "cargo": "Docente de Educación Física",
-    "area": "Académica – Bachillerato"
+    "area": "Educación Física"
   },
   {
     "id": 11,
