@@ -52,6 +52,7 @@ Todas comparten el **Header** (nombre, navbar y botón de tema) y el **Footer** 
   - Buscador de texto que busca en nombre, marca, serial y especificaciones, sin distinguir mayúsculas ni tildes.
   - Selector de categoría y selector de estado.
   - Se aplican solo al presionar **Filtrar** (o Enter). **Limpiar filtros** deja todo en blanco. Los dos botones vuelven a la página 1.
+  - **Atajo:** las tarjetas de Disponibles, Prestados y En mantenimiento son botones que filtran por ese estado (vuelven a la página 1 y actualizan el selector "Estado"). Un segundo clic en la tarjeta activa quita ese filtro.
 - **Préstamo** (equipo Disponible): se elige el colaborador y se escribe la condición de entrega. La fecha y la hora son automáticas. El equipo pasa a **Prestado** y su ubicación cambia al área del colaborador (por ejemplo "Área de Educación Física – José Luis Oviedo Camacho").
 - **Devolución** (equipo Prestado):
   - Se escribe la condición de devolución y se marca si llegó en las mismas condiciones.

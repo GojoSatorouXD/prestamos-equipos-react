@@ -84,7 +84,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [x] Lista en tarjetas con paginación de 10 por página; al inicio se cargan los 10 primeros
 - [x] Botón "Ver detalle" en cada tarjeta que abre un sidebar con los 8 atributos (se cierra con ✕, Esc o clic en el fondo)
 - [x] Filtros arriba: buscador de texto (nombre, marca, serial y especificaciones, sin distinguir mayúsculas ni tildes) + selector de categoría (el obligatorio del PDF, incluye Accesorios) + selector de estado; se combinan
-- [x] Contador de disponibles / prestados / en mantenimiento sobre el inventario total
+- [x] Contador de disponibles / prestados / en mantenimiento sobre el inventario total. Cada tarjeta es un botón (aria-pressed) que filtra por ese estado, vuelve a la página 1 y sincroniza el selector "Estado"; un segundo clic en la activa quita el filtro
 - [x] Botones "Filtrar" y "Limpiar filtros". Los filtros se aplican solo al presionar "Filtrar" o Enter en el buscador (no en vivo); "Limpiar" deja todo en blanco; ambos vuelven a la página 1
 - [x] Estado de "Cargando…" y mensaje cuando no hay resultados
 

@@ -15,6 +15,7 @@ import {
   CATEGORIAS,
   ESTADOS,
   EQUIPOS_POR_PAGINA,
+  FILTROS_INICIALES,
 } from '../utils/equipos'
 import './Equipos.css'
 
@@ -41,6 +42,10 @@ function Equipos() {
 
   // Estado local: solo esta vista necesita saber en qué página está
   const [paginaActual, setPaginaActual] = useState(1)
+  // Borrador del formulario de filtros (lo escrito, aún sin aplicar).
+  // Vive aquí y no dentro de <Filtros> para que los contadores de estado
+  // puedan cambiar también el selector "Estado".
+  const [borrador, setBorrador] = useState(filtros)
 
   // Si el usuario sale de esta vista con el sidebar abierto, se cierra
   // (limpieza al desmontar). Así no reaparece abierto al volver.
@@ -68,7 +73,19 @@ function Equipos() {
   }
 
   const manejarLimpiar = () => {
+    setBorrador(FILTROS_INICIALES)
     limpiarFiltros()
+    setPaginaActual(1)
+  }
+
+  // Evento onClick de un contador: filtra por ese estado, sin tocar el
+  // texto ni la categoría ya aplicados. Si ese estado ya estaba activo,
+  // el segundo clic quita el filtro de estado.
+  const manejarFiltrarPorEstado = (estado) => {
+    const nuevoEstado = filtros.estado === estado ? '' : estado
+    aplicarFiltros({ ...filtros, estado: nuevoEstado })
+    // Se sincroniza el selector "Estado" del formulario
+    setBorrador((anterior) => ({ ...anterior, estado: nuevoEstado }))
     setPaginaActual(1)
   }
 
@@ -93,12 +110,18 @@ function Equipos() {
   } else {
     contenido = (
       <>
-        <ContadorEstados conteo={conteo} total={equipos.length} />
+        <ContadorEstados
+          conteo={conteo}
+          total={equipos.length}
+          estadoActivo={filtros.estado}
+          onSeleccionarEstado={manejarFiltrarPorEstado}
+        />
 
         <Filtros
           categorias={CATEGORIAS}
           estados={ESTADOS}
-          filtrosAplicados={filtros}
+          borrador={borrador}
+          onCambiarBorrador={setBorrador}
           onFiltrar={manejarFiltrar}
           onLimpiar={manejarLimpiar}
         />

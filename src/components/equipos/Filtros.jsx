@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { FILTROS_INICIALES } from '../../utils/equipos'
 import './Filtros.css'
 
 /**
@@ -9,33 +7,27 @@ import './Filtros.css'
  * Props:
  *  - categorias: arreglo con las categorías para el selector
  *  - estados: arreglo con los estados para el selector
- *  - filtrosAplicados: filtros que ya están aplicados (valor inicial del formulario)
- *  - onFiltrar: función que recibe el objeto { texto, categoria, estado }
- *  - onLimpiar: función que quita todos los filtros
+ *  - borrador: lo que el usuario tiene escrito/elegido, { texto, categoria, estado }
+ *  - onCambiarBorrador: función que recibe el borrador actualizado
+ *  - onFiltrar: aplica el borrador (botón "Filtrar" o Enter)
+ *  - onLimpiar: quita todos los filtros
  *
- * Lo que el usuario escribe se guarda en un "borrador" (estado local).
- * La lista NO cambia hasta que se presiona "Filtrar" o Enter.
+ * Es un formulario CONTROLADO: el borrador vive en la vista Equipos
+ * (useState), así los contadores de estado también pueden cambiar el
+ * selector "Estado". La lista NO cambia hasta que se presiona "Filtrar" o Enter.
  */
-function Filtros({ categorias, estados, filtrosAplicados, onFiltrar, onLimpiar }) {
-  const [borrador, setBorrador] = useState(filtrosAplicados)
-
+function Filtros({ categorias, estados, borrador, onCambiarBorrador, onFiltrar, onLimpiar }) {
   // Evento onChange compartido por los 3 campos.
   // Usa el atributo "name" del campo para saber qué propiedad actualizar.
   const manejarCambio = (evento) => {
     const { name, value } = evento.target
-    setBorrador({ ...borrador, [name]: value })
+    onCambiarBorrador({ ...borrador, [name]: value })
   }
 
   // Evento onSubmit: se dispara con el botón "Filtrar" y con Enter en el buscador
   const manejarEnvio = (evento) => {
     evento.preventDefault() // evita que el navegador recargue la página
     onFiltrar(borrador)
-  }
-
-  // Evento onClick de "Limpiar filtros": vacía el formulario y la lista
-  const manejarLimpiar = () => {
-    setBorrador(FILTROS_INICIALES)
-    onLimpiar()
   }
 
   return (
@@ -81,7 +73,7 @@ function Filtros({ categorias, estados, filtrosAplicados, onFiltrar, onLimpiar }
           Filtrar
         </button>
         {/* type="button" para que este botón NO envíe el formulario */}
-        <button type="button" className="boton boton-secundario" onClick={manejarLimpiar}>
+        <button type="button" className="boton boton-secundario" onClick={onLimpiar}>
           Limpiar filtros
         </button>
       </div>
