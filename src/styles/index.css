@@ -269,6 +269,51 @@ h3 {
   cursor: not-allowed;
 }
 
+/* ---------- Controles de formulario (select, input, textarea, casilla) ----------
+   El fondo de los campos es semitransparente (vidrio). Las <option> lo
+   heredaban y el menú nativo quedaba con fondo blanco y texto casi blanco.
+   Por eso las opciones llevan un fondo SÓLIDO de cada tema. */
+select,
+input,
+textarea {
+  color-scheme: inherit; /* oscuro o claro según el tema (definido en :root) */
+}
+
+select option,
+select optgroup {
+  background-color: var(--color-superficie-solida);
+  color: var(--color-texto);
+}
+
+/* Opción seleccionada / resaltada en violeta. Se usa un degradado de un
+   solo color porque Chrome ignora background-color en la opción marcada. */
+select option:checked,
+select option:hover {
+  background: linear-gradient(var(--color-violeta), var(--color-violeta));
+  color: #ffffff;
+}
+
+/* Texto de ayuda (placeholder) legible en los dos temas */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-texto-suave);
+  opacity: 0.85;
+}
+
+/* Autocompletado de Chrome: sin esto pinta el campo de amarillo/blanco */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-texto);
+  box-shadow: 0 0 0 1000px var(--color-superficie-solida) inset;
+  caret-color: var(--color-texto);
+}
+
+/* Casillas (checkbox): se marcan en violeta en los dos temas */
+input[type='checkbox'] {
+  accent-color: var(--color-violeta);
+}
+
 /* Foco visible para navegación con teclado */
 :focus-visible {
   outline: 2px solid var(--color-cian);
