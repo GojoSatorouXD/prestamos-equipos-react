@@ -28,9 +28,36 @@
   gap: 48px;
 }
 
+/* Saludo grande: lo primero que se lee */
+.banner-saludo {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.banner-saludo-nombre {
+  white-space: nowrap;
+}
+
+/* La mano gira desde la muñeca (abajo a la derecha) */
+.banner-mano {
+  display: inline-block;
+  transform-origin: 70% 80%;
+}
+
+.banner-rol {
+  margin: 8px 0 28px;
+  font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
 .banner-etiqueta {
   display: inline-block;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   padding: 4px 12px;
   border: 1px solid rgba(167, 139, 250, 0.4);
   border-radius: 999px;
@@ -43,19 +70,8 @@
 }
 
 .banner-titulo {
-  font-size: clamp(1.9rem, 4.8vw, 3rem);
-  margin-bottom: 20px;
-}
-
-.banner-nombre {
-  margin: 0 0 8px;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.banner-nombre span {
-  font-weight: 400;
-  color: var(--color-texto-suave);
+  font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+  margin-bottom: 12px;
 }
 
 .banner-descripcion {
@@ -89,7 +105,8 @@
   background-color: var(--color-fondo);
 }
 
-/* Celular y tablet: la foto pasa arriba del texto */
+/* Celular y tablet: una sola columna. El saludo queda arriba de todo
+   y la foto pasa debajo del texto, más pequeña */
 @media (max-width: 760px) {
   .banner {
     padding: 36px 0;
@@ -101,12 +118,11 @@
   }
 
   .banner-foto-marco {
-    order: -1;
     justify-self: start;
   }
 
   .banner-foto {
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
   }
 }

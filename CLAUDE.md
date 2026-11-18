@@ -70,6 +70,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 
 ### 1. Presentación y biografía (`/`)
 - [x] Header (logo o nombre opcional) + navbar hacia todas las vistas
+- [x] Saludo arriba de todo: "Hola, soy Juan David 👋" + "Técnico de soporte TI y desarrollador" (la mano se anima con Framer Motion)
 - [x] Banner de presentación con título de la página
 - [x] Imagen representativa del perfil + descripción (Juan, técnico de TI). Foto real pendiente: `public/img/perfil.jpg` (si no existe, se ve el placeholder)
 - [x] 2 botones CTA: "Ver equipos" y "Contacto"
@@ -137,6 +138,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 17. ✅ Rediseño "Tech oscuro con neón"
 18. ✅ Framer Motion: transiciones, scroll, contadores, toasts, skeletons y mini dashboard
 19. ✅ Fotos reales de los equipos (Wikimedia Commons) + créditos en el README
+20. ✅ Inicio: saludo directo arriba de todo
 
 ## Entregables
 - [x] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)

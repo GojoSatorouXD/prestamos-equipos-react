@@ -34,7 +34,7 @@ El sitio también funciona como portafolio del autor (vistas de Inicio, Stack y 
 
 | Ruta | Vista | Contenido |
 |---|---|---|
-| `/` | **Presentación y biografía** | Banner con título, foto, descripción del perfil, botones "Ver equipos" y "Contacto", biografía (3 elementos) y redes (GitHub y correo). |
+| `/` | **Presentación y biografía** | Saludo directo arriba de todo ("Hola, soy Juan David 👋", técnico de soporte TI y desarrollador). Banner con título, foto, descripción del perfil, botones "Ver equipos" y "Contacto", biografía (3 elementos) y redes (GitHub y correo). |
 | `/equipos` | **Inventario de equipos** (proyectos) | 60 equipos en tarjetas con paginación de 10, buscador + filtros por categoría y estado, contador por estado y sidebar "Ver detalle" con los 8 atributos y las acciones de préstamo. |
 | `/stack` | **Stack tecnológico y estudios** | Stack implementado en este proyecto, stack del autor (Desarrollo y Soporte TI), herramientas de IA, timeline de experiencia y estudios. |
 | `/contacto` | **Contacto / nuevo proyecto** | Formulario validado (nombre, apellidos, correo, teléfono, descripción), envío con EmailJS, mensaje de agradecimiento y 5 testimonios de ejemplo. |

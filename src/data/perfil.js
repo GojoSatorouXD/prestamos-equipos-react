@@ -2,6 +2,7 @@
 // La vista de Inicio y el Footer leen de aquí.
 export const perfil = {
   nombre: 'Juan David Paz Trochez',
+  nombreCorto: 'Juan David', // para el saludo de Inicio
   rol: 'Técnico de soporte TI y desarrollador',
 
   // Descripción del perfil (vista Inicio)
