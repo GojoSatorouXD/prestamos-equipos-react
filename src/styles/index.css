@@ -285,11 +285,13 @@ select optgroup {
   color: var(--color-texto);
 }
 
-/* Opción seleccionada / resaltada en violeta. Se usa un degradado de un
-   solo color porque Chrome ignora background-color en la opción marcada. */
+/* Opción seleccionada / resaltada: violeta SÓLIDO con texto blanco.
+   Debe ser background-color (no un degradado): el menú nativo de Chrome
+   en Windows no dibuja degradados y la opción quedaba en blanco. */
 select option:checked,
-select option:hover {
-  background: linear-gradient(var(--color-violeta), var(--color-violeta));
+select option:hover,
+select option:focus {
+  background-color: #7c3aed;
   color: #ffffff;
 }
 
