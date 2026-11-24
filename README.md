@@ -3,6 +3,8 @@
 Proyecto final de **Interfaces con React** – Institución Universitaria Antonio José Camacho (UNIAJC), 2026.
 Autor: **Juan David Paz Trochez** · Línea de desarrollo: **3.4 Equipos de computación y accesorios**.
 
+🔗 **Demo en vivo:** [prestamos-equipos-react.vercel.app](https://prestamos-equipos-react.vercel.app)
+
 PrestaTech **digitaliza la hoja de papel de préstamos** del equipo de soporte TI de una empresa (colegio u oficina).
 En la hoja se anotaba a mano el serial, el nombre y modelo del equipo, la fecha y hora del préstamo y el nombre de quien lo recibía.
 Ahora el técnico de TI ve el inventario con su estado, registra préstamos y devoluciones con fecha y hora automáticas, consulta el historial y lo exporta a Excel.

@@ -22,7 +22,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - localStorage para estados de equipos e historial de préstamos
 - EmailJS para el formulario de contacto (claves en `.env`, plantilla en `.env.example`)
 - SheetJS instalado desde su CDN oficial (`npm i https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`), **no** el paquete `xlsx` del registro de npm, para exportar el historial a Excel
-- Despliegue en Vercel (con `vercel.json` para las rutas del router)
+- Despliegue en Vercel (con `vercel.json` para las rutas del router): https://prestamos-equipos-react.vercel.app
 
 ## Reglas de trabajo
 - Código claro y comentado en español: Juan debe poder explicar cada parte en la sustentación.
@@ -144,6 +144,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 
 ## Entregables
 - [x] Repositorio en GitHub con README (módulos, funcionamiento, cómo correrlo, trabajo futuro: login y backend)
+- [x] Desplegado en Vercel: https://prestamos-equipos-react.vercel.app (enlazado en el README y en el campo Website del repo)
 - [ ] Diapositivas: agenda, introducción, maquetación, línea de diseño, una por vista, demo, conclusiones
 - [ ] Enviar diapositivas por correo institucional
 - [ ] Código y presentación entregados el domingo antes de la sustentación
