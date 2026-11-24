@@ -151,7 +151,8 @@ prestamos-equipos-react/
 │       ├── equipos/              # 59 fotos reales optimizadas (nombre = serial, ej. ti-pt-0001.jpg)
 │       ├── categorias/           # 1 ilustración SVG por categoría (respaldo si falta la foto)
 │       ├── stack/                # logos e íconos de la vista Stack
-│       └── perfil-placeholder.svg
+│       ├── perfil.jpg            # foto del autor (Inicio)
+│       └── perfil-placeholder.svg  # respaldo si la foto no carga
 ├── src/
 │   ├── main.jsx                  # Punto de entrada: BrowserRouter + MotionConfig + proveedores
 │   ├── App.jsx                   # Rutas de las vistas

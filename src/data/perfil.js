@@ -15,7 +15,7 @@ export const perfil = {
   resumen:
     'Registro digital de préstamos de equipos de TI para los colaboradores de la empresa: reemplaza la hoja de papel por un inventario con estados e historial.',
 
-  // Foto: si /img/perfil.jpg no existe, se muestra el placeholder
+  // Foto real (500×500). Si no cargara, el onError del Banner muestra el placeholder
   foto: '/img/perfil.jpg',
   fotoPlaceholder: '/img/perfil-placeholder.svg',
 

@@ -73,7 +73,7 @@ Requisitos completos en `docs/requisitos.pdf`. Ante cualquier duda, ese PDF mand
 - [x] Header (logo o nombre opcional) + navbar hacia todas las vistas
 - [x] Saludo arriba de todo: "Hola, soy Juan David 👋" + "Técnico de soporte TI y desarrollador" (la mano se anima con Framer Motion)
 - [x] Banner de presentación con título de la página
-- [x] Imagen representativa del perfil + descripción (Juan, técnico de TI). Foto real pendiente: `public/img/perfil.jpg` (si no existe, se ve el placeholder)
+- [x] Imagen representativa del perfil + descripción (Juan, técnico de TI). Foto real en `public/img/perfil.jpg` (JPG 500×500, ~25 KB); si faltara, onError muestra el placeholder
 - [x] 2 botones CTA: "Ver equipos" y "Contacto"
 - [x] Biografía con 3 elementos: bachiller técnico (2022), Auxiliar de Soporte IT en el Colegio Colombo Británico (abr 2024 – abr 2025), Tecnología en Sistemas de Información UNIAJC (2023 – 2026)
 - [x] 2 redes: GitHub (GojoSatorouXD) y correo. Sin LinkedIn, sin teléfono ni referencias
